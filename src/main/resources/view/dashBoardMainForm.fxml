@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainPane" prefHeight="769.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashBoardMainFormController">
+   <children>
+      <Text fx:id="txtUser" layoutX="68.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maleesha Madushanka" wrappingWidth="232.7294921875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#ebb619" layoutX="68.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back" wrappingWidth="125.0546875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtTime" layoutX="662.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="08:30 AM" textAlignment="RIGHT" wrappingWidth="299.13671875">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDate" layoutX="571.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="November 01,2023" textAlignment="RIGHT" wrappingWidth="389.13671875">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Circle fill="#1aaaeb" layoutX="795.0" layoutY="248.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="778.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Downloads/tea-craft/src/main/resources/assets/images/staff.png" />
+         </image>
+      </ImageView>
+      <Text fill="#636e72" layoutX="788.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Text>
+      <HBox layoutX="34.0" layoutY="352.0" prefHeight="345.0" prefWidth="434.0">
+         <children>
+            <Group />
+            <Circle fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" />
+            <Group />
+            <Group />
+            <AreaChart fx:id="chartCinnamonStore" prefHeight="345.0" prefWidth="442.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
+         </children>
+      </HBox>
+      <HBox layoutX="110.0" layoutY="174.0" prefHeight="148.0" prefWidth="797.0">
+         <children>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="128.0" layoutX="11.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="250.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+                           <color>
+                              <Color opacity="0.20000000298023224" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Text fx:id="txtCinnamonStock" layoutX="130.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="60 KG" wrappingWidth="126.9033203125">
+                     <font>
+                        <Font name="Roboto Medium" size="35.0" />
+                     </font>
+                  </Text>
+                  <Group layoutX="72.0" layoutY="52.0" />
+                  <Text fill="#636e72" layoutX="41.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CinaBark Stock">
+                     <font>
+                        <Font name="Roboto Medium" size="16.0" />
+                     </font>
+                  </Text>
+                  <Circle fill="#ebb619" layoutX="75.0" layoutY="65.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+                  <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="59.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../Downloads/icons8-cinnamon-64.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="128.0" layoutX="11.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="250.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+                           <color>
+                              <Color opacity="0.20000000298023224" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Text fx:id="txtOrders" layoutX="155.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="47.9033203125">
+                     <font>
+                        <Font name="Roboto Medium" size="35.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#636e72" layoutX="65.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders">
+                     <font>
+                        <Font name="Roboto Medium" size="16.0" />
+                     </font>
+                  </Text>
+                  <Group layoutX="72.0" layoutY="52.0" />
+                  <Circle fill="#1aaaeb" layoutX="73.0" layoutY="67.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="51.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asserts.icon/fastcart.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="128.0" layoutX="11.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="250.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+                           <color>
+                              <Color opacity="0.20000000298023224" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Text fx:id="txtAttendance" layoutX="155.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="47.9033203125">
+                     <font>
+                        <Font name="Roboto Medium" size="35.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#636e72" layoutX="51.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance">
+                     <font>
+                        <Font name="Roboto Medium" size="16.0" />
+                     </font>
+                  </Text>
+                  <Group layoutX="72.0" layoutY="52.0">
+                     <children>
+                        <Circle fill="#a29bfe" layoutY="14.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="-17.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../asserts.icon/attendance50.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+         </children>
+      </HBox>
+      <Text fill="#636e72" layoutX="193.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bark Stock" wrappingWidth="121.5546875">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <PieChart fx:id="chartProduction" layoutX="568.0" layoutY="340.0" prefHeight="338.0" prefWidth="429.0" />
+      <Text fill="#636e72" layoutX="677.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Production Stock">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+   </children>
+</AnchorPane>

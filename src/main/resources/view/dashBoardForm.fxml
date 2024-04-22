@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashBoardFormController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #2d3436;">
+         <children>
+            <Text fill="#ebb619" layoutX="35.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinna">
+               <font>
+                  <Font name="Roboto Medium" size="29.0" />
+               </font>
+            </Text>
+            <VBox layoutX="17.0" layoutY="141.0" prefHeight="314.0" prefWidth="216.0">
+               <children>
+                  <JFXButton fx:id="btnDashboard" buttonType="RAISED" onAction="#btnDashboardOnAction" prefHeight="54.0" prefWidth="216.0" text=" Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/dashboard96.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCinnamon" buttonType="RAISED" onAction="#btnCinnamonOnAction" prefHeight="50.0" prefWidth="218.0" text="  Cinnamon" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons8cinnamon91.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnProcessing" buttonType="RAISED" onAction="#btnProcessingOnAction" prefHeight="52.0" prefWidth="217.0" text="  Processing" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/processing.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPackaging" buttonType="RAISED" onAction="#btnPackagingOnAction" prefHeight="58.0" prefWidth="222.0" text="  Packaging" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/packaging.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnSales" buttonType="RAISED" onAction="#btnSalesOnAction" prefHeight="57.0" prefWidth="216.0" text="CinnamonSales" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icons8sales64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFertilizer" buttonType="RAISED" onAction="#btnFertilizerOnAction" prefHeight="41.0" prefWidth="216.0" text="  Fertilizer" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/fertilizer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Text fill="WHITE" layoutX="109.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CraftPro" wrappingWidth="120.98193359375">
+               <font>
+                  <Font name="Roboto Medium" size="29.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="50.0" fitWidth="87.0" layoutX="84.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/dashboardCinnamon.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnSupplier" buttonType="RAISED" layoutX="23.0" layoutY="461.0" onAction="#btnSupplierOnAction" prefHeight="39.0" prefWidth="216.0" text="  Supplier" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8supplier50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="26.0" layoutY="516.0" onAction="#btnEmployeeOnAvtion" prefHeight="41.0" prefWidth="216.0" text="Employee" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icons8employee50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnCustomer" buttonType="RAISED" layoutX="21.0" layoutY="580.0" onAction="#btnCustomerOnAction" prefHeight="39.0" prefWidth="216.0" text="Customer" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/iconscustomer50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnLogout" buttonType="RAISED" layoutX="21.0" layoutY="649.0" onAction="#btnLogoutOnAction" prefHeight="41.0" prefWidth="203.0" text="Logout" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainPane" layoutX="260.0" layoutY="10.0" prefHeight="720.0" prefWidth="1030.0" />
+   </children>
+</AnchorPane>
