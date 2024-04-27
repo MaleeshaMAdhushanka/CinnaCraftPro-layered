@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="769.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CinnamonBarkFormController">
+   <children>
+      <Text fill="#636e72" layoutX="70.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinnamon Bark Stock">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <JFXButton fx:id="btnAddStock" buttonType="RAISED" layoutX="818.0" layoutY="138.0" onAction="#btnAddStockOnAction" prefHeight="54.0" prefWidth="152.0" style="-fx-background-color: black;" text="Add Stock" textFill="#ebb619">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconadd.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="tableCinnamonBrakStock" layoutX="70.0" layoutY="223.0" prefHeight="450.0" prefWidth="911.0" stylesheets="@../../../../../../../Desktop/newrosi/craft/src/main/resources/assets/css/TableStyle.css">
+         <columns>
+            <TableColumn fx:id="colStockId" prefWidth="140.0" style="-fx-alignment: center;" text="Stock ID" />
+            <TableColumn fx:id="colSupId" prefWidth="152.0" style="-fx-alignment: center;" text="Supplier ID" />
+            <TableColumn fx:id="colSupName" prefWidth="153.0" style="-fx-alignment: center;" text="Supplier Name" />
+            <TableColumn fx:id="colAmount" prefWidth="134.0" style="-fx-alignment: center;" text="Amount" />
+            <TableColumn fx:id="colUpdate" prefWidth="163.0" style="-fx-alignment: center;" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="167.0" style="-fx-alignment: center;" text="Delete" />
+         </columns>
+      </TableView>
+      <Text fill="#636e72" layoutX="70.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font name="Roboto Medium" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <DatePicker fx:id="dpDate" layoutX="150.0" layoutY="146.0" onAction="#dpDateOnAction" prefHeight="45.0" prefWidth="213.0" />
+      <Text fill="#636e72" layoutX="405.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Stock:">
+         <font>
+            <Font name="Roboto Medium" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Text fx:id="txtAmount" layoutX="585.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font name="Roboto Medium" size="29.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

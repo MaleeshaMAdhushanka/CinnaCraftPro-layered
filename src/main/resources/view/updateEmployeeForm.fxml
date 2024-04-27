@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="630.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.UpdateEmployeeFormController">
+   <children>
+      <Text fill="#ebb619" layoutX="88.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Employee">
+         <font>
+            <Font name="Segoe UI Semibold" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="62.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="63.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="75.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="96.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEX">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="101.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="83.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFirstName" layoutX="221.0" layoutY="142.0" prefHeight="42.0" prefWidth="216.0" />
+      <TextField fx:id="txtLastName" layoutX="221.0" layoutY="202.0" prefHeight="42.0" prefWidth="216.0" />
+      <TextField fx:id="txtAddress" layoutX="221.0" layoutY="274.0" prefHeight="42.0" prefWidth="216.0" />
+      <DatePicker fx:id="dpDateOfBirth" layoutX="221.0" layoutY="413.0" prefHeight="42.0" prefWidth="198.0" />
+      <TextField fx:id="txtMobileNo" layoutX="221.0" layoutY="477.0" prefHeight="42.0" prefWidth="216.0" />
+      <JFXButton fx:id="btnUpdateEmployee" buttonType="RAISED" layoutX="51.0" layoutY="547.0" onAction="#btnUpdateEmployeeOnAction" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: black;" text="Update Employee" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" layoutX="281.0" layoutY="547.0" onAction="#btnCancelOnAction" prefHeight="53.0" prefWidth="148.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <ComboBox fx:id="cmbSex" layoutX="221.0" layoutY="343.0" prefHeight="35.0" prefWidth="155.0" />
+      <VBox layoutX="54.0" layoutY="84.0" prefHeight="33.0" prefWidth="260.0">
+         <children>
+            <HBox prefHeight="42.0" prefWidth="290.0">
+               <children>
+                  <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID">
+                     <font>
+                        <Font name="Roboto Medium" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtEmployeeId" strokeType="OUTSIDE" strokeWidth="0.0" text="          E001" wrappingWidth="105.41015625">
+                     <font>
+                        <Font name="Roboto Medium" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

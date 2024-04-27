@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="payementsPane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.PaymentFormController">
+   <children>
+      <Text fill="#636e72" layoutX="69.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payments">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="457.0" layoutX="83.0" layoutY="147.0" stroke="WHITE" strokeType="INSIDE" width="364.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="78.0" layoutX="466.0" layoutY="147.0" stroke="WHITE" strokeType="INSIDE" width="481.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="366.0" layoutX="466.0" layoutY="238.0" stroke="WHITE" strokeType="INSIDE" width="481.0" />
+      <Text fill="#636e72" layoutX="111.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtPaymentId" layoutX="309.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P-001">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="114.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="139.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="96.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplied Amount">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="137.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cmbSupId" layoutX="261.0" layoutY="233.0" onAction="#cmbSupIdOnAction" prefHeight="43.0" prefWidth="150.0" />
+      <Text fx:id="txtName" layoutX="309.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtAmount" layoutX="309.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="399.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kg">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="305.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtPayment" layoutX="332.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnPay" buttonType="RAISED" layoutX="208.0" layoutY="520.0" onAction="#btnPayOnAction" prefHeight="43.0" prefWidth="107.0" style="-fx-background-color: black;" text="Pay" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconspayment48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Text fill="#636e72" layoutX="472.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price Of Cinnamon Bark" wrappingWidth="244.8720703125">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtPaymentId1" layoutX="717.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFiledCinnamonBarkPrice" layoutX="747.0" layoutY="164.0" prefHeight="43.0" prefWidth="107.0" text="0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="861.0" layoutY="164.0" onAction="#btnUpdateOnAction" prefHeight="43.0" prefWidth="78.0" style="-fx-background-color: black;" />
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="879.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/iconsupdate.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblPayments" layoutX="493.0" layoutY="265.0" prefHeight="312.0" prefWidth="428.0">
+        <columns>
+          <TableColumn fx:id="colPaymentsId" prefWidth="102.0" text="Payments ID" />
+          <TableColumn fx:id="colAmount" prefWidth="102.0" text="Amount" />
+            <TableColumn fx:id="colPayment" prefWidth="100.0" text="Payment" />
+            <TableColumn fx:id="colDate" prefWidth="123.0" text="Date" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnSupplier" buttonType="RAISED" layoutX="297.0" layoutY="636.0" onAction="#btnSupplieOnAction" prefHeight="51.0" prefWidth="150.0" style="-fx-background-color: #d63031;" text="Supplier" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8supplier50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="481.0" layoutY="636.0" prefHeight="51.0" prefWidth="150.0" style="-fx-background-color: #d63031;" text="Payments" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconspayment48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

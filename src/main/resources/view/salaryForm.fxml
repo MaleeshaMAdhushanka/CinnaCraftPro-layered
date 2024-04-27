@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="salaryPane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SalaryFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="464.0" layoutX="86.0" layoutY="113.0" stroke="WHITE" strokeType="INSIDE" width="344.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" layoutX="437.0" layoutY="114.0" stroke="WHITE" strokeType="INSIDE" width="521.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="367.0" layoutX="438.0" layoutY="202.0" stroke="WHITE" strokeType="INSIDE" width="521.0" />
+      <Text fill="#636e72" layoutX="69.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Text fill="#636e72" layoutX="125.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="119.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="153.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="121.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic Salary">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="135.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OT Salary">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="143.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Other">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="147.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtSalaryId" layoutX="302.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S-001">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cmbEmployeeId" layoutX="116.0" layoutY="240.0" onAction="#cmbEmployeeIdOnAction" prefHeight="34.0" prefWidth="167.0" />
+      <Text fx:id="txtNAme" layoutX="314.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtHourlyPayment" layoutX="314.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtOtPayment" layoutX="314.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="7.9384765625">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFieldOther" layoutX="283.0" layoutY="405.0" onAction="#txtFieldOtherOnAction" prefHeight="43.0" prefWidth="122.0" text="0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <Text fx:id="txtTotal" layoutX="327.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="271.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnPay" buttonType="RAISED" layoutX="172.0" layoutY="520.0" onAction="#btnPayOnAction" prefHeight="43.0" prefWidth="167.0" style="-fx-background-color: black;" text="Pay" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconspayment48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Text fill="#636e72" layoutX="444.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic Rate">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFieldHourlyRate" layoutX="576.0" layoutY="125.0" prefHeight="43.0" prefWidth="122.0" text="0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <Text fill="#636e72" layoutX="706.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OT">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFieldOt" layoutX="744.0" layoutY="135.0" prefHeight="43.0" prefWidth="122.0" text="0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="886.0" layoutY="135.0" onAction="#btnUpdateOnAction" prefHeight="43.0" prefWidth="62.0" style="-fx-background-color: black;">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsupdate.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="tblSalary" layoutX="463.0" layoutY="224.0" prefHeight="323.0" prefWidth="470.0">
+        <columns>
+          <TableColumn fx:id="colSalaryId" prefWidth="105.0" text="Salary Id" />
+          <TableColumn fx:id="colDaysCount" prefWidth="125.0" text="Days Count" />
+            <TableColumn fx:id="colPayment" prefWidth="127.0" text="Payment" />
+            <TableColumn fx:id="colDate" prefWidth="112.0" text="Date" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="213.0" layoutY="619.0" onAction="#btnEmployeeOnAction" prefHeight="54.0" prefWidth="178.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8employee50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="432.0" layoutY="619.0" onAction="#btnAttendanceOnAction" prefHeight="54.0" prefWidth="167.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsattendance50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="667.0" layoutY="619.0" prefHeight="54.0" prefWidth="140.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconssalary.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

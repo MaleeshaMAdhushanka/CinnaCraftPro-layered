@@ -39,11 +39,6 @@
          </font>
       </Text>
       <Circle fill="#1aaaeb" layoutX="795.0" layoutY="248.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="778.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../../Downloads/tea-craft/src/main/resources/assets/images/staff.png" />
-         </image>
-      </ImageView>
       <Text fill="#636e72" layoutX="788.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance">
          <font>
             <Font name="Roboto Medium" size="16.0" />
@@ -90,9 +85,9 @@
                      </font>
                   </Text>
                   <Circle fill="#ebb619" layoutX="75.0" layoutY="65.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
-                  <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="59.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="36.0" layoutX="62.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-cinnamon-64.png" />
+                        <Image url="@../assets/icons8cinnamon64.png" />
                      </image>
                   </ImageView>
                </children>
@@ -120,9 +115,9 @@
                   </Text>
                   <Group layoutX="72.0" layoutY="52.0" />
                   <Circle fill="#1aaaeb" layoutX="73.0" layoutY="67.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="51.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="36.0" layoutX="60.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../asserts.icon/fastcart.png" />
+                        <Image url="@../assets/iconscart.png" />
                      </image>
                   </ImageView>
                </children>
@@ -151,9 +146,9 @@
                   <Group layoutX="72.0" layoutY="52.0">
                      <children>
                         <Circle fill="#a29bfe" layoutY="14.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="-17.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="26.0" fitWidth="36.0" layoutX="-13.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../asserts.icon/attendance50.png" />
+                              <Image url="@../assets/iconsstaff.png" />
                            </image>
                         </ImageView>
                      </children>

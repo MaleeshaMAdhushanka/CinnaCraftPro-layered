@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="630.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.UpdateCustomerFormController">
+   <children>
+      <Text fill="#ebb619" layoutX="44.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Customer">
+         <font>
+            <Font name="Segoe UI Semibold" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="53.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="54.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="54.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="59.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="57.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtAddress" layoutX="197.0" layoutY="294.0" prefHeight="43.0" prefWidth="240.0" />
+      <TextField fx:id="txtLastName" layoutX="197.0" layoutY="215.0" prefHeight="43.0" prefWidth="240.0" />
+      <TextField fx:id="txtFirstName" layoutX="197.0" layoutY="143.0" prefHeight="43.0" prefWidth="240.0" />
+      <TextField fx:id="txtEmail" layoutX="197.0" layoutY="370.0" prefHeight="43.0" prefWidth="240.0" />
+      <TextField fx:id="txtMobileNo" layoutX="197.0" layoutY="440.0" prefHeight="43.0" prefWidth="240.0" />
+      <JFXButton fx:id="btnUpdateCustomer" buttonType="RAISED" layoutX="56.0" layoutY="533.0" onAction="#btnUpdateCustomerOnAction" prefHeight="53.0" prefWidth="147.0" style="-fx-background-color: black;" text="Update" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="262.0" layoutY="533.0" onAction="#btnCancelOnAction" prefHeight="53.0" prefWidth="147.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <HBox layoutX="44.0" layoutY="76.0" prefHeight="53.0" prefWidth="254.0">
+         <children>
+            <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID">
+               <font>
+                  <Font name="Roboto Medium" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtCustomerId" strokeType="OUTSIDE" strokeWidth="0.0" text="           C001" wrappingWidth="141.158203125">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

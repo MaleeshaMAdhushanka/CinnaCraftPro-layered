@@ -96,7 +96,7 @@ public class LoginFormController {
 
         String password = txtPassword.getText();
 
-
+       //validate karanna userNme eka
         boolean isUsernameExist = false;
         
         try {
@@ -107,9 +107,11 @@ public class LoginFormController {
         }
 
         if (!isUsernameExist){
-            new Alert(Alert.AlertType.ERROR," User Name eka waradi").show();
+
+            new Alert(Alert.AlertType.ERROR," User doesnt exit.").show();
             return false;
         }
+
 
 
 
@@ -124,9 +126,13 @@ public class LoginFormController {
 
 
         if (!isUserExist) {
-            new Alert(Alert.AlertType.ERROR," Dekama waradi ").show();
+            new Alert(Alert.AlertType.ERROR," Invalid Password ").show();
             return false;
         }
+
+
+
+        UserModel.userName = userName;
         
 
         return true;

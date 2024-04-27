@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="fertilizerPane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FertilizerFromController">
+   <children>
+      <Text fill="#636e72" layoutX="53.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilizer">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <JFXButton fx:id="btnaddFertilizer" buttonType="RAISED" layoutX="798.0" layoutY="31.0" onAction="#btnAddFertilizerOnAction" prefHeight="58.0" prefWidth="175.0" style="-fx-background-color: black;" text="Add Feritilizer" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconadd.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="tblFertilizer" layoutX="76.0" layoutY="135.0" prefHeight="450.0" prefWidth="911.0">
+        <columns>
+          <TableColumn fx:id="colFertilizerId" prefWidth="126.0" text="Fertilizer ID" />
+          <TableColumn fx:id="colBrand" prefWidth="112.0" text="Brand" />
+            <TableColumn fx:id="colDescription" prefWidth="148.0" text="Description" />
+            <TableColumn fx:id="colSize" prefWidth="115.0" text="Size" />
+            <TableColumn fx:id="colPrice" prefWidth="95.0" text="Price" />
+            <TableColumn fx:id="colQty" prefWidth="107.0" text="QTY" />
+            <TableColumn fx:id="colUpdate" prefWidth="112.0" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="95.0" text="Delete" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnSales" buttonType="RAISED" layoutX="328.0" layoutY="632.0" onAction="#btnSalesOnAction" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Sales" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconscart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnFertilizer" buttonType="RAISED" layoutX="532.0" layoutY="632.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Fertilizer" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/fertilizer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

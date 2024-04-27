@@ -4,8 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -71,54 +73,129 @@ public class DashBoardFormController {
 
 
     @FXML
-    void btnCinnamonOnAction(ActionEvent event) {
+    void btnCinnamonOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnCinnamon);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/cinnamonBarkForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
+
+
+
 
     }
 
     @FXML
-    void btnCustomerOnAction(ActionEvent event) {
+    void btnCustomerOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnCustomer);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/customerForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
+
+
+    }
+    @FXML
+    public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
+        setButtonActive(btnEmployee);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/employeeForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
 
     }
 
 
 
+
+
+
     @FXML
-    void btnEmployeeOnAvtion(ActionEvent event) {
+    void btnFertilizerOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnFertilizer);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fertilizerSalesForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
 
     }
 
     @FXML
-    void btnFertilizerOnAction(ActionEvent event) {
+    void btnLogoutOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage)btnLogout.getScene().getWindow();
+        stage.close();
+
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/mainForm.fxml"));
+        Scene scene = new Scene(rootNode);
+        Stage stage1 = new Stage();
+        stage1.setScene(scene);
+        stage1.setTitle("Login Form");
+        stage1.centerOnScreen();
+        stage1.show();
 
     }
 
     @FXML
-    void btnLogoutOnAction(ActionEvent event) {
+    void btnPackagingOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnFertilizer);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/packagingForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
+
 
     }
 
     @FXML
-    void btnPackagingOnAction(ActionEvent event) {
+    void btnProcessingOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnProcessing);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/processingForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
 
     }
 
     @FXML
-    void btnProcessingOnAction(ActionEvent event) {
+    void btnSalesOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnSales);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/salesForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
+
 
     }
 
     @FXML
-    void btnSalesOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSupplierOnAction(ActionEvent event) {
+    void btnSupplierOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnSupplier);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/supplierForm.fxml"));
+        Pane registerPane = (Pane) fxmlLoader.load();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(registerPane);
     }
 
 
     private void setButtonActive(JFXButton btnDashboard) {
         btnDashboard.getStyleClass().removeAll("active- button" , "button");
+        btnCinnamon.getStyleClass().removeAll("active - button", "button");
+        btnProcessing.getStyleClass().removeAll("active - button", "button");
+        btnPackaging.getStyleClass().removeAll("active - button", "button");
+        btnSales.getStyleClass().removeAll("active - button", "button");
+        btnSupplier.getStyleClass().removeAll("active - button", "button");
+        btnCustomer.getStyleClass().removeAll("active - button", "button");
+        btnLogout.getStyleClass().removeAll("active - button ", "bitton");
+        btnFertilizer.getStyleClass().removeAll("active - button", "button");
+
+        btnDashboard.getStyleClass().add("JFXButton- active-button");
+
     }
+
 
 }

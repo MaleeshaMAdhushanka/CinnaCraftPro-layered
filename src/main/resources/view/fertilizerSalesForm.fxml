@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="fertilizerSalesPane" prefHeight="720.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FertilizerSalesFormController">
+   <children>
+      <Text fill="#636e72" layoutX="35.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilizer Sales">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="496.0" layoutX="58.0" layoutY="118.0" stroke="WHITE" strokeType="INSIDE" width="406.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="496.0" layoutX="478.0" layoutY="117.0" stroke="WHITE" strokeType="INSIDE" width="472.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="72.0" layoutX="623.0" layoutY="24.0" stroke="WHITE" strokeType="INSIDE" width="327.0" />
+      <Text fill="#636e72" layoutX="100.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="100.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="100.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="107.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="97.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="92.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="89.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty On Hand">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="108.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="267.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtOrderId" layoutX="333.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O-001">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cmbCustomerId" layoutX="258.0" layoutY="183.0" onAction="#cmbCustomersOnAction" prefHeight="43.0" prefWidth="171.0" />
+      <ComboBox fx:id="cmbFertilizer" layoutX="258.0" layoutY="283.0" onAction="#cmbFertilizerOnAction" prefHeight="43.0" prefWidth="171.0" />
+      <TextField fx:id="txtFieldQty" layoutX="267.0" layoutY="489.0" onAction="#txtFieldQtyOnAction" prefHeight="43.0" prefWidth="112.0" />
+      <Text fx:id="txtName" layoutX="296.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDescription" layoutX="296.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtUnitPrice" layoutX="296.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtQtyOnHand" layoutX="296.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnAddCart" buttonType="RAISED" layoutX="173.0" layoutY="554.0" onAction="#btnAddCartOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: black;" text="Add To Cart" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsaddtocart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Text fill="#636e72" layoutX="668.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="507.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Cart">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDate" layoutX="724.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tblCart" layoutX="497.0" layoutY="178.0" prefHeight="281.0" prefWidth="433.0">
+        <columns>
+          <TableColumn fx:id="colFertilizerId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="colDescription" prefWidth="111.0" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="74.0" text="Qty" />
+            <TableColumn fx:id="colTotal" prefWidth="84.0" text="Total" />
+            <TableColumn fx:id="colRemove" prefWidth="88.0" text="Remove" />
+        </columns>
+      </TableView>
+      <Text fill="#636e72" layoutX="512.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Net Total">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="612.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rs">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtNetTotal" layoutX="639.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnPlaceOrder" buttonType="RAISED" layoutX="507.0" layoutY="547.0" onAction="#btnPlaceOrderOnAction" prefHeight="50.0" prefWidth="177.0" style="-fx-background-color: black;" text="Place Order" textFill="#ebb619">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconscart32.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="787.0" layoutY="547.0" onAction="#btnCancelOnAction" prefHeight="50.0" prefWidth="145.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnReceipt" buttonType="RAISED" layoutX="797.0" layoutY="464.0" onAction="#btnReceiptOnAction" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: black;" text="Receipt" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsreceipt.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnSales" buttonType="RAISED" layoutX="315.0" layoutY="646.0" prefHeight="50.0" prefWidth="145.0" style="-fx-background-color: #d63031;" text="Sales" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconscart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnFertilizer" buttonType="RAISED" layoutX="485.0" layoutY="646.0" onAction="#btnFertilizerOnAction" prefHeight="50.0" prefWidth="145.0" style="-fx-background-color: #d63031;" text="Fertilizer" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/fertilizer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

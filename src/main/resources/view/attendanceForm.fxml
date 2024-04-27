@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="attendancePane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AttendanceFormController">
+   <children>
+      <Text fill="#636e72" layoutX="61.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="416.0" layoutX="69.0" layoutY="159.0" stroke="WHITE" strokeType="INSIDE" width="314.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="413.0" layoutX="400.0" layoutY="161.0" stroke="WHITE" strokeType="INSIDE" width="563.0" />
+      <DatePicker fx:id="dpDate" layoutX="515.0" layoutY="37.0" onAction="#dpDateOnAction" prefHeight="43.0" prefWidth="198.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="827.0" layoutY="35.0" stroke="WHITE" strokeType="INSIDE" width="146.0" />
+      <Text fx:id="txtTime" layoutX="834.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="11.4951171875">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="446.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font name="Roboto Medium" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Text fill="#636e72" layoutX="740.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+         <font>
+            <Font name="Roboto Medium" size="29.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Text fill="#636e72" layoutX="93.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="95.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="106.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fist Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="103.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtAttendanceId" layoutX="263.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A-001">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cmbEmployeeId" layoutX="95.0" layoutY="283.0" onAction="#cmbEmployeeIdOnAction" prefHeight="43.0" prefWidth="176.0" />
+      <JFXButton buttonType="RAISED" layoutX="290.0" layoutY="283.0" onAction="#btnQrOnAction" prefHeight="43.0" prefWidth="77.0" style="-fx-background-color: black;">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8qrcode32.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <Text fx:id="txtLastName" layoutX="277.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="12.8955078125">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtFirstName" layoutX="271.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" -">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnAttend" buttonType="RAISED" layoutX="160.0" layoutY="488.0" onAction="#btnAttendOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: black;" text="Attend" textFill="#ebb619">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsdouble.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="tblAttendance" layoutX="421.0" layoutY="190.0" prefHeight="355.0" prefWidth="522.0">
+        <columns>
+          <TableColumn fx:id="colEmployeeId" prefWidth="75.0" text="A-ID" />
+          <TableColumn fx:id="colName" prefWidth="87.0" text="Name" />
+            <TableColumn fx:id="colInTime" prefWidth="94.0" text="In Time" />
+            <TableColumn fx:id="colOutTime" prefWidth="78.0" text="Out Time" />
+            <TableColumn fx:id="colMark" prefWidth="92.0" text="Mark" />
+            <TableColumn fx:id="colRemove" prefWidth="95.0" text="Remove" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="172.0" layoutY="627.0" onAction="#btnEmployeeOnAction" prefHeight="56.0" prefWidth="159.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8employee50.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="429.0" layoutY="627.0" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsattendance50.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="640.0" layoutY="627.0" onAction="#btnSalaryOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconssalary.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

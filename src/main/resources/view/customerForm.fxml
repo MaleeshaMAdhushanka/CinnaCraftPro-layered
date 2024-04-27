@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerFormController">
+   <children>
+      <Text fill="#636e72" layoutX="56.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
+         <font>
+            <Font name="Roboto Medium" size="37.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.2786259651184082" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <TableView fx:id="tblCustomer" layoutX="76.0" layoutY="135.0" prefHeight="450.0" prefWidth="911.0">
+        <columns>
+          <TableColumn fx:id="colCustomerId" prefWidth="117.0" text="Customer ID" />
+          <TableColumn fx:id="colFirstName" prefWidth="112.0" text="First Name" />
+            <TableColumn fx:id="colLastName" prefWidth="104.0" text="Last Name" />
+            <TableColumn fx:id="colAddress" prefWidth="116.0" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="122.0" text="Email" />
+            <TableColumn fx:id="colMobileNo" prefWidth="112.0" text="Mobile No" />
+            <TableColumn fx:id="colUpdate" prefWidth="118.0" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="118.0" text="Delete" />
+        </columns>
+      </TableView>
+      <Text fill="#636e72" layoutX="550.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtSearch" layoutX="636.0" layoutY="51.0" onAction="#txtSearchOnAction" prefHeight="43.0" prefWidth="171.0" />
+      <JFXButton fx:id="btnAddCustomer" buttonType="RAISED" layoutX="825.0" layoutY="51.0" onAction="#btnAddCustomerOnAction" prefHeight="52.0" prefWidth="184.0" style="-fx-background-color: black;" text="Add Customer" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsadd50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

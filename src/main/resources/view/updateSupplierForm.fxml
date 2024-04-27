@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="630.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.UpdateSupplierFormController">
+   <children>
+      <Text fill="#ebb619" layoutX="67.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Supplier">
+         <font>
+            <Font name="Segoe UI Semibold" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="80.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <VBox layoutX="79.0" layoutY="106.0" prefHeight="33.0" prefWidth="260.0" spacing="30.0">
+         <children>
+            <HBox prefHeight="24.0" prefWidth="208.0" spacing="60.0">
+               <children>
+                  <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID">
+                     <font>
+                        <Font name="Roboto Medium" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtSupplierId" strokeType="OUTSIDE" strokeWidth="0.0" text="S001">
+                     <font>
+                        <Font name="Roboto Medium" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text fill="#636e72" layoutX="80.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="80.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="79.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="80.0" layoutY="507.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="80.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFirstName" layoutX="220.0" layoutY="155.0" prefHeight="44.0" prefWidth="189.0" />
+      <TextField fx:id="txtLastName" layoutX="220.0" layoutY="226.0" prefHeight="44.0" prefWidth="189.0" />
+      <TextField fx:id="txtAddress" layoutX="220.0" layoutY="296.0" prefHeight="35.0" prefWidth="189.0" />
+      <TextField fx:id="txtBank" layoutX="220.0" layoutY="352.0" prefHeight="44.0" prefWidth="189.0" />
+      <TextField fx:id="txtBankNo" layoutX="220.0" layoutY="415.0" prefHeight="44.0" prefWidth="189.0" />
+      <TextField fx:id="txtMobileNo" layoutX="220.0" layoutY="482.0" prefHeight="44.0" prefWidth="189.0" />
+      <JFXButton fx:id="btnUpdateSupplier" buttonType="RAISED" layoutX="47.0" layoutY="547.0" onAction="#btnUpdateSupplierOnAction" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: black;" text="Update Supplier" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="267.0" layoutY="547.0" onAction="#btnCancelOnAction" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

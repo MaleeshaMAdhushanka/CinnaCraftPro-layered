@@ -1,11 +1,13 @@
 package lk.ijse.Controller;
 
+import com.jfoenix.controls.JFXButton;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -20,20 +22,20 @@ import java.sql.SQLException;
 public class CreateAccountOtpFormController {
 
     @FXML
-    private MFXButton btnCancel;
+    private JFXButton btnCancel;
 
 
     @FXML
-    private MFXButton btnReSend;
+    private JFXButton btnReSend;
 
     @FXML
-    private MFXButton btnVerify;
+    private JFXButton btnVerify;
 
     @FXML
     private AnchorPane otpPane;
 
     @FXML
-    private MFXTextField txtFieldOtp;
+    private TextField txtFieldOtp;
 
     private UserModel userModel = new UserModel();
 

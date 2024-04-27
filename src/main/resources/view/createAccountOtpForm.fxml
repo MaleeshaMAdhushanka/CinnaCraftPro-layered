@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="otpPane" prefHeight="630.0" prefWidth="475.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CreateAccountOtpFormController">
+<AnchorPane fx:id="otpPane" prefHeight="630.0" prefWidth="475.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CreateAccountOtpFormController">
    <children>
       <Text layoutX="80.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter OTP">
          <font>
@@ -18,19 +18,19 @@
             <Font name="Roboto" size="15.0" />
          </font>
       </Text>
-      <MFXTextField fx:id="txtFieldOtp" alignment="CENTER" floatMode="DISABLED" layoutX="165.0" layoutY="273.0" onAction="#txtFieldOtpOnAction" prefHeight="53.0" prefWidth="150.0" stylesheets="@../assets/css/MFXLogin.css" textLimit="5" />
       <Text layoutX="217.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OTP">
          <font>
             <Font name="Segoe UI" size="25.0" />
          </font>
       </Text>
-      <MFXButton fx:id="btnReSend" buttonType="RAISED" depthLevel="LEVEL0" layoutX="78.0" layoutY="469.0" onAction="#btnReSendOnAction" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #1dd1a1;" styleClass="mfx-button-login" stylesheets="@../assets/css/MFXLogin.css" text="Resend" />
-      <MFXButton fx:id="btnCancel" buttonType="RAISED" depthLevel="LEVEL1" layoutX="248.0" layoutY="469.0" onAction="#btnCancelOnAction" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2d3436;" styleClass="mfx-button-CreateAccount" stylesheets="@../assets/css/MFXLogin.css" text="Cancel" />
-      <MFXButton fx:id="btnVerify" buttonType="RAISED" depthLevel="LEVEL0" layoutX="180.0" layoutY="346.0" onAction="#btnVerifyOnAction" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: #1dd1a1;" styleClass="mfx-button-login" stylesheets="@../assets/css/MFXLogin.css" text="Verify" />
       <Text fx:id="txtMassage" fill="#d93025" layoutX="186.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OTP is Incorrect" visible="false">
          <font>
             <Font name="Roboto" size="15.0" />
          </font>
       </Text>
+      <JFXButton fx:id="btnVerify" buttonType="RAISED" layoutX="184.0" layoutY="345.0" onAction="#btnVerifyOnAction" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: black;" text="Verify" textFill="#ebb619" />
+      <JFXButton buttonType="RAISED" layoutX="67.0" layoutY="484.0" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: black;" text="Resend" textFill="#ebb619" />
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="267.0" layoutY="484.0" onAction="#btnCancelOnAction" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619" />
+      <TextField fx:id="txtFieldOtp" layoutX="165.0" layoutY="276.0" onAction="#txtFieldOtpOnAction" prefHeight="53.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -6,27 +6,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="createAccountPane" prefHeight="630.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CreateFromController">
+<AnchorPane fx:id="createAccountPane" prefHeight="630.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CreateAccountFormController">
    <children>
-      <TextField fx:id="txtUsername" layoutX="72.0" layoutY="248.0" prefHeight="47.0" prefWidth="338.0" promptText="UserName" />
-      <Text fx:id="txtGreetings" fill="#000000ab" layoutX="137.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account" wrappingWidth="208.7294921875">
+      <Text layoutX="113.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Segoe UI" size="30.0" />
          </font>
       </Text>
-      <Text fill="#00000094" layoutX="102.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Your details to create account" wrappingWidth="373.7294921875">
+      <Text fill="#636e72" layoutX="78.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your details to create a account" wrappingWidth="320.0">
          <font>
-            <Font size="15.0" />
+            <Font name="Roboto" size="15.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnCancel" layoutX="309.0" layoutY="529.0" onAction="#btncancelOnAction" prefHeight="41.0" prefWidth="95.0" style="-fx-background-color: black; -fx-background-color: ;" text="cancel" textFill="#ebb619">
+      <TextField fx:id="txtEmail" layoutX="90.0" layoutY="154.0" onAction="#txtEmailOnAction" prefHeight="49.0" prefWidth="295.0" promptText="Email" />
+      <TextField fx:id="txtUserName" layoutX="90.0" layoutY="232.0" onAction="#txtUserNameOnAction" prefHeight="49.0" prefWidth="295.0" promptText="UserName" />
+      <TextField fx:id="txtPassword" layoutX="91.0" layoutY="315.0" onAction="#txtPasswordOnAction" prefHeight="49.0" prefWidth="295.0" promptText="Password" />
+      <TextField fx:id="txtReEnterPassword" layoutX="90.0" layoutY="398.0" onAction="#txtReEnterPasswordOnAction" prefHeight="49.0" prefWidth="295.0" promptText="Re-EnterPassword" />
+      <JFXButton fx:id="btnCreateAccount" buttonType="RAISED" layoutX="78.0" layoutY="489.0" onAction="#btnCreateAccountOnAction" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: black;" text="Create Account" textFill="#ebb619">
          <font>
-            <Font size="18.0" />
+            <Font size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnCreateAccount" layoutX="85.0" layoutY="529.0" onAction="#btnCreateAccountOnAction" prefHeight="41.0" prefWidth="136.0" style="-fx-background-color: black;" text="Create Account" textFill="#ebb619" />
-      <TextField fx:id="txtEmail" layoutX="72.0" layoutY="164.0" prefHeight="47.0" prefWidth="338.0" promptText="Email" />
-      <TextField fx:id="txtPassword" layoutX="72.0" layoutY="328.0" prefHeight="47.0" prefWidth="338.0" promptText="password" />
-      <TextField fx:id="txtRep" layoutX="72.0" layoutY="422.0" prefHeight="47.0" prefWidth="338.0" promptText="Re Enter password" />
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="287.0" layoutY="489.0" onAction="#btnCancelOnAction" prefHeight="43.0" prefWidth="116.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
