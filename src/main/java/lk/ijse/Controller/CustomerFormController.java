@@ -1,17 +1,22 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
+import lk.ijse.Dto.CustomerDto;
+import lk.ijse.Model.CustomerModel;
+import lk.ijse.Tm.CustomerTm;
 
-import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class CustomerFormController {
 
@@ -19,13 +24,19 @@ public class CustomerFormController {
     private JFXButton btnAddCustomer;
 
     @FXML
+    private JFXButton btnClearCustomer;
+
+    @FXML
+    private JFXButton btnDeleteCustomer;
+
+    @FXML
+    private JFXButton btnUpdateCustomer;
+
+    @FXML
     private TableColumn<?, ?> colAddress;
 
     @FXML
     private TableColumn<?, ?> colCustomerId;
-
-    @FXML
-    private TableColumn<?, ?> colDelete;
 
     @FXML
     private TableColumn<?, ?> colEmail;
@@ -40,26 +51,187 @@ public class CustomerFormController {
     private TableColumn<?, ?> colMobileNo;
 
     @FXML
-    private TableColumn<?, ?> colUpdate;
+    private TableView<CustomerTm> tblCustomer;
 
     @FXML
-    private TableView<?> tblCustomer;
+    private TextField txtAddress;
+
+    @FXML
+    private Text txtCustomerId;
+
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtFirstName;
+
+    @FXML
+    private TextField txtLastName;
+
+    @FXML
+    private TextField txtMobileNo;
 
     @FXML
     private TextField txtSearch;
 
+
+    CustomerModel customerModel = new CustomerModel();
+
+
+    public void initialize() throws SQLException {
+        setCellValueFactory();
+        loadCustomerDetails();
+        generateNextCustomerId();
+        setListener();
+    }
+
+    private void setListener() {
+        tblCustomer.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    CustomerDto dto = new CustomerDto(newValue.getCusId(), newValue.getFirstName(), newValue.getLastName(),newValue.getAddress(),newValue.getEmail(),newValue.getMobileNo());
+                    setFields(dto);
+                });
+    }
+
+    private void setFields(CustomerDto dto) {
+
+        txtCustomerId.setText(dto.getCusId());
+        txtFirstName.setText(dto.getFirstName());
+        txtLastName.setText(dto.getLastName());
+        txtAddress.setText(dto.getAddress());
+        txtMobileNo.setText(dto.getMobileNo());
+        txtEmail.setText(dto.getEmail());
+    }
+
+    private void setCellValueFactory() {
+            colCustomerId.setCellValueFactory(new PropertyValueFactory<>("cusId"));
+            colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+            colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+            colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+            colMobileNo.setCellValueFactory(new PropertyValueFactory<>("mobileNo"));
+    }
+
+    private void loadCustomerDetails() throws SQLException {
+
+        ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
+
+        List<CustomerDto> dtoList = customerModel.getAllCustomers();
+
+        for (CustomerDto dto:dtoList){
+
+                obList.add( new CustomerTm(
+                        dto.getCusId(),
+                        dto.getFirstName(),
+                        dto.getLastName(),
+                        dto.getAddress(),
+                        dto.getEmail(),
+                        dto.getMobileNo()
+                ));
+
+            }
+
+        tblCustomer.setItems(obList);
+
+
+
+    }
+
+
     @FXML
-    void btnAddCustomerOnAction(ActionEvent event) throws IOException {
+    void btnAddCustomerOnAction(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/addCustomerForm.fxml"));
-        Parent rootNode = loader.load();
+        String cusId= txtCustomerId.getText();
+        String firstName= txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String address = txtAddress.getText();
+        String email = txtEmail.getText();
+        String mobileNo = txtMobileNo.getText();
 
-        Scene scene = new Scene(rootNode);
-        Stage stage1 = new Stage();
-        stage1.setScene(scene);
-        stage1.setTitle("Add Cinnamon Bark Stock");
-        stage1.centerOnScreen();
-        stage1.show();
+        CustomerDto dto = new CustomerDto(cusId,firstName,lastName,address,email,mobileNo);
+
+        try {
+            boolean isSaved = customerModel.saveCustomer(dto);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer saved!").show();
+                clearFields();
+                //tables eka refresh karanna
+                loadCustomerDetails();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    private void clearFields() {
+        generateNextCustomerId();
+        txtAddress.clear();
+        txtEmail.clear();
+        txtFirstName.clear();
+        txtLastName.clear();
+        txtMobileNo.clear();
+    }
+
+    private void generateNextCustomerId() {
+        try{
+            String customerId=customerModel.generateNextCustomerId();
+            txtCustomerId.setText(customerId);
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    void btnClearCustomerOnAction(ActionEvent event) {
+
+        generateNextCustomerId();
+        clearFields();
+
+    }
+
+    @FXML
+    void btnDeleteCustomerOnAction(ActionEvent event) {
+
+        String customerId = txtCustomerId.getText();
+
+        try {
+            boolean isDeleted = customerModel.deleteCustomer(customerId);
+            if(isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer deleted!").show();
+                loadCustomerDetails();
+                clearFields();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    @FXML
+    void btnUpdateCustomerOnAction(ActionEvent event) {
+
+
+        String cusId= txtCustomerId.getText();
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String address = txtAddress.getText();
+        String email =  txtEmail.getText();
+        String mobileNo = txtMobileNo.getText();
+
+        try{
+            boolean isUpdated = customerModel.updateCustomer(new CustomerDto(cusId,firstName,lastName,address,email,mobileNo));
+
+            if (isUpdated){
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer updated").show();
+                loadCustomerDetails();
+            }
+
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+
     }
 
     @FXML

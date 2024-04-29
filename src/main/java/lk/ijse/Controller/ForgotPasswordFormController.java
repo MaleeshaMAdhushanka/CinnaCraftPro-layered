@@ -45,6 +45,16 @@ public class ForgotPasswordFormController {
       forgotPasswordPane.getChildren().clear();
       forgotPasswordPane.getChildren().add(registerPane);
     }
+
+    public void txtEmailOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
+
+    public void txtUserNameOnAction(ActionEvent actionEvent) {
+        
+    }
     /*
 
     @FXML

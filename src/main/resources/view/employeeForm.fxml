@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -8,13 +9,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="employeePane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.EmployeeFormController">
    <children>
-      <Text fill="#636e72" layoutX="55.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
+      <Text fill="#636e72" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
          <font>
             <Font name="Roboto Medium" size="37.0" />
          </font>
@@ -26,25 +28,22 @@
             </DropShadow>
          </effect>
       </Text>
-      <Text fill="#636e72" layoutX="536.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+      <Text fill="#636e72" layoutX="421.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
          <font>
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <TableView fx:id="tblEmployee" layoutX="14.0" layoutY="135.0" prefHeight="450.0" prefWidth="977.0">
+      <TableView fx:id="tblEmployee" layoutX="14.0" layoutY="293.0" prefHeight="302.0" prefWidth="1010.0">
         <columns>
-          <TableColumn fx:id="colEmployeeId" prefWidth="107.0" text="E -ID" />
-          <TableColumn fx:id="colFirstName" prefWidth="115.0" text="First Name" />
-            <TableColumn fx:id="collastName" prefWidth="104.0" text="last Name" />
-            <TableColumn fx:id="colAddress" prefWidth="114.0" text="Address" />
-            <TableColumn fx:id="colSex" prefWidth="97.0" text="Sex" />
-            <TableColumn fx:id="colDateOfBirth" minWidth="0.0" prefWidth="121.0" text="Dob" />
-            <TableColumn fx:id="colMobileNo" prefWidth="132.0" text="Mobile No" />
-            <TableColumn fx:id="colUpdate" prefWidth="78.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="108.0" text="Delete" />
+          <TableColumn fx:id="colEmployeeId" prefWidth="161.0" text="Employee-ID" />
+          <TableColumn fx:id="colFirstName" prefWidth="141.0" text="First Name" />
+            <TableColumn fx:id="collastName" prefWidth="176.0" text="last Name" />
+            <TableColumn fx:id="colAddress" prefWidth="137.0" text="Address" />
+            <TableColumn fx:id="colSex" prefWidth="183.0" text="Sex" />
+            <TableColumn fx:id="colMobileNo" prefWidth="211.0" text="Mobile No" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnAddEmployee" buttonType="RAISED" layoutX="821.0" layoutY="39.0" onAction="#btnAddEmployeeOnAction" prefHeight="56.0" prefWidth="162.0" style="-fx-background-color: black;" text="Add Employee" textFill="#ebb619">
+      <JFXButton fx:id="btnAddEmployee" buttonType="RAISED" layoutX="815.0" layoutY="12.0" onAction="#btnAddEmployeeOnAction" prefHeight="56.0" prefWidth="168.0" style="-fx-background-color: black;" text="Add Employee" textFill="#ebb619">
          <font>
             <Font size="15.0" />
          </font>
@@ -55,7 +54,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="205.0" layoutY="632.0" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
+      <JFXButton buttonType="RAISED" layoutX="250.0" layoutY="625.0" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -66,7 +65,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="422.0" layoutY="632.0" onAction="#btnAttendanceOnAction" prefHeight="56.0" prefWidth="174.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
+      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="431.0" layoutY="625.0" onAction="#btnAttendanceOnAction" prefHeight="56.0" prefWidth="168.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -77,7 +76,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="671.0" layoutY="632.0" onAction="#btnSalaryOnAction" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
+      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="744.0" layoutY="632.0" onAction="#btnSalaryOnAction" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -88,6 +87,86 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <TextField fx:id="txtSearch" layoutX="618.0" layoutY="43.0" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="174.0" />
+      <TextField fx:id="txtSearch" layoutX="522.0" layoutY="24.0" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="174.0" />
+      <HBox layoutX="31.0" layoutY="81.0" prefHeight="47.0" prefWidth="244.0">
+         <children>
+            <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID">
+               <font>
+                  <Font name="Roboto Medium" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtEmployeeId" strokeType="OUTSIDE" strokeWidth="0.0" text="          E001" wrappingWidth="115.41015625">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Text fill="#636e72" layoutX="31.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFirstName" layoutX="165.0" layoutY="129.0" prefHeight="35.0" prefWidth="198.0" />
+      <Text fill="#636e72" layoutX="32.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtLastName" layoutX="168.0" layoutY="179.0" prefHeight="35.0" prefWidth="192.0" />
+      <Text fill="#636e72" layoutX="40.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtAddress" layoutX="165.0" layoutY="238.0" prefHeight="35.0" prefWidth="192.0" />
+      <Text fill="#636e72" layoutX="411.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEX">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="393.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnUpdateEmployee" buttonType="RAISED" layoutX="831.0" layoutY="141.0" onAction="#btnUpdatemployeeOnAction" prefHeight="47.0" prefWidth="152.0" style="-fx-background-color: black;" text="Update" textFill="#ebb619">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8update48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TextField fx:id="txtMobileNo" layoutX="509.0" layoutY="191.0" prefHeight="35.0" prefWidth="200.0" />
+      <JFXButton fx:id="btnDeleteEmployee" buttonType="RAISED" layoutX="831.0" layoutY="81.0" onAction="#btnDeletemployeeOnAction" prefHeight="48.0" prefWidth="152.0" style="-fx-background-color: black;" text="Delete " textFill="#ebb619">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8delete48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnClearEmployee" buttonType="RAISED" layoutX="831.0" layoutY="208.0" onAction="#btnClearEmployeeOnAction" prefHeight="47.0" prefWidth="152.0" style="-fx-background-color: black;" text="Clear" textFill="#ebb619">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8clear60.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <MFXComboBox fx:id="cmbSex" layoutX="496.0" layoutY="113.0" prefHeight="42.0" prefWidth="206.0" />
    </children>
 </AnchorPane>

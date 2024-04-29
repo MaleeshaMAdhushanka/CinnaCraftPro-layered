@@ -1,19 +1,35 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import lk.ijse.Dto.FertilizerDto;
+import lk.ijse.Model.FertilizerModel;
+import lk.ijse.Tm.FertilizerTm;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 
 public class FertilizerFromController {
+
+    @FXML
+    private JFXButton btnClearFertilizer;
+
+    @FXML
+    private JFXButton btnDeleteFertilizer;
 
     @FXML
     private JFXButton btnFertilizer;
@@ -22,13 +38,13 @@ public class FertilizerFromController {
     private JFXButton btnSales;
 
     @FXML
+    private JFXButton btnUpdateFertilizer;
+
+    @FXML
     private JFXButton btnaddFertilizer;
 
     @FXML
     private TableColumn<?, ?> colBrand;
-
-    @FXML
-    private TableColumn<?, ?> colDelete;
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -46,30 +62,174 @@ public class FertilizerFromController {
     private TableColumn<?, ?> colSize;
 
     @FXML
-    private TableColumn<?, ?> colUpdate;
-
-    @FXML
     private AnchorPane fertilizerPane;
 
     @FXML
-    private TableView<?> tblFertilizer;
+    private TableView<FertilizerTm> tblFertilizer;
 
     @FXML
-    void btnAddFertilizerOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/addFertilizerForm.fxml"));
-        Parent rootNode = loader.load();
+    private TextField txtBrand;
 
-        Scene scene = new Scene(rootNode);
-        Stage stage1 = new Stage();
-        stage1.setScene(scene);
-        stage1.setTitle("Add Cinnamon Bark Stock");
-        stage1.centerOnScreen();
-        stage1.show();
+    @FXML
+    private TextField txtDescription;
+
+    @FXML
+    private Text txtFertilizerId;
+
+    @FXML
+    private TextField txtPrice;
+
+    @FXML
+    private TextField txtQty;
+
+    @FXML
+    private TextField txtSize;
+
+    FertilizerModel fertilizerModel = new FertilizerModel();
+
+    public void initialize() throws SQLException {
+        setCellValueFactory();
+        loadFertilizerDetails();
+        generteNextFertilizerId();
+        setListener();
+    }
+
+    private void setListener() {
+        tblFertilizer.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue)-> {
+                    FertilizerDto dto = new FertilizerDto(newValue.getFertilizerID(), newValue.getBrand(), newValue.getDescription(), newValue.getSize(), newValue.getPrice(), newValue.getQty());
+                    setFields(dto);
+                } );
+    }
+
+    private void setFields(FertilizerDto dto) {
+        txtFertilizerId.setText(dto.getFertilizerID());
+        txtBrand.setText(dto.getBrand());
+        txtDescription.setText(dto.getDescription());
+        txtSize.setText(dto.getSize());
+        txtPrice.setText(String.valueOf(dto.getPrice()));
+        txtQty.setText(String.valueOf(dto.getQty()));
+    }
+
+    private void generteNextFertilizerId() {
+
+        try {
+            String fertilizerId =  fertilizerModel.generateNextFertilizerId();
+            txtFertilizerId.setText(fertilizerId);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    private void loadFertilizerDetails() throws SQLException {
+       ObservableList<FertilizerTm > obList =  FXCollections.observableArrayList();
+        List<FertilizerDto> dtoList = fertilizerModel.getAllFertilizer();
+
+        for (FertilizerDto dto : dtoList){
+            obList.add(new FertilizerTm(
+                    dto.getFertilizerID(),
+                    dto.getBrand(),
+                    dto.getDescription(),
+                    dto.getSize(),
+                    dto.getPrice(),
+                    dto.getQty()
+
+            ));
+        }
+        tblFertilizer.setItems(obList);
+    }
+
+    private void setCellValueFactory() {
+        colFertilizerId.setCellValueFactory(new PropertyValueFactory<>("fertilizerID"));
+        colBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colSize.setCellValueFactory(new PropertyValueFactory<>("size"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+    }
+
+    @FXML
+    void btnAddFertilizerOnAction(ActionEvent event) {
+        String fertilizerId= txtFertilizerId.getText();
+        String brand= txtBrand.getText();
+        String description = txtDescription.getText();
+        String size = txtSize.getText();
+        int qty = Integer.parseInt(txtQty.getText());
+        double price = Double.parseDouble(txtPrice.getText());
+
+        FertilizerDto dto = new FertilizerDto(fertilizerId,brand,description,size,price, qty);
+
+        try {
+            boolean isSaved = fertilizerModel.saveFertilizer(dto);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "fertilizer  saved!").show();
+                clearFields();
+                //tables eka refresh karanna
+                loadFertilizerDetails();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    private void clearFields() {
+        generteNextFertilizerId();
+        txtBrand.clear();
+        txtDescription.clear();
+        txtSize.clear();
+        txtQty.clear();
+        txtPrice.clear();
+
+    }
+
+
+    @FXML
+    void btnClearFertilizerOnAction(ActionEvent event) {
+        generteNextFertilizerId();
+        clearFields();
+
 
     }
 
     @FXML
-    void btnSalesOnAction(ActionEvent event) {
+    void btnDeleteFertilizerOnAction(ActionEvent event) {
+        String fertilierId = txtFertilizerId.getText();
+
+        try {
+            boolean isDeleted = fertilizerModel.deleteFertilizer(fertilierId);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Fertlizer deleted!").show();
+                loadFertilizerDetails();
+                clearFields();
+
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    @FXML
+    void btnSalesOnAction(ActionEvent event) throws IOException {
+        /*
+        FXMLLoader fxmlLoader =  new FXMLLoader(getClass().getResource("/view/fertilizerSalesForm.fxml"));
+        Pane registerPane = fxmlLoader.load();
+        fertilizerPane.getChildren().clear();
+        fertilizerPane.getChildren().add(registerPane);
+
+         */
+
+    }
+
+    @FXML
+    void btnUpdateFertilizerOnAction(ActionEvent event) {
+       String fertilizerID = txtFertilizerId.getText();
+      String band = txtDescription.getText();
+       String size = txtSize.getText();
+      double price = Double.parseDouble(txtPrice.getText());
+       int qty = Integer.parseInt(txtQty.getText());
 
     }
 

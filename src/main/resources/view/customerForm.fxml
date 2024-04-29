@@ -8,10 +8,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerFormController">
    <children>
@@ -27,16 +27,14 @@
             </DropShadow>
          </effect>
       </Text>
-      <TableView fx:id="tblCustomer" layoutX="76.0" layoutY="135.0" prefHeight="450.0" prefWidth="911.0">
+      <TableView fx:id="tblCustomer" layoutX="68.0" layoutY="400.0" prefHeight="286.0" prefWidth="933.0">
         <columns>
           <TableColumn fx:id="colCustomerId" prefWidth="117.0" text="Customer ID" />
-          <TableColumn fx:id="colFirstName" prefWidth="112.0" text="First Name" />
-            <TableColumn fx:id="colLastName" prefWidth="104.0" text="Last Name" />
-            <TableColumn fx:id="colAddress" prefWidth="116.0" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="122.0" text="Email" />
-            <TableColumn fx:id="colMobileNo" prefWidth="112.0" text="Mobile No" />
-            <TableColumn fx:id="colUpdate" prefWidth="118.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="118.0" text="Delete" />
+          <TableColumn fx:id="colFirstName" prefWidth="179.0" text="First Name" />
+            <TableColumn fx:id="colLastName" prefWidth="125.0" text="Last Name" />
+            <TableColumn fx:id="colAddress" prefWidth="112.0" text="Address" />
+            <TableColumn fx:id="colEmail" prefWidth="172.0" text="Email" />
+            <TableColumn fx:id="colMobileNo" prefWidth="227.0" text="Mobile No" />
         </columns>
       </TableView>
       <Text fill="#636e72" layoutX="550.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
@@ -46,6 +44,86 @@
       </Text>
       <TextField fx:id="txtSearch" layoutX="636.0" layoutY="51.0" onAction="#txtSearchOnAction" prefHeight="43.0" prefWidth="171.0" />
       <JFXButton fx:id="btnAddCustomer" buttonType="RAISED" layoutX="825.0" layoutY="51.0" onAction="#btnAddCustomerOnAction" prefHeight="52.0" prefWidth="184.0" style="-fx-background-color: black;" text="Add Customer" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsadd50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <HBox layoutX="45.0" layoutY="103.0" prefHeight="44.0" prefWidth="271.0">
+         <children>
+            <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID">
+               <font>
+                  <Font name="Roboto Medium" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtCustomerId" strokeType="OUTSIDE" strokeWidth="0.0" text="            C001" wrappingWidth="142.158203125">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Text fill="#636e72" layoutX="66.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFirstName" layoutX="218.0" layoutY="159.0" prefHeight="44.0" prefWidth="214.0" />
+      <Text fill="#636e72" layoutX="67.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtLastName" layoutX="218.0" layoutY="227.0" prefHeight="44.0" prefWidth="214.0" />
+      <Text fill="#636e72" layoutX="67.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtAddress" layoutX="218.0" layoutY="295.0" prefHeight="44.0" prefWidth="214.0" />
+      <Text fill="#636e72" layoutX="564.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtEmail" layoutX="646.0" layoutY="147.0" prefHeight="44.0" prefWidth="214.0" />
+      <Text fill="#636e72" layoutX="527.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtMobileNo" layoutX="653.0" layoutY="210.0" prefHeight="44.0" prefWidth="214.0" />
+      <JFXButton fx:id="btnClearCustomer" buttonType="RAISED" layoutX="517.0" layoutY="313.0" onAction="#btnClearCustomerOnAction" prefHeight="52.0" prefWidth="142.0" style="-fx-background-color: black;" text="clear" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsadd50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnDeleteCustomer" buttonType="RAISED" layoutX="697.0" layoutY="313.0" onAction="#btnDeleteCustomerOnAction" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: black;" text="Delete" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/iconsadd50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdateCustomer" buttonType="RAISED" layoutX="874.0" layoutY="313.0" onAction="#btnUpdateCustomerOnAction" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: black;" text="Update" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>

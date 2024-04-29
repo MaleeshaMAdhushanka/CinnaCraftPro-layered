@@ -3,10 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -25,7 +27,7 @@
             </DropShadow>
          </effect>
       </Text>
-      <JFXButton fx:id="btnaddFertilizer" buttonType="RAISED" layoutX="798.0" layoutY="31.0" onAction="#btnAddFertilizerOnAction" prefHeight="58.0" prefWidth="175.0" style="-fx-background-color: black;" text="Add Feritilizer" textFill="#ebb619">
+      <JFXButton fx:id="btnaddFertilizer" buttonType="RAISED" layoutX="827.0" layoutY="14.0" onAction="#btnAddFertilizerOnAction" prefHeight="58.0" prefWidth="175.0" style="-fx-background-color: black;" text="Add Feritilizer" textFill="#ebb619">
          <font>
             <Font size="17.0" />
          </font>
@@ -37,19 +39,17 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblFertilizer" layoutX="76.0" layoutY="135.0" prefHeight="450.0" prefWidth="911.0">
+      <TableView fx:id="tblFertilizer" layoutX="28.0" layoutY="281.0" prefHeight="334.0" prefWidth="984.0">
         <columns>
-          <TableColumn fx:id="colFertilizerId" prefWidth="126.0" text="Fertilizer ID" />
-          <TableColumn fx:id="colBrand" prefWidth="112.0" text="Brand" />
-            <TableColumn fx:id="colDescription" prefWidth="148.0" text="Description" />
-            <TableColumn fx:id="colSize" prefWidth="115.0" text="Size" />
-            <TableColumn fx:id="colPrice" prefWidth="95.0" text="Price" />
-            <TableColumn fx:id="colQty" prefWidth="107.0" text="QTY" />
-            <TableColumn fx:id="colUpdate" prefWidth="112.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="95.0" text="Delete" />
+          <TableColumn fx:id="colFertilizerId" prefWidth="205.0" text="Fertilizer ID" />
+          <TableColumn fx:id="colBrand" prefWidth="129.0" text="Brand" />
+            <TableColumn fx:id="colDescription" prefWidth="193.0" text="Description" />
+            <TableColumn fx:id="colSize" prefWidth="169.0" text="Size" />
+            <TableColumn fx:id="colPrice" prefWidth="166.0" text="Price" />
+            <TableColumn fx:id="colQty" prefWidth="121.0" text="QTY" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnSales" buttonType="RAISED" layoutX="328.0" layoutY="632.0" onAction="#btnSalesOnAction" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Sales" textFill="#ebb619">
+      <JFXButton fx:id="btnSales" buttonType="RAISED" layoutX="472.0" layoutY="639.0" onAction="#btnSalesOnAction" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Sales" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>
@@ -61,7 +61,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnFertilizer" buttonType="RAISED" layoutX="532.0" layoutY="632.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Fertilizer" textFill="#ebb619">
+      <JFXButton fx:id="btnFertilizer" buttonType="RAISED" layoutX="646.0" layoutY="639.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Fertilizer" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>
@@ -69,6 +69,86 @@
             <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/fertilizer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <HBox layoutX="41.0" layoutY="112.0" prefHeight="16.0" prefWidth="259.0" spacing="60.0">
+         <children>
+            <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilizer ID">
+               <font>
+                  <Font name="Roboto Medium" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtFertilizerId" strokeType="OUTSIDE" strokeWidth="0.0" text="F001">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Text fill="#636e72" layoutX="53.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtBrand" layoutX="180.0" layoutY="154.0" prefHeight="35.0" prefWidth="207.0" />
+      <Text fill="#636e72" layoutX="41.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtDescription" layoutX="186.0" layoutY="207.0" prefHeight="35.0" prefWidth="207.0" />
+      <Text fill="#636e72" layoutX="447.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Size">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtSize" layoutX="521.0" layoutY="108.0" prefHeight="35.0" prefWidth="207.0" />
+      <Text fill="#636e72" layoutX="437.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtPrice" layoutX="521.0" layoutY="154.0" prefHeight="35.0" prefWidth="207.0" />
+      <Text fill="#636e72" layoutX="447.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtQty" layoutX="521.0" layoutY="206.0" prefHeight="35.0" prefWidth="207.0" />
+      <JFXButton fx:id="btnDeleteFertilizer" buttonType="RAISED" layoutX="827.0" layoutY="79.0" onAction="#btnDeleteFertilizerOnAction" prefHeight="58.0" prefWidth="175.0" style="-fx-background-color: black;" text="Delete" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8delete48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdateFertilizer" buttonType="RAISED" layoutX="827.0" layoutY="143.0" onAction="#btnUpdateFertilizerOnAction" prefHeight="58.0" prefWidth="175.0" style="-fx-background-color: black;" text="Update" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8update48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnClearFertilizer" buttonType="RAISED" layoutX="827.0" layoutY="208.0" onAction="#btnClearFertilizerOnAction" prefHeight="58.0" prefWidth="175.0" style="-fx-background-color: black;" text="clear" textFill="#ebb619">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8clear60.png" />
                </image>
             </ImageView>
          </graphic>

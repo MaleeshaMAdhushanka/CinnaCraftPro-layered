@@ -8,26 +8,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="supplierPane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SupplierFormController">
    <children>
-      <TableView fx:id="tblSupplier" layoutX="59.0" layoutY="118.0" prefHeight="474.0" prefWidth="912.0">
+      <TableView fx:id="tblSupplier" layoutX="32.0" layoutY="334.0" prefHeight="301.0" prefWidth="979.0">
         <columns>
           <TableColumn fx:id="colSupplierId" prefWidth="95.0" text="Supplier ID" />
           <TableColumn fx:id="colFirstName" prefWidth="109.0" text="First Name" />
             <TableColumn fx:id="colLastName" minWidth="2.0" prefWidth="113.0" text="Last Name" />
             <TableColumn fx:id="colAddress" prefWidth="104.0" text="Address" />
-            <TableColumn fx:id="colBank" prefWidth="87.0" text="Bank" />
-            <TableColumn fx:id="colBankNo" prefWidth="108.0" text="Bank No" />
-            <TableColumn fx:id="colMobileNo" prefWidth="100.0" text="Mobile No" />
-            <TableColumn fx:id="colUpdate" prefWidth="103.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="92.0" text="Delete" />
+            <TableColumn fx:id="colBank" prefWidth="105.0" text="Bank" />
+            <TableColumn fx:id="colBankNo" prefWidth="114.0" text="Bank No" />
+            <TableColumn fx:id="colMobileNo" prefWidth="126.0" text="Mobile No" />
+            <TableColumn fx:id="colUpdate" prefWidth="98.0" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="114.0" text="Delete" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="337.0" layoutY="609.0" prefHeight="51.0" prefWidth="145.0" style="-fx-background-color: #d63031;" text="Supplier" textFill="#ebb619">
+      <JFXButton buttonType="RAISED" layoutX="331.0" layoutY="646.0" prefHeight="51.0" prefWidth="145.0" style="-fx-background-color: #d63031;" text="Supplier" textFill="#ebb619">
          <font>
             <Font size="19.0" />
          </font>
@@ -39,7 +40,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnPayments" buttonType="RAISED" layoutX="526.0" layoutY="609.0" onAction="#btnPaymentsOnAction" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #d63031;" text="Payments" textFill="#ebb619">
+      <JFXButton fx:id="btnPayments" buttonType="RAISED" layoutX="545.0" layoutY="646.0" onAction="#btnPaymentsOnAction" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: #d63031;" text="Payments" textFill="#ebb619">
          <font>
             <Font size="19.0" />
          </font>
@@ -51,7 +52,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnAddSupplier" buttonType="RAISED" layoutX="791.0" layoutY="36.0" onAction="#btnAddSupplierOnAction" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: black;" text="Add Supplier" textFill="#ebb619">
+      <JFXButton fx:id="btnAddSupplier" buttonType="RAISED" layoutX="799.0" layoutY="28.0" onAction="#btnAddSupplierOnAction" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: black;" text="Add Supplier" textFill="#ebb619">
          <font>
             <Font size="19.0" />
          </font>
@@ -63,7 +64,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Text fill="#636e72" layoutX="59.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier">
+      <Text fill="#636e72" layoutX="38.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier">
          <font>
             <Font name="Roboto Medium" size="37.0" />
          </font>
@@ -75,11 +76,97 @@
             </DropShadow>
          </effect>
       </Text>
-      <TextField fx:id="txtSearch" layoutX="594.0" layoutY="52.0" onAction="#txtSearchOnAction" prefHeight="43.0" prefWidth="171.0" />
-      <Text fill="#636e72" layoutX="507.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+      <TextField fx:id="txtSearch" layoutX="536.0" layoutY="27.0" onAction="#txtSearchOnAction" prefHeight="43.0" prefWidth="171.0" />
+      <Text fill="#636e72" layoutX="430.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
          <font>
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
+      <HBox layoutX="38.0" layoutY="85.0" prefHeight="24.0" prefWidth="208.0">
+         <children>
+            <Text fill="#636e72" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID" wrappingWidth="128.1103515625">
+               <font>
+                  <Font name="Roboto Medium" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtSupplierId" strokeType="OUTSIDE" strokeWidth="0.0" text="        S001" wrappingWidth="111.1103515625">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Text fill="#636e72" layoutX="38.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtFirstName" layoutX="173.0" layoutY="133.0" prefHeight="41.0" prefWidth="213.0" />
+      <Text fill="#636e72" layoutX="39.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtLastName" layoutX="173.0" layoutY="195.0" prefHeight="41.0" prefWidth="213.0" />
+      <Text fill="#636e72" layoutX="53.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtAddress" layoutX="173.0" layoutY="262.0" prefHeight="41.0" prefWidth="213.0" />
+      <Text fill="#636e72" layoutX="448.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtBank" layoutX="530.0" layoutY="132.0" prefHeight="41.0" prefWidth="213.0" />
+      <Text fill="#636e72" layoutX="422.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtBankNo" layoutX="530.0" layoutY="194.0" prefHeight="41.0" prefWidth="213.0" />
+      <Text fill="#636e72" layoutX="421.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No">
+         <font>
+            <Font name="Roboto Medium" size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtMobileNo" layoutX="540.0" layoutY="261.0" prefHeight="41.0" prefWidth="213.0" />
+      <JFXButton fx:id="btnDeleteSupplier" buttonType="RAISED" layoutX="826.0" layoutY="104.0" onAction="#btnDeleteSupplierOnAction" prefHeight="58.0" prefWidth="153.0" style="-fx-background-color: black;" text="Delete" textFill="#ebb619">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8delete48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnClearSupplier" buttonType="RAISED" layoutX="826.0" layoutY="243.0" onAction="#btnClearSupplierOnAction" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: black;" text="clear" textFill="#ebb619">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8clear60.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdateSupplier3" buttonType="RAISED" layoutX="826.0" layoutY="177.0" onAction="#btnUpdateSupplierOnAction" prefHeight="51.0" prefWidth="153.0" style="-fx-background-color: black;" text="Update" textFill="#ebb619">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8update48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
