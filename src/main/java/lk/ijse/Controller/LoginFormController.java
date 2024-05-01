@@ -48,6 +48,7 @@ public class LoginFormController {
     private TextField txtUsername;
 
     private final UserModel userModel = new UserModel();
+
     public  void initialize(){
         setGreetings();
     }

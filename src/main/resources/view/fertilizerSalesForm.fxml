@@ -84,22 +84,22 @@
       <ComboBox fx:id="cmbCustomerId" layoutX="258.0" layoutY="183.0" onAction="#cmbCustomersOnAction" prefHeight="43.0" prefWidth="171.0" />
       <ComboBox fx:id="cmbFertilizer" layoutX="258.0" layoutY="283.0" onAction="#cmbFertilizerOnAction" prefHeight="43.0" prefWidth="171.0" />
       <TextField fx:id="txtFieldQty" layoutX="267.0" layoutY="489.0" onAction="#txtFieldQtyOnAction" prefHeight="43.0" prefWidth="112.0" />
-      <Text fx:id="txtName" layoutX="296.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+      <Text fx:id="txtName" layoutX="296.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="txtDescription" layoutX="296.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+      <Text fx:id="txtDescription" layoutX="296.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="txtUnitPrice" layoutX="296.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+      <Text fx:id="txtUnitPrice" layoutX="296.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="txtQtyOnHand" layoutX="296.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="14.948242187500057">
+      <Text fx:id="txtQtyOnHand" layoutX="296.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="24.0" />
          </font>

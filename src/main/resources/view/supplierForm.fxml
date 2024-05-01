@@ -17,15 +17,13 @@
    <children>
       <TableView fx:id="tblSupplier" layoutX="32.0" layoutY="334.0" prefHeight="301.0" prefWidth="979.0">
         <columns>
-          <TableColumn fx:id="colSupplierId" prefWidth="95.0" text="Supplier ID" />
-          <TableColumn fx:id="colFirstName" prefWidth="109.0" text="First Name" />
-            <TableColumn fx:id="colLastName" minWidth="2.0" prefWidth="113.0" text="Last Name" />
-            <TableColumn fx:id="colAddress" prefWidth="104.0" text="Address" />
-            <TableColumn fx:id="colBank" prefWidth="105.0" text="Bank" />
-            <TableColumn fx:id="colBankNo" prefWidth="114.0" text="Bank No" />
-            <TableColumn fx:id="colMobileNo" prefWidth="126.0" text="Mobile No" />
-            <TableColumn fx:id="colUpdate" prefWidth="98.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="114.0" text="Delete" />
+          <TableColumn fx:id="colSupplierId" prefWidth="148.0" text="Supplier ID" />
+          <TableColumn fx:id="colFirstName" prefWidth="108.0" text="First Name" />
+            <TableColumn fx:id="colLastName" minWidth="2.0" prefWidth="121.0" text="Last Name" />
+            <TableColumn fx:id="colAddress" prefWidth="124.0" text="Address" />
+            <TableColumn fx:id="colBank" prefWidth="130.0" text="Bank" />
+            <TableColumn fx:id="colBankNo" prefWidth="173.0" text="Bank No" />
+            <TableColumn fx:id="colMobileNo" prefWidth="174.0" text="Mobile No" />
         </columns>
       </TableView>
       <JFXButton buttonType="RAISED" layoutX="331.0" layoutY="646.0" prefHeight="51.0" prefWidth="145.0" style="-fx-background-color: #d63031;" text="Supplier" textFill="#ebb619">

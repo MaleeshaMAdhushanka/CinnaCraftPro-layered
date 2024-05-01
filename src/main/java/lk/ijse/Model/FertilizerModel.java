@@ -2,6 +2,7 @@ package lk.ijse.Model;
 
 import lk.ijse.Db.DbConnection;
 import lk.ijse.Dto.FertilizerDto;
+import lk.ijse.Tm.FertilizeSalesCartTm;
 import lk.ijse.Tm.FertilizerTm;
 
 import java.sql.Connection;
@@ -157,6 +158,30 @@ public class FertilizerModel {
 
         return pstm.executeUpdate() > 0;
 
+
+    }
+
+    public boolean updateFertilizer(List<FertilizeSalesCartTm> tmList) throws SQLException {
+        for (FertilizeSalesCartTm cartTm: tmList){
+            if (!updateQty(cartTm)){
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    private boolean updateQty(FertilizeSalesCartTm cartTm) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE fertilizer SET qty_on_hand = qty_on_hand - ? WHERE fertilizerId = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setInt(1,cartTm.getQty());
+        pstm.setString(2,cartTm.getFertilizerId());
+
+        return pstm.executeUpdate() > 0;
 
     }
 

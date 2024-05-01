@@ -134,4 +134,33 @@ public class SupplierModel {
         return pstm.executeUpdate() > 0;
 
     }
+
+    public SupplierDto searchSupplier(String supId) throws SQLException {
+
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM Cinnamon_Supplier WHERE SupId = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, supId);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        SupplierDto dto = null;
+
+        if (resultSet.next()) {
+            String supID = resultSet.getString(1);
+            String firstName = resultSet.getString(2);
+            String lastName = resultSet.getString(3);
+            String address = resultSet.getString(4);
+            String bank = resultSet.getString(5);
+            String bankNo = resultSet.getString(6);
+            String mobileNo = resultSet.getString(7);
+
+            dto = new SupplierDto(supID, firstName, lastName, address, bank, bankNo, mobileNo);
+        }
+
+        return dto;
+    }
 }

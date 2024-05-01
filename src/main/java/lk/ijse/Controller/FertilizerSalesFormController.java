@@ -2,18 +2,31 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import lk.ijse.Dto.FertilizerDto;
+import lk.ijse.Dto.PlaceFertilizerOrderDto;
+import lk.ijse.Dto.SupplierDto;
+import lk.ijse.Model.FertilizerModel;
+import lk.ijse.Model.FertilizerOrderModel;
+import lk.ijse.Model.PlaceFertilizerOrderModel;
+import lk.ijse.Model.SupplierModel;
+import lk.ijse.Tm.FertilizeSalesCartTm;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class FertilizerSalesFormController {
 
@@ -36,10 +49,10 @@ public class FertilizerSalesFormController {
     private JFXButton btnSales;
 
     @FXML
-    private ComboBox<?> cmbCustomerId;
+    private ComboBox<String> cmbCustomerId;
 
     @FXML
-    private ComboBox<?> cmbFertilizer;
+    private ComboBox<String> cmbFertilizer;
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -60,7 +73,7 @@ public class FertilizerSalesFormController {
     private AnchorPane fertilizerSalesPane;
 
     @FXML
-    private TableView<?> tblCart;
+    private TableView<FertilizeSalesCartTm> tblCart;
 
     @FXML
     private Text txtDate;
@@ -86,8 +99,234 @@ public class FertilizerSalesFormController {
     @FXML
     private Text txtUnitPrice;
 
+    ArrayList<ArrayList<String>> fertilizerDetails = new ArrayList<>();
+
+
+    private final ObservableList<FertilizeSalesCartTm> obList = FXCollections.observableArrayList();
+
+    SupplierModel supplierModel = new SupplierModel();
+
+    FertilizerModel fertilizerModel = new FertilizerModel();
+
+    FertilizerOrderModel fertilizerOrderModel = new FertilizerOrderModel();
+
+    PlaceFertilizerOrderModel placeFertilizerOrderModel = new PlaceFertilizerOrderModel();
+
+    public  void  initialize(){
+
+        generateNextFertilizerOrderId();
+        setDate();
+        loadSupplierIds();
+        loadItemIds();
+        setCellValueFactory();
+        loadFertilizerDetails();
+    }
+
+    private void loadFertilizerDetails() {
+
+        try{
+
+            List<FertilizerDto> dtoList = fertilizerModel.getAllFertilizer();
+
+            for (int i = 0; i < dtoList.size(); i++){
+                fertilizerDetails.add(new ArrayList<>());
+                fertilizerDetails.get(i).add(dtoList.get(i).getFertilizerID());
+                fertilizerDetails.get(i).add(String.valueOf(dtoList.get(i).getQty()));
+            }
+
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+
+
+    }
+
+    private void setCellValueFactory() {
+        colFertilizerId.setCellValueFactory(new PropertyValueFactory<>("fertilizerId"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colRemove.setCellValueFactory(new PropertyValueFactory<>("removeButton"));
+    }
+
+    private void generateNextFertilizerOrderId() {
+        try{
+            String orderId =fertilizerOrderModel.generateNextFertilizerOrderId();
+            txtOrderId.setText(orderId);
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+    }
+
+    private void loadItemIds() {
+
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<FertilizerDto> allFertilizers = fertilizerModel.getAllFertilizer();
+            for (FertilizerDto dto:allFertilizers){
+                obList.add(dto.getFertilizerID());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        cmbFertilizer.setItems(obList);
+
+    }
+
+    private void loadSupplierIds()  {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<SupplierDto> allSuppliers = supplierModel.getAllSuppliers();
+            for (SupplierDto dto:allSuppliers){
+                obList.add(dto.getSupId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        cmbCustomerId.setItems(obList);
+
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        txtDate.setText(now.toString());
+    }
+
     @FXML
     void btnAddCartOnAction(ActionEvent event) {
+
+        String fertilizerId = cmbFertilizer.getValue();
+        String description = txtDescription.getText();
+        int qty = Integer.parseInt(txtFieldQty.getText());
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        double total = qty * unitPrice;
+
+
+        for (int i = 0; i < tblCart.getItems().size(); i++) {
+
+            if (fertilizerId.equals(colFertilizerId.getCellData(i))){
+
+                qty += (int) colQty.getCellData(i);
+                total = qty * unitPrice;
+
+                obList.get(i).setQty(qty);
+                obList.get(i).setTotal(total);
+
+                tblCart.refresh();
+                calculateNetTotal();
+
+                decreasePackageCount(obList.get(i).getFertilizerId(), Integer.parseInt(txtFieldQty.getText()));
+                itemCountRefresh();
+                txtFieldQty.clear();
+                return;
+            }
+        }
+
+
+        obList.add(new FertilizeSalesCartTm(
+                fertilizerId,
+                description,
+                qty,
+                total
+        ));
+
+
+        cartRefresh();
+
+
+        tblCart.setItems(obList);
+        calculateNetTotal();
+        decreasePackageCount(fertilizerId,qty);
+        itemCountRefresh();
+        txtFieldQty.clear();
+
+    }
+
+    private void cartRefresh() {
+
+        for (int i = 0; i < obList.size(); i++) {
+            final  int index = i;
+
+            obList.get(i).getRemoveButton().setOnAction(event -> {
+
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+
+                Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                //allert type ekata ena wishesha function ekak
+
+                if (type.orElse(no)==yes) {
+                    increasePackageCount(obList.get(index).getFertilizerId(),obList.get(index).getQty());
+                    itemCountRefresh();
+                    obList.remove(index);
+                    cartRefresh();
+                    calculateNetTotal();
+                }
+
+            });
+        }
+    }
+
+    //delete karala aye gahadddi value eka ganata increse karaganna me method eka use kara
+
+    private void increasePackageCount(String fertilizerId, int qty) {
+        for (int i = 0; i < fertilizerDetails.size(); i++) {
+            if (fertilizerId.equals(fertilizerDetails.get(i).get(0))){
+                int count = Integer.parseInt(fertilizerDetails.get(i).get(1));
+                count += qty;
+                fertilizerDetails.get(i).set(1,String.valueOf(count));
+                return;
+            }
+        }
+    }
+
+    private void itemCountRefresh() {
+        String fertilizerId = cmbFertilizer.getValue();
+
+        if (fertilizerId == null){
+            return;
+        }
+
+        int count = getFertilizerCount(fertilizerId);
+
+        txtQtyOnHand.setText(String.valueOf(count));
+    }
+
+    private int getFertilizerCount(String fertilizerId) {
+        for (int i = 0; i < fertilizerDetails.size(); i++) {
+            if (fertilizerDetails.get(i).get(0).equals(fertilizerId)){
+                return Integer.parseInt(fertilizerDetails.get(i).get(1));
+            }
+        }
+        return 0;
+    }
+
+    private void decreasePackageCount(String fertilizerId, int qty) {
+
+        for (int i = 0; i < fertilizerDetails.size(); i++) {
+            if (fertilizerId.equals(fertilizerDetails.get(i).get(0))){
+                int count = Integer.parseInt(fertilizerDetails.get(i).get(1));
+                count -= qty;
+                fertilizerDetails.get(i).set(1,String.valueOf(count));
+                return;
+            }
+        }
+    }
+
+
+    //net Toal eka cal karanna me method eka use kara
+    private void calculateNetTotal() {
+        double total = 0;
+
+        for (int i = 0; i < tblCart.getItems().size(); i++) {
+            total += (double) colTotal.getCellData(i);
+        }
+        txtNetTotal.setText(String.valueOf(total));
 
     }
 
@@ -108,6 +347,51 @@ public class FertilizerSalesFormController {
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
 
+        String orderId = txtOrderId.getText();
+        LocalDate date = LocalDate.now();
+        String cusId = cmbCustomerId.getValue();
+
+
+        List<FertilizeSalesCartTm> tmList = new ArrayList<>();
+
+        for (FertilizeSalesCartTm tm : obList){
+            tmList.add(tm);
+        }
+
+
+        PlaceFertilizerOrderDto dto = new PlaceFertilizerOrderDto(
+                orderId,
+                cusId,
+                date,
+                tmList
+        );
+
+        try{
+
+            boolean isSuccess = placeFertilizerOrderModel.placeFertilizerOrder(dto);
+
+            if (isSuccess){
+                new Alert(Alert.AlertType.CONFIRMATION,"Order Placed Successfully").show();
+
+
+                tblCart.getItems().clear();
+                txtNetTotal.setText("-");
+                txtDescription.setText("-");
+                txtFieldQty.setText("0");
+                //cmbCustomerId.setValue("");
+                txtUnitPrice.setText("-");
+                txtName.setText("-");
+                txtQtyOnHand.setText("-");
+                //cmbFertilizer.setValue("");
+
+                generateNextFertilizerOrderId();
+
+            }
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+
+
     }
 
     @FXML
@@ -118,10 +402,31 @@ public class FertilizerSalesFormController {
     @FXML
     void cmbCustomersOnAction(ActionEvent event) {
 
+        String supId= cmbCustomerId.getValue();
+
+        try {
+            SupplierDto dto = supplierModel.searchSupplier(supId);
+            txtName.setText(dto.getFirstName());
+        }
+        catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+
+
     }
 
     @FXML
     void cmbFertilizerOnAction(ActionEvent event) {
+        String fertilizerId = cmbFertilizer.getValue();
+
+        try {
+            FertilizerDto dto = fertilizerModel.searchFertilizer(fertilizerId);
+            txtDescription.setText(dto.getDescription());
+            txtQtyOnHand.setText(String.valueOf(dto.getQty()));
+            txtUnitPrice.setText(String.valueOf(dto.getPrice()));
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
 
     }
 

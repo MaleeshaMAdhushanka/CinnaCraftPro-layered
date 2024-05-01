@@ -106,7 +106,7 @@
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/iconsadd50.png" />
+                  <Image url="@../assets/icons8clear60.png" />
                </image>
             </ImageView>
          </graphic>
@@ -118,7 +118,7 @@
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/iconsadd50.png" />
+                  <Image url="@../assets/icons8delete48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -130,7 +130,7 @@
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/iconsadd50.png" />
+                  <Image url="@../assets/icons8update48.png" />
                </image>
             </ImageView>
          </graphic>
