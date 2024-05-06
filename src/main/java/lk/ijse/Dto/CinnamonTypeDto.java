@@ -8,18 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CinnamonBarkStockDto {
-    private String CinnamonStockID;
 
-    private String SupID;
+public class CinnamonTypeDto {
 
-    private String CinnamonBookID;
-
+    private String typeId;
+    private String type;
     private double amount;
-
-    private boolean isPayed;
-
-
-
 
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.ComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -71,7 +71,6 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbEmployeeId" layoutX="116.0" layoutY="240.0" onAction="#cmbEmployeeIdOnAction" prefHeight="34.0" prefWidth="167.0" />
       <Text fx:id="txtNAme" layoutX="314.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="22.0" />
@@ -87,11 +86,6 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFieldOther" layoutX="283.0" layoutY="405.0" onAction="#txtFieldOtherOnAction" prefHeight="43.0" prefWidth="122.0" text="0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </TextField>
       <Text fx:id="txtTotal" layoutX="327.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="22.0" />
@@ -119,21 +113,11 @@
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFieldHourlyRate" layoutX="576.0" layoutY="125.0" prefHeight="43.0" prefWidth="122.0" text="0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </TextField>
       <Text fill="#636e72" layoutX="706.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OT">
          <font>
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFieldOt" layoutX="744.0" layoutY="135.0" prefHeight="43.0" prefWidth="122.0" text="0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </TextField>
       <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="886.0" layoutY="135.0" onAction="#btnUpdateOnAction" prefHeight="43.0" prefWidth="62.0" style="-fx-background-color: black;">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
@@ -187,5 +171,9 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <MFXFilterComboBox fx:id="cmbEmployeeId" layoutX="282.0" layoutY="192.0" onAction="#cmbEmployeeIdOnAction" />
+      <MFXTextField fx:id="txtFieldOther" floatMode="DISABLED" layoutX="283.0" layoutY="406.0" onAction="#txtFieldOtherOnAction" prefHeight="40.0" prefWidth="103.0" styleClass="mfx-text-field" stylesheets="@../../../../../../../Desktop/newrosi/craft/src/main/resources/assets/css/MFXProcessing.css" text="0" />
+      <MFXTextField fx:id="txtFieldHourlyRate" floatMode="DISABLED" layoutX="566.0" layoutY="125.0" prefHeight="40.0" prefWidth="103.0" styleClass="mfx-text-field" stylesheets="@../../../../../../../Desktop/newrosi/craft/src/main/resources/assets/css/MFXProcessing.css" text="0" />
+      <MFXTextField fx:id="txtFieldOt" floatMode="DISABLED" layoutX="751.0" layoutY="125.0" prefHeight="40.0" prefWidth="103.0" styleClass="mfx-text-field" stylesheets="@../../../../../../../Desktop/newrosi/craft/src/main/resources/assets/css/MFXProcessing.css" text="0" />
    </children>
 </AnchorPane>

@@ -9,19 +9,44 @@ import java.sql.SQLException;
 
 public class AddCinnamonBarkTransactionModel {
 
+
     private final CinnamonBarkStockModel cinnamonBarkStockModel = new CinnamonBarkStockModel();
     private final CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
+
     public boolean saveCinnamonBarkStock(CinnamonBarkStockDto cinnamonBarkStockDto, String CinnamonBookId) throws SQLException {
 
-        boolean result = false;
-        Connection connection =null;
+            boolean result = false;
+            Connection connection = null;
 
-        connection = DbConnection.getInstance().getConnection();
-        connection.setAutoCommit(false);
+         try{
+            connection = DbConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
 
+            boolean isSaved = cinnamonBarkStockModel.saveCinnamonBarkStock(cinnamonBarkStockDto);
+
+            if (isSaved) {
+
+                double dailyAmount = cinnamonBarkStockModel.getTotalAmount(CinnamonBookId);
+
+                boolean isUpdated = cinnamonBookModel.updateCinnamonBookAmount(CinnamonBookId, dailyAmount);
+
+                if (isUpdated) {
+                    connection.commit();
+                    result = true;
+
+                }
+
+            }
+        } catch (SQLException e) {
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(true);
+        }
+        return result;
 
 
     }
-
-
 }
+
+
+

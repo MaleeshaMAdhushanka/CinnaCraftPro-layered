@@ -77,7 +77,7 @@ public class DashBoardFormController {
         setButtonActive(btnCinnamon);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/cinnamonBarkForm.fxml"));
-        Pane registerPane = (Pane) fxmlLoader.load();
+        Pane registerPane = (Pane)fxmlLoader.load();
         mainPane.getChildren().clear();
         mainPane.getChildren().add(registerPane);
 

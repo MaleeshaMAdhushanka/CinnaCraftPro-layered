@@ -1,12 +1,13 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class SalesFormController {
@@ -24,13 +25,13 @@ public class SalesFormController {
     private JFXButton btnRecipt;
 
     @FXML
-    private ComboBox<?> cmbCinnamonType;
+    private MFXComboBox<?> cmbCinnamonType;
 
     @FXML
-    private ComboBox<?> cmbCustomerNum;
+    private MFXFilterComboBox<?> cmbCustomerNum;
 
     @FXML
-    private ComboBox<?> cmbPackSize;
+    private MFXComboBox<?> cmbPackSize;
 
     @FXML
     private TableColumn<?, ?> colQty;
@@ -57,7 +58,7 @@ public class SalesFormController {
     private Text txtDate;
 
     @FXML
-    private TextField txtFieldQty;
+    private MFXTextField txtFieldQty;
 
     @FXML
     private Text txtName;
@@ -112,3 +113,4 @@ public class SalesFormController {
     }
 
 }
+

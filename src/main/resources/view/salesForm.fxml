@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.ComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -79,14 +80,11 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbCustomerNum" layoutX="261.0" layoutY="217.0" onAction="#cmbCustomerOnAction" prefHeight="43.0" prefWidth="179.0" />
       <Text fx:id="txtName" layoutX="311.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="12.5625">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbCinnamonType" layoutX="258.0" layoutY="308.0" onAction="#cmbCinnamonTypeOnAction" prefHeight="43.0" prefWidth="179.0" />
-      <ComboBox fx:id="cmbPackSize" layoutX="261.0" layoutY="368.0" onAction="#cmbPackSizeOnAction" prefHeight="43.0" prefWidth="179.0" />
       <Text fx:id="txtCount" layoutX="284.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="12.5625">
          <font>
             <Font name="Roboto Medium" size="20.0" />
@@ -97,7 +95,6 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="txtFieldQty" layoutX="257.0" layoutY="512.0" onAction="#txtFieldQtyOnAction" prefHeight="35.0" prefWidth="133.0" />
       <JFXButton fx:id="btnAddCart" buttonType="RAISED" layoutX="182.0" layoutY="581.0" onAction="#btnAddCartOnAction" prefHeight="51.0" prefWidth="158.0" style="-fx-background-color: black;" text="Add To Cart" textFill="#ebb619">
          <font>
             <Font size="18.0" />
@@ -180,5 +177,9 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <MFXFilterComboBox fx:id="cmbCustomerNum" layoutX="262.0" layoutY="218.0" onAction="#cmbCustomerOnAction" prefHeight="42.0" prefWidth="179.0" />
+      <MFXComboBox fx:id="cmbCinnamonType" layoutX="262.0" layoutY="304.0" onAction="#cmbCinnamonTypeOnAction" prefHeight="42.0" prefWidth="179.0" />
+      <MFXComboBox fx:id="cmbPackSize" layoutX="262.0" layoutY="381.0" onAction="#cmbPackSizeOnAction" prefHeight="42.0" prefWidth="179.0" />
+      <MFXTextField fx:id="txtFieldQty" layoutX="266.0" layoutY="504.0" onAction="#txtFieldQtyOnAction" prefHeight="51.0" prefWidth="179.0" />
    </children>
 </AnchorPane>

@@ -1,11 +1,16 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
+import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import lk.ijse.Dto.CinnamonBarkStockDto;
@@ -14,11 +19,13 @@ import lk.ijse.Model.AddCinnamonBarkTransactionModel;
 import lk.ijse.Model.CinnamonBarkStockModel;
 import lk.ijse.Model.CinnamonBookModel;
 import lk.ijse.Model.SupplierModel;
-import lk.ijse.Tm.SupplierTm;
+import lk.ijse.Tm.CinnamonBarkStockTm;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class CinnamonBarkFormController {
 
@@ -35,7 +42,7 @@ public class CinnamonBarkFormController {
     private JFXButton btnUpdateStock;
 
     @FXML
-    private ComboBox<String> cmbSupplierId;
+    private MFXFilterComboBox<String> cmbSupplierId;
 
     @FXML
     private TableColumn<?, ?> colAmount;
@@ -50,16 +57,16 @@ public class CinnamonBarkFormController {
     private TableColumn<?, ?> colSupName;
 
     @FXML
-    private DatePicker dpDate;
+    private MFXDatePicker dpDate;
 
     @FXML
-    private TableView<SupplierTm> tableCinnamonBrakStock;
+    private TableView<CinnamonBarkStockTm> tableCinnamonBrakStock;
 
     @FXML
     private Text txtAmount;
 
     @FXML
-    private TextField txtAmount1;
+    private MFXTextField txtAmount1;
 
     @FXML
     private Text txtCinnamonBarkStockId;
@@ -70,154 +77,337 @@ public class CinnamonBarkFormController {
     @FXML
     private Text txtDate;
 
-    CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
-    SupplierModel supplierModel = new SupplierModel();
+    private CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
 
-    CinnamonBarkStockModel cinnamonBarkStockModel = new CinnamonBarkStockModel();
-    AddCinnamonBarkTransactionModel addCinnamonBarkTransactionModel = new AddCinnamonBarkTransactionModel();
+    private final SupplierModel supplierModel = new SupplierModel();
 
-    public void initialize() throws SQLException {
-        loadSupplierId();
-        generateNextCinnamonBarkStockId();
-        setDate();
-        setCurrentDate();
+    private final CinnamonBarkStockModel cinnamonBarkStockModel = new CinnamonBarkStockModel();
+
+    private final AddCinnamonBarkTransactionModel addCinnamonBarkTransactionModel = new AddCinnamonBarkTransactionModel();
+
+
+    public void initialize(){
+        setCurrentDay();
         setCurrentDailyAmount(dpDate.getValue().toString());
-        setCellValueFactory();
-        loadSupplierDetails();
-        setListener();
-
-
+        loadAllStockDetails(dpDate.getValue().toString());
+        loadSupplierIds();
+         generateNextCinnamonBarkStockId();
+         setCellValueFactory();
+         setListener();
     }
-
     private void setListener() {
+        tableCinnamonBrakStock.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        CinnamonBarkStockDto dto = new CinnamonBarkStockDto(newValue.getCinnamonBarkStockId(), newValue.getSupId(), newValue.getSupName(),  newValue.getAmount(), newValue.isPayed());
+                        // Use 'dto' as needed
+                    }
+                });
     }
 
-    private void loadSupplierDetails() throws SQLException {
-
-        ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
-        List<SupplierDto> dtoList = supplierModel.getAllSuppliers();
-
-        for (SupplierDto dto:dtoList){
-            obList.add(new SupplierTm(
-                    dto.getSupId(),
-                    dto.getFirstName(),
-                    dto.getLastName(),
-                    dto.getAddress(),
-                    dto.getBank(),
-                    dto.getBankNo(),
-                    dto.getMobileNo()
-
-            ));
-        }
-        tableCinnamonBrakStock.setItems(obList);
 
 
-    }
 
     private void setCellValueFactory() {
-    //    colStockId.setCellValueFactory(new PropertyValueFactory<>());
+        colStockId.setCellValueFactory(new PropertyValueFactory<>("cinnamonBarkStockId"));
+        colSupId.setCellValueFactory(new PropertyValueFactory<>("supId"));
+        colSupName.setCellValueFactory(new PropertyValueFactory<>("SupName"));
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+
     }
 
-    private void setCurrentDailyAmount(String string) {
-    }
-
-    private void setCurrentDate() {
-        dpDate.setValue(java.time.LocalDate.now());
-    }
-
-    private void setDate() {
-        String string = LocalDate.now().toString();
-        txtDate.setText(string);
-    }
-
-    private void generateNextCinnamonBarkStockId() throws SQLException {
+    private void generateNextCinnamonBarkStockId() {
         try {
-            String id = cinnamonBarkStockModel.generateNextCinnamonBarkStockId();
-            txtCinnamonBarkStockId.setText(id);
+         String cinnamonBarkStockId = cinnamonBarkStockModel.generateNextCinnamonBarkStockId();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
 
-        }catch (SQLException e){
+    private void loadSupplierIds() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+
+            List<SupplierDto> supplierList = supplierModel.getAllSuppliers();
+
+            for (SupplierDto supplierDto: supplierList){
+                obList.add(supplierDto.getSupId());
+            }
+            cmbSupplierId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    private void loadAllStockDetails(String date) {
+
+        try {
+        ObservableList<CinnamonBarkStockTm>  obList =  FXCollections.observableArrayList();
+
+            String dateBoolId  = cinnamonBookModel.getCinnamonBookId(date);
+
+            List<CinnamonBarkStockDto > dtoList = cinnamonBarkStockModel.getAllStockDetails(dateBoolId);
+
+            for (CinnamonBarkStockDto dto : dtoList){
+
+                String supName = supplierModel.getSupplierName(dto.getSupID());
+
+                obList.add(new CinnamonBarkStockTm(
+                   dto.getCinnamonStockID(),
+                   dto.getSupID(),
+                   supName,
+                   dto.getAmount()
+
+                ));
+
+            }
+
+            for (int i = 0; i < obList.size(); i++){
+                final int index = i;
+
+
+                //To Disable Delete and update button if already paid
+
+                if (dtoList.get(index).isPayed()){
+                    obList.get(i).getDeleteButton().setDisable(true);
+                    obList.get(i).getUpdateButton().setDisable(true);
+                }
+
+
+                obList.get(i).getUpdateButton().setOnAction(event -> {
+                    btnUpdateStockOnAction(dtoList.get(index).getCinnamonStockID());
+                });
+                obList.get(i).getDeleteButton().setOnAction(event -> {
+
+                    String cinnamonStockID= dtoList.get(index).getCinnamonStockID();
+                    btnDeleteStockOnAction(cinnamonStockID);
+
+
+                    try {
+                        String teaBookId = cinnamonBookModel.getCinnamonBookId(String.valueOf(dpDate.getValue()));
+                        double dailyAmount = cinnamonBarkStockModel.getTotalAmount(teaBookId);
+                        cinnamonBookModel.updateCinnamonBookAmount(teaBookId,dailyAmount);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    setCurrentDailyAmount(dpDate.getValue().toString());
+                    loadAllStockDetails(dpDate.getValue().toString());
+
+                });
+
+
+            }
+            tableCinnamonBrakStock.setItems(obList);
+
+
+        } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
 
     }
 
-    private void loadSupplierId() throws SQLException {
+    private void setCurrentDailyAmount(String date) {
 
-        ObservableList<String> obList  = FXCollections.observableArrayList();
         try {
-            List<SupplierDto> supplierList =supplierModel.getAllSuppliers();
-            for (SupplierDto supplierDto : supplierList) {
-                obList.add(supplierDto.getSupId());
-            }
-            cmbSupplierId.setItems(obList);
-        }
-        catch (SQLException e){
-            throw new RuntimeException(e);
-        }
+            boolean isExists = cinnamonBookModel.searchDate(date);
 
+            if (isExists) {
+                txtAmount.setText(String.valueOf(cinnamonBookModel.getAmount(date)) +" kg");
+            }
+            else {
+                txtAmount.setText("No date");
+            }
+        } catch (SQLException e) {
+
+             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void setCurrentDay() {
+        dpDate.setValue(java.time.LocalDate.now());
     }
 
     @FXML
     void btnAddStockOnAction(ActionEvent event) {
-        validateFields();
+        boolean isValidated = validateFields();
 
-       String stockId =  txtCinnamonBarkStockId.getText();
-       String supID = cmbSupplierId.getSelectionModel().getSelectedItem();
-      //  String CinnamonBookId = CinnamonBookModel.getCinnamonBookId(txtDate.getText());
-        double amount = Double.parseDouble(txtAmount1.getText());
-        String date = txtDate.getText();
+        if (!isValidated) {
+            return;
+        }
+
+        try {
+            String CinnamonStockID = txtCinnamonBarkStockId.getText();
+            String  SupID = cmbSupplierId.getText();
+           String CinnamonBookID= cinnamonBookModel.getCinnamonBookId(txtDate.getText());
+           double  amount = Double.parseDouble(txtAmount1.getText());
+
+            CinnamonBarkStockDto cinnamonBarkStockDto = new CinnamonBarkStockDto(CinnamonStockID, SupID, CinnamonBookID, amount, false);
+           boolean isSaved =  addCinnamonBarkTransactionModel.saveCinnamonBarkStock(cinnamonBarkStockDto, CinnamonBookID);
+
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Stock Added").show();
+
+                clearFields();
+
+                setCurrentDailyAmount(txtDate.getText());
+                loadAllStockDetails(txtDate.getText());
+            }
 
 
-
-       // CinnamonBarkStockDto dto = new CinnamonBarkStockDto(stockId, supID, amount, date);
-//
-//        try {
-//            //boolean isSaved = cinnamonBarkStockModel.saveCinnamonBarkStock(dto);
-////            if (isSaved){
-////                new Alert(Alert.AlertType.CONFIRMATION,"Stock  Saved").show();
-////                clearFileds();
-////                loadSupplierDetails();
-////            }
-//
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-//        }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 
-    private void clearFileds() {
-      //  generateNextCinnamonBarkStockId();
-        cmbSupplierId.getSelectionModel().clearSelection();
+    private void clearFields() {
+        generateNextCinnamonBarkStockId();
         txtAmount1.clear();
-     //   txtDate.clear();
-
-
+        cmbSupplierId.getSelectionModel().clearSelection();
     }
 
-    private void validateFields() {
+    private boolean validateFields() {
+        String amount = txtAmount1.getText();
+        boolean isAmountValidated = Pattern.matches("[0-9]{1,}", String.valueOf(amount));
+
+        if (Objects.equals(cmbSupplierId.getText(), "")){
+            cmbSupplierId.requestFocus();
+            cmbSupplierId.getStyleClass().add("mfx-combo-box-error");
+            return false;
+
+        }
+        cmbSupplierId.getStyleClass().removeAll("mfx-combo-box-error");
+
+        if (!isAmountValidated){
+            txtAmount1.requestFocus();
+            txtAmount1.getStyleClass().add("mfx-combo-box-error");
+            return false;
+        }
+        txtAmount1.getStyleClass().removeAll("mfx-combo-box-error");
+        return true;
+
+
+
     }
 
     @FXML
     void btnClearStockOnAction(ActionEvent event) {
-       // generateNextCinnamonBarkStockId();
-        clearFileds();
 
     }
 
     @FXML
-    void btnDeleteStockOnAction(ActionEvent event) {
+    void btnDeleteStockOnAction(String event) {
 
     }
 
     @FXML
-    void btnUpdateStockOnAction(ActionEvent event) {
+    void btnUpdateStockOnAction(String event) {
+
+
+        boolean isValidated = validateFields();
+
+        if (!isValidated) {
+            return;
+        }
+
+        String CinnamonStockID = txtCinnamonBarkStockId.getText();
+        String  SupID = cmbSupplierId.getText();
+        String date = txtDate.getText();
+        double  amount = Double.parseDouble(txtAmount1.getText());
+
+
+        try {
+            String cinnamonBookId = cinnamonBookModel.getCinnamonBookId(date);
+
+            boolean isUpdated = cinnamonBarkStockModel.updateCinnamonBarkStock(new CinnamonBarkStockDto(CinnamonStockID, SupID, date, amount, false));
+            //Updated Daily Amount On UI
+
+           double dailyAmount =  cinnamonBarkStockModel.getTotalAmount(cinnamonBookId);
+
+
+           //update Database
+            cinnamonBookModel.updateCinnamonBookAmount(cinnamonBookId, dailyAmount);
+
+            setCurrentDailyAmount(date);
+            loadAllStockDetails(date);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully").show();
+            }
+
+
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
 
     }
 
     @FXML
     void dpDateOnAction(ActionEvent event) {
 
+        String date = dpDate.getValue().toString();
+
+        //this method is t0 check is there a record for that date in database
+
+        dateCheck(date);
+        setCurrentDailyAmount(date);
+        loadAllStockDetails(date);
+
+
+    }
+
+    private void dateCheck(String date) {
+
+        try {
+            if (!cinnamonBookModel.searchDate(date)) {
+                cinnamonBookModel.createCinnamonBookRecord(date);
+                setCurrentDailyAmount(date);
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+
+    }
+
+    public void  loadCinnamonBarkStockDetails(){
+
+        try {
+           CinnamonBarkStockDto dto =  cinnamonBarkStockModel.searchCinnamonBarkStock(txtCinnamonBarkStockId.getText());
+            setFields(dto);
+        }
+        catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void setFields(CinnamonBarkStockDto cinnamonBarkStock) {
+
+        String date = null;
+
+        try {
+           date =  cinnamonBookModel.getCinnamonBookDate(cinnamonBarkStock.getCinnamonBookID());
+
+        }
+        catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        txtCinnamonBarkStockId.setText(cinnamonBarkStock.getCinnamonStockID());
+        cmbSupplierId.setText(cinnamonBarkStock.getSupID());
+        txtAmount1.setText(String.valueOf(cinnamonBarkStock.getAmount()));
+        txtDate.setText(date);
+
+
+
     }
 
 }
+

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -57,7 +57,6 @@
             </DropShadow>
          </effect>
       </Text>
-      <DatePicker fx:id="dpDate" layoutX="130.0" layoutY="84.0" onAction="#dpDateOnAction" prefHeight="45.0" prefWidth="213.0" />
       <Text fill="#636e72" layoutX="518.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Stock:">
          <font>
             <Font name="Roboto Medium" size="29.0" />
@@ -70,7 +69,7 @@
             </DropShadow>
          </effect>
       </Text>
-      <Text fx:id="txtAmount" layoutX="690.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="txtAmount" layoutX="694.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="78.08496093750011">
          <font>
             <Font name="Roboto Medium" size="29.0" />
          </font>
@@ -80,7 +79,7 @@
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <Text fx:id="txtCinnamonBarkStockId" layoutX="327.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CS-001">
+      <Text fx:id="txtCinnamonBarkStockId" layoutX="328.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CS-001">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
@@ -90,13 +89,11 @@
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbSupplierId" layoutX="304.0" layoutY="215.0" prefHeight="49.0" prefWidth="177.0" />
       <Text fill="#636e72" layoutX="516.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount">
          <font>
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtAmount1" layoutX="609.0" layoutY="154.0" prefHeight="49.0" prefWidth="125.0" />
       <Text fx:id="txtCinnamonBarkStockId1" layoutX="747.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kg">
          <font>
             <Font name="Roboto Medium" size="20.0" />
@@ -139,5 +136,8 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <MFXFilterComboBox fx:id="cmbSupplierId" layoutX="305.0" layoutY="213.0" prefHeight="42.0" prefWidth="178.0" />
+      <MFXDatePicker fx:id="dpDate" layoutX="166.0" layoutY="87.0" onAction="#dpDateOnAction" />
+      <MFXTextField fx:id="txtAmount1" layoutX="617.0" layoutY="153.0" prefHeight="51.0" prefWidth="116.0" />
    </children>
 </AnchorPane>

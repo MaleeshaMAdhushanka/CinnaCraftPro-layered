@@ -163,4 +163,23 @@ public class SupplierModel {
 
         return dto;
     }
+    public String getSupplierName(String supId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT firstName FROM Cinnamon_Supplier WHERE SupId = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, supId);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        String name = null;
+
+        if (resultSet.next()) {
+            name = resultSet.getString(1);
+        }
+
+        return name;
+    }
+
 }

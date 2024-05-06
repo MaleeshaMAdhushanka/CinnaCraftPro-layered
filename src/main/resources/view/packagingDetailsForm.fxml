@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.ComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -60,7 +60,6 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbCinnamonType" layoutX="221.0" layoutY="201.0" onAction="#cmbCinnamonTypeOnAction" prefHeight="45.0" prefWidth="161.0" />
       <TextField fx:id="txtFieldSize" layoutX="221.0" layoutY="278.0" prefHeight="45.0" prefWidth="114.0" />
       <TextField fx:id="txtFieldPrice" layoutX="218.0" layoutY="358.0" prefHeight="45.0" prefWidth="120.0" />
       <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="92.0" layoutY="450.0" onAction="#btnAddOnAction" prefHeight="45.0" prefWidth="102.0" style="-fx-background-color: black;" text="Add" textFill="#ebb619">
@@ -102,5 +101,11 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <MFXComboBox fx:id="cmbCinnamonType" layoutX="210.0" layoutY="203.0" onAction="#cmbCinnamonTypeOnAction" prefHeight="42.0" prefWidth="151.0" />
+      <Text fx:id="txtMassage" fill="#d93025" layoutX="108.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Valid Size Eg: 1Kg or 500g" visible="false">
+         <font>
+            <Font name="Roboto" size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

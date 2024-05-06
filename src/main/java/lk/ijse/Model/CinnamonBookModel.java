@@ -9,10 +9,12 @@ import java.util.List;
 
 public class CinnamonBookModel {
 
+
+
     public boolean updateCinnamonBookAmount(String CinnamonBookId, double amount) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE cinnamon_book SET dailyAmount = ? WHERE CinnamonBookId =?";
+        String sql = "UPDATE Cinnamon_Book SET dailyAmount = ? WHERE CinnamonBookId =?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -27,7 +29,7 @@ public class CinnamonBookModel {
     public String getCinnamonBookId(String date) throws SQLException{
        Connection connection =  DbConnection.getInstance().getConnection();
 
-       String sql = "SELECT CinnamonBookId FROM cinnamon_book WHERE date=?";
+       String sql = "SELECT CinnamonBookId FROM Cinnamon_Book WHERE date=?";
 
        PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -45,7 +47,7 @@ public class CinnamonBookModel {
 
        Connection connection =  DbConnection.getInstance().getConnection();
 
-       String sql = "SELECT date FROM cinnamon_book WHERE CinnamonBookId=?";
+       String sql = "SELECT date FROM Cinnamon_Book WHERE CinnamonBookId=?";
 
        PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -60,7 +62,7 @@ public class CinnamonBookModel {
     public boolean searchDate(String date ) throws SQLException{
        Connection connection =  DbConnection.getInstance().getConnection();
 
-       String sql = "SELECT * FROM  cinnamon_book WHERE date=?";
+       String sql = "SELECT * FROM  Cinnamon_Book WHERE date=?";
 
        PreparedStatement  pstm  = connection.prepareStatement(sql);
 
@@ -80,7 +82,7 @@ public class CinnamonBookModel {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO cinnamon_book VALUES(?, ?, ?)";
+        String sql = "INSERT INTO Cinnamon_Book VALUES(?, ?, ?)";
 
        PreparedStatement pstm =  connection.prepareStatement(sql);
 
@@ -95,7 +97,7 @@ public class CinnamonBookModel {
     private String generateNextCinnamonBookId() throws  SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT CinnamonBookId  FROM cinnamon_book ORDER BY CinnamonBookId DESC LIMIT 1";
+        String sql = "SELECT CinnamonBookId  FROM Cinnamon_Book ORDER BY CinnamonBookId DESC LIMIT 1";
 
        ResultSet resultSet =  connection.prepareStatement(sql).executeQuery();
 
@@ -131,7 +133,7 @@ public class CinnamonBookModel {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
-       String sql =  "SELECT dailyAmount FROM cinnamon_book WHERE date=?";
+       String sql =  "SELECT dailyAmount FROM Cinnamon_Book WHERE date=?";
 
        PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -149,7 +151,7 @@ public class CinnamonBookModel {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM cinnamon_book order by date";
+        String sql = "SELECT * FROM Cinnamon_Book order by date";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
 
