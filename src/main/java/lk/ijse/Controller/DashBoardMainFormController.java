@@ -9,6 +9,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.ijse.Model.CinnamonBookModel;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -43,6 +44,10 @@ public class DashBoardMainFormController {
 
     @FXML
     private PieChart chartProduction;
+
+    private final CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
+
+
 
     public void initialize() {
         updateDate();

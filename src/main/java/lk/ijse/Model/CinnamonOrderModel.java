@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class CinnamonOrderModel {
+public class CinnamonOrderModel{
 
 
     public String generateNextOrderId()throws SQLException {
@@ -28,9 +28,6 @@ public class CinnamonOrderModel {
            return  splitOrderId(currentOrderId);
         }
         return splitOrderId(currentOrderId);
-
-
-
 
 
 
@@ -56,7 +53,7 @@ public class CinnamonOrderModel {
 
     }
 
-    public static boolean saveOrder(String  Cinnamon_order_ID, String CusID, LocalDate date) throws SQLException{
+    public static boolean saveOrder(String Cinnamon_order_ID, String CusID, LocalDate date) throws SQLException{
         Connection connection = DbConnection.getInstance().getConnection();
 
 

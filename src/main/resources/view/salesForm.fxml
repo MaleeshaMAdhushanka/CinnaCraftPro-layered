@@ -29,7 +29,7 @@
             </DropShadow>
          </effect>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="510.0" layoutX="65.0" layoutY="147.0" stroke="WHITE" strokeType="INSIDE" width="406.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="510.0" layoutX="64.0" layoutY="145.0" stroke="WHITE" strokeType="INSIDE" width="406.0" />
       <Text fill="#636e72" layoutX="77.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID">
          <font>
             <Font name="Roboto Medium" size="22.0" />
@@ -113,7 +113,7 @@
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <Text fx:id="txtDate" layoutX="717.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="22.802734375">
+      <Text fx:id="txtDate" layoutX="722.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="222.802734375">
          <font>
             <Font size="21.0" />
          </font>
@@ -181,5 +181,10 @@
       <MFXComboBox fx:id="cmbCinnamonType" layoutX="262.0" layoutY="304.0" onAction="#cmbCinnamonTypeOnAction" prefHeight="42.0" prefWidth="179.0" />
       <MFXComboBox fx:id="cmbPackSize" layoutX="262.0" layoutY="381.0" onAction="#cmbPackSizeOnAction" prefHeight="42.0" prefWidth="179.0" />
       <MFXTextField fx:id="txtFieldQty" layoutX="266.0" layoutY="504.0" onAction="#txtFieldQtyOnAction" prefHeight="51.0" prefWidth="179.0" />
+      <Text fx:id="txtMassage" fill="#d93025" layoutX="137.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Valid Qty" visible="false">
+         <font>
+            <Font name="Roboto" size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
