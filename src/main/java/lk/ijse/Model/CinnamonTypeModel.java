@@ -84,7 +84,7 @@ public class CinnamonTypeModel {
 
        Connection connection =  DbConnection.getInstance().getConnection();
 
-       String sql = "UPDATE Cinnamon_types SE amount = amount + ? WHERE typeID = ?";
+       String sql = "UPDATE Cinnamon_types SET amount = amount + ? WHERE typeID = ?";
 
        PreparedStatement pstm = connection.prepareStatement(sql);
 

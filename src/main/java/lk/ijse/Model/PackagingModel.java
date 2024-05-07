@@ -51,7 +51,7 @@ public class PackagingModel {
     }
 
 
-    public String getPackId(String cinnamonTypeId, String packSize ) throws  SQLException{
+    public String getPackId(String cinnamonTypeId, String packSize) throws  SQLException{
         Connection connection = DbConnection.getInstance().getConnection();
 
 

@@ -8,8 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class CinnamonOrderModel{
-
+public class CinnamonOrderModel {
 
     public String generateNextOrderId()throws SQLException {
 
@@ -24,15 +23,14 @@ public class CinnamonOrderModel{
         String currentOrderId = null;
 
         if (resultSet.next()) {
-           currentOrderId = resultSet.getString(1);
-           return  splitOrderId(currentOrderId);
+            currentOrderId = resultSet.getString(1);
+            return  splitOrderId(currentOrderId);
         }
         return splitOrderId(currentOrderId);
 
 
 
     }
-
     private String splitOrderId(String currentOrderId) {
         if (currentOrderId != null) {
             String [] split = currentOrderId.split("O");
@@ -52,7 +50,6 @@ public class CinnamonOrderModel{
         return "O001";
 
     }
-
     public static boolean saveOrder(String Cinnamon_order_ID, String CusID, LocalDate date) throws SQLException{
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -67,9 +64,7 @@ public class CinnamonOrderModel{
 
         return   pstm.executeUpdate()>0;
     }
-
-
-      public int getOrderCount(String date) throws SQLException{
+    public int getOrderCount(String date) throws SQLException{
 
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -84,13 +79,26 @@ public class CinnamonOrderModel{
 
         int count = 0;
 
-          if (resultSet.next()) {
-              count = resultSet.getInt(1);
-          }
-          return count;
+        if (resultSet.next()) {
+            count = resultSet.getInt(1);
+        }
+        return count;
 
 
-      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

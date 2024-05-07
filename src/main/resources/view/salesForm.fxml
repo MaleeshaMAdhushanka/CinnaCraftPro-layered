@@ -80,17 +80,17 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtName" layoutX="311.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="12.5625">
+      <Text fx:id="txtName" layoutX="266.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="169.0">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtCount" layoutX="284.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="12.5625">
+      <Text fx:id="txtCount" layoutX="266.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="169.0">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtPrice" layoutX="290.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="12.5625">
+      <Text fx:id="txtPrice" layoutX="290.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="165.6337890625">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>

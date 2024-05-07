@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.ComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ProcessingFormController">
    <children>
@@ -37,13 +37,11 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbDate" layoutX="130.0" layoutY="259.0" onAction="#cmbDateOnAction" prefHeight="43.0" prefWidth="222.0" />
       <Text layoutX="133.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinnamon Type" wrappingWidth="214.7294921875">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbType" layoutX="133.0" layoutY="362.0" prefHeight="43.0" prefWidth="222.0" />
       <Text layoutX="132.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="108.7294921875">
          <font>
             <Font size="24.0" />
@@ -54,7 +52,6 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtAmount" layoutX="133.0" layoutY="453.0" onAction="#txtAmountOnAction" prefHeight="43.0" prefWidth="90.0" />
       <JFXButton fx:id="btnAddDetails" buttonType="RAISED" layoutX="133.0" layoutY="528.0" onAction="#btnAddDetailsOnAction" prefHeight="43.0" prefWidth="121.0" style="-fx-background-color: black;" text="   Add" textFill="#ebb619">
          <font>
             <Font size="16.0" />
@@ -90,5 +87,8 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <MFXFilterComboBox fx:id="cmbDate" layoutX="133.0" layoutY="259.0" onAction="#cmbDateOnAction" prefHeight="50.0" prefWidth="222.0" />
+      <MFXComboBox fx:id="cmbType" layoutX="132.0" layoutY="362.0" prefHeight="50.0" prefWidth="222.0" />
+      <MFXTextField fx:id="txtAmount" layoutX="131.0" layoutY="451.0" onAction="#txtAmountOnAction" />
    </children>
 </AnchorPane>

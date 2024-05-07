@@ -21,7 +21,6 @@ import lk.ijse.Model.CinnamonBookModel;
 import lk.ijse.Model.SupplierModel;
 import lk.ijse.Tm.CinnamonBarkStockTm;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
@@ -180,12 +179,29 @@ public class CinnamonBarkFormController {
 
 
                 obList.get(i).getUpdateButton().setOnAction(event -> {
-                    btnUpdateStockOnAction(dtoList.get(index).getCinnamonStockID());
+                 //   btnUpdateStockOnAction(dtoList.get(index).getCinnamonStockID());
                 });
                 obList.get(i).getDeleteButton().setOnAction(event -> {
 
                     String cinnamonStockID= dtoList.get(index).getCinnamonStockID();
-                    btnDeleteStockOnAction(cinnamonStockID);
+                  //  btnDeleteStockOnAction(cinnamonStockID);
+
+
+                    /*
+
+                    try {
+                       updateCinnamon(cinnamonStockID, SupID);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    try {
+                        deleteCinnamon(cinnamonStockID);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    
+                     */
 
 
                     try {
@@ -211,6 +227,15 @@ public class CinnamonBarkFormController {
         }
 
 
+    }
+
+    private void deleteCinnamon(String cinnamonStockID) throws SQLException {
+        cinnamonBarkStockModel.deleteCinnamonBarkStock(cinnamonStockID);
+
+    }
+    public void updateCinnamon(String cinnamonStockID, String SupID, String CinnamonBookID,  double amount ) throws SQLException{
+        CinnamonBarkStockDto cinnamonBarkStockDto = new CinnamonBarkStockDto(cinnamonStockID, SupID, CinnamonBookID, amount, false);
+        boolean isUpdated = cinnamonBarkStockModel.updateCinnamonBarkStock(cinnamonBarkStockDto);
     }
 
     private void setCurrentDailyAmount(String date) {
@@ -303,13 +328,55 @@ public class CinnamonBarkFormController {
     }
 
     @FXML
-    void btnDeleteStockOnAction(String event) {
+    void btnDeleteStockOnAction(ActionEvent event) {
+        /*
+
+        boolean isValidated = validateFields();
+
+        if (!isValidated) {
+            return;
+        }
+
+        String CinnamonStockID = txtCinnamonBarkStockId.getText();
+        String  SupID = cmbSupplierId.getText();
+        String date = txtDate.getText();
+//        double  amount = Double.parseDouble(txtAmount1.getText());
+
+
+        try {
+            String cinnamonBookId = cinnamonBookModel.getCinnamonBookId(date);
+
+            boolean isDeleted = cinnamonBarkStockModel.deleteCinnamonBarkStock(new CinnamonBarkStockDto(cinnamonBookId, SupID, date, 0.0, false));
+            //Updated Daily Amount On UI
+
+            double dailyAmount =  cinnamonBarkStockModel.getTotalAmount(cinnamonBookId);
+
+
+            //update Database
+            cinnamonBookModel.updateCinnamonBookAmount(cinnamonBookId, dailyAmount);
+
+            setCurrentDailyAmount(date);
+            loadAllStockDetails(date);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully").show();
+            }
+
+
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+         */
+
 
     }
 
-    @FXML
-    void btnUpdateStockOnAction(String event) {
 
+
+
+    @FXML
+    void btnUpdateStockOnAction(ActionEvent event) {
 
         boolean isValidated = validateFields();
 

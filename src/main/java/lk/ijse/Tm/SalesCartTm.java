@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class SalesCartTm {
 
     private String packId;
-    ;
+
 
     private String type;
 
@@ -42,9 +42,15 @@ public class SalesCartTm {
         removeButton.setPrefWidth(100);
     }
 
+    public SalesCartTm(String packId, String cinnamonType, String size, int qty, double total) {
+        this.packId = packId;
+        this.type = cinnamonType;
+        this.size = size;
+        this.qty = qty;
+        this.total = total;
 
-   // public SalesCartTm() {
+    }
 
-   // }
+
 }
 

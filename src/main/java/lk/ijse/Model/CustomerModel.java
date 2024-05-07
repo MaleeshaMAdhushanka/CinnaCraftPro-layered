@@ -154,6 +154,21 @@ public class CustomerModel {
         return pstm.executeUpdate()>0;
 
     }
+    public String searchCustomerId(String cusNum) throws SQLException{
+        Connection connection = DbConnection.getInstance().getConnection();
+
+
+        String sql = "SELECT CusId FROM Customer WHERE mobileNo =?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, cusNum);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getString(1);
+    }
 
 
 
