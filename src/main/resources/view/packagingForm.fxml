@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
-<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +16,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.PackagingFromController">
    <children>
-      <Text fill="#636e72" layoutX="70.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Packing">
+      <Text fill="#636e72" layoutX="63.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Packing">
          <font>
             <Font name="Roboto Medium" size="37.0" />
          </font>
@@ -29,88 +28,16 @@
             </DropShadow>
          </effect>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="507.0" layoutX="103.0" layoutY="127.0" stroke="WHITE" strokeType="INSIDE" width="374.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="114.0" layoutX="484.0" layoutY="127.0" stroke="WHITE" strokeType="INSIDE" width="530.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="384.0" layoutX="484.0" layoutY="251.0" stroke="WHITE" strokeType="INSIDE" width="530.0" />
-      <Text layoutX="141.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Packing ID" wrappingWidth="124.7294921875">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtSupplierId" layoutX="372.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PD001" wrappingWidth="76.7294921875">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text layoutX="166.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="57.7294921875">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text layoutX="115.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinnamon Type" wrappingWidth="176.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text layoutX="174.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" wrappingWidth="57.7294921875">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Text layoutX="174.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count" wrappingWidth="76.7294921875">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <TextField fx:id="txtFieldCount" layoutX="297.0" layoutY="471.0" onAction="#txtFiledCountOnAction" prefHeight="35.0" prefWidth="105.0" />
-      <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="136.0" layoutY="542.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="125.0" style="-fx-background-color: black;" text="Add" textFill="#ebb619">
-         <graphic>
-            <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/iconsnext.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="346.0" layoutY="542.0" onAction="#btnCancelOnAction" prefHeight="54.0" prefWidth="118.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619" />
-      <Text fill="#636e72" layoutX="498.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinnamon Types">
-         <font>
-            <Font name="Roboto Medium" size="23.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtcassia" layoutX="498.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cassia- " wrappingWidth="133.34814453125">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtverum" layoutX="682.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="verum-" wrappingWidth="133.34814453125">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtburmannii" layoutX="842.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="burmannii-" wrappingWidth="105.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TableView fx:id="tblPackaging" layoutX="498.0" layoutY="266.0" prefHeight="260.0" prefWidth="504.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="455.0" layoutX="55.0" layoutY="240.0" stroke="WHITE" strokeType="INSIDE" width="913.0" />
+      <TableView fx:id="tblPackaging" layoutX="59.0" layoutY="245.0" prefHeight="445.0" prefWidth="913.0">
         <columns>
-          <TableColumn fx:id="colPackId" prefWidth="100.0" text="Package ID" />
-          <TableColumn fx:id="colType" prefWidth="82.0" text="Type" />
-            <TableColumn fx:id="colSize" prefWidth="116.0" text="Size" />
-            <TableColumn fx:id="colCount" prefWidth="92.0" text="Count" />
-            <TableColumn fx:id="colDelete" prefWidth="113.0" text="Delete" />
+          <TableColumn fx:id="colPackId" prefWidth="189.0" text="Package ID" />
+          <TableColumn fx:id="colType" prefWidth="172.0" text="Type" />
+            <TableColumn fx:id="colSize" prefWidth="178.0" text="Size" />
+            <TableColumn fx:id="colPrice" prefWidth="181.0" text="price" />
+            <TableColumn fx:id="colPackageCount" prefWidth="192.0" text="Package Count" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnConfirm" buttonType="RAISED" layoutX="682.0" layoutY="542.0" onAction="#btnConfirmOnAction" prefHeight="54.0" prefWidth="125.0" style="-fx-background-color: black;" text="Confirm" textFill="#ebb619">
-         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/iconsdoubletick.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
       <JFXButton fx:id="btnSizeEdit" buttonType="RAISED" layoutX="933.0" layoutY="76.0" onAction="#btnSizeEditOnAction" prefHeight="43.0" prefWidth="58.0" style="-fx-background-color: black;" textFill="#000000f5">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
@@ -119,8 +46,48 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <MFXFilterComboBox fx:id="cmbDate" layoutX="297.0" layoutY="208.0" onAction="#cmbDateOnAction" prefHeight="42.0" prefWidth="167.0" />
-      <MFXComboBox fx:id="cmbCinnamonType" layoutX="297.0" layoutY="304.0" onAction="#cmbCinnamonTypeOnAction" prefHeight="42.0" prefWidth="167.0" />
-      <MFXComboBox fx:id="cmbPackSize" layoutX="297.0" layoutY="388.0" prefHeight="42.0" prefWidth="167.0" />
+      <JFXButton fx:id="btnUpdatePackage" buttonType="RAISED" layoutX="754.0" layoutY="72.0" onAction="#btnUpdatePackageOnAction" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: black;" text="Update" textFill="#ebb619">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8update48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <MFXTextField fx:id="txtFieldCount" layoutX="615.0" layoutY="73.0" onAction="#txtFieldCountOnAction" prefHeight="22.0" prefWidth="101.0" />
+      <Label layoutX="105.0" layoutY="98.0" prefHeight="43.0" prefWidth="111.0" text="Package ID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="177.0" prefHeight="43.0" prefWidth="133.0" text="Package type">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="436.0" layoutY="98.0" prefHeight="43.0" prefWidth="48.0" text="Size">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text fx:id="lblId" layoutX="216.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="165.7294921875">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblType" layoutX="226.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="144.7294921875">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblSize" layoutX="484.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="85.7294921875">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

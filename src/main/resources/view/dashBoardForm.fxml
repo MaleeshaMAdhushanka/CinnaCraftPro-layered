@@ -31,30 +31,6 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnCinnamon" onAction="#btnCinnamonOnAction" prefHeight="50.0" prefWidth="218.0" text="  Cinnamon" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/icons8cinnamon91.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton fx:id="btnProcessing" onAction="#btnProcessingOnAction" prefHeight="52.0" prefWidth="217.0" text="  Processing" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/processing.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
                   <JFXButton fx:id="btnPackaging" onAction="#btnPackagingOnAction" prefHeight="58.0" prefWidth="222.0" text="  Packaging" textFill="WHITE">
                      <font>
                         <Font size="20.0" />

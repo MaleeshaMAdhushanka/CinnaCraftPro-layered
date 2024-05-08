@@ -13,8 +13,7 @@ import java.io.IOException;
 
 public class DashBoardFormController {
 
-    @FXML
-    private JFXButton btnCinnamon;
+
 
     @FXML
     private JFXButton btnCustomer;
@@ -35,9 +34,6 @@ public class DashBoardFormController {
     private JFXButton btnPackaging;
 
     @FXML
-    private JFXButton btnProcessing;
-
-    @FXML
     private JFXButton btnSales;
 
     @FXML
@@ -54,13 +50,9 @@ public class DashBoardFormController {
         mainPane.getChildren().clear();
         mainPane.getChildren().add(registerPane);
 
-        //active the dashboard Button
-        setButtonActive(btnDashboard);
-
     }
     @FXML
     void btnDashboardOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnDashboard);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/dashBoardMainForm.fxml"));
         Pane registerPane = (Pane)fxmlLoader.load();
@@ -71,25 +63,8 @@ public class DashBoardFormController {
     }
 
 
-
-    @FXML
-    void btnCinnamonOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnCinnamon);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/cinnamonBarkForm.fxml"));
-        Pane registerPane = (Pane)fxmlLoader.load();
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(registerPane);
-
-
-
-
-    }
-
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnCustomer);
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/customerForm.fxml"));
         Pane registerPane = (Pane) fxmlLoader.load();
         mainPane.getChildren().clear();
@@ -99,7 +74,6 @@ public class DashBoardFormController {
     }
     @FXML
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
-        setButtonActive(btnEmployee);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/employeeForm.fxml"));
         Pane registerPane = (Pane) fxmlLoader.load();
@@ -115,7 +89,6 @@ public class DashBoardFormController {
 
     @FXML
     void btnFertilizerOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnFertilizer);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fertilizerSalesForm.fxml"));
         Pane registerPane = (Pane) fxmlLoader.load();
@@ -141,8 +114,6 @@ public class DashBoardFormController {
 
     @FXML
     void btnPackagingOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnFertilizer);
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/packagingForm.fxml"));
         Pane registerPane = (Pane) fxmlLoader.load();
         mainPane.getChildren().clear();
@@ -151,19 +122,11 @@ public class DashBoardFormController {
 
     }
 
-    @FXML
-    void btnProcessingOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnProcessing);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/processingForm.fxml"));
-        Pane registerPane = (Pane) fxmlLoader.load();
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(registerPane);
 
-    }
 
     @FXML
     void btnSalesOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnSales);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/salesForm.fxml"));
         Pane registerPane = (Pane) fxmlLoader.load();
         mainPane.getChildren().clear();
@@ -174,7 +137,7 @@ public class DashBoardFormController {
 
     @FXML
     void btnSupplierOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnSupplier);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/supplierForm.fxml"));
         Pane registerPane = (Pane) fxmlLoader.load();
         mainPane.getChildren().clear();
@@ -182,20 +145,6 @@ public class DashBoardFormController {
     }
 
 
-    private void setButtonActive(JFXButton btnDashboard) {
-        btnDashboard.getStyleClass().removeAll("active- button" , "button");
-        btnCinnamon.getStyleClass().removeAll("active - button", "button");
-        btnProcessing.getStyleClass().removeAll("active - button", "button");
-        btnPackaging.getStyleClass().removeAll("active - button", "button");
-        btnSales.getStyleClass().removeAll("active - button", "button");
-        btnSupplier.getStyleClass().removeAll("active - button", "button");
-        btnCustomer.getStyleClass().removeAll("active - button", "button");
-        btnLogout.getStyleClass().removeAll("active - button ", "bitton");
-        btnFertilizer.getStyleClass().removeAll("active - button", "button");
-
-        btnDashboard.getStyleClass().add("JFXButton- active-button");
-
-    }
 
 
 }

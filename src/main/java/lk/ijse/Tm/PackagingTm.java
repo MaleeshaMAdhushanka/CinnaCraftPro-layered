@@ -12,39 +12,19 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class PackagingTm {
-    private String  packagingDetailsId;
+    private String  PackageID;
 
-    private String type;
+    private String Type;
 
-    private  String size;
+    private  String Size;
 
-    private int count;
+    private double price;
 
-    private MFXButton deleteButton;
+    private int PackageCount;
 
-    {
-        ImageView delete = new ImageView(new Image("/assets/icons8delete48.png"));
-        delete.setFitHeight(30);
-        delete.setPreserveRatio(true);
 
-        deleteButton = new MFXButton("",delete);
 
-        deleteButton.setCursor(javafx.scene.Cursor.HAND);
-        deleteButton.setStyle("-fx-background-color: transparent; -fx-text-fill: white");
 
-        deleteButton.setPrefHeight(30);
-        deleteButton.setPrefWidth(100);
-    }
-
-    public PackagingTm(String packagingDetailsId, String type,String size, int count) {
-        this.packagingDetailsId = packagingDetailsId;
-
-        this.type = type;
-
-        this.size = size;
-        this.count = count;
-
-    }
 
 
 }

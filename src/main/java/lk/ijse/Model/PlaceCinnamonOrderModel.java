@@ -21,18 +21,20 @@ public class PlaceCinnamonOrderModel {
 
         try {
 
-
             connection = DbConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
 
             boolean isOrderSaved = CinnamonOrderModel.saveOrder(dto.getCinnamon_order_ID(), dto.getCusID(), dto.getDate());
 
+            System.out.println(isOrderSaved);
+
             if (isOrderSaved) {
                 boolean isUpdated = packagingModel.updatePackaging(dto.getTmList());
 
+                System.out.println(isUpdated);
+
                 if (isUpdated) {
                     boolean isOrderDetailSaved = cinnamonOrderDetailModel.saveOrderDetail(dto.getCinnamon_order_ID(), dto.getTmList());
-
                     if (isOrderDetailSaved) {
                         connection.commit();
                         result = true;
@@ -41,6 +43,7 @@ public class PlaceCinnamonOrderModel {
             }
         }
           catch (SQLException e) {
+            e.printStackTrace();
             connection.rollback();
         }finally {
             connection.setAutoCommit(true);

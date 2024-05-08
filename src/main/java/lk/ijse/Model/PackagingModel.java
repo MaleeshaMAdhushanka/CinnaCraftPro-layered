@@ -86,8 +86,9 @@ public class PackagingModel {
            String id =   resultSet.getString(1);
            String typeId = resultSet.getString(2);
            String description =  resultSet.getString(3);
-           int count = resultSet.getInt(4);
-           double price = resultSet.getDouble(5);
+           double price = resultSet.getDouble(4);
+            int count = resultSet.getInt(5);
+
 
            dto = new PackagingDto(id, typeId, description, count, price);
 
@@ -176,8 +177,8 @@ public class PackagingModel {
           String packId = resultSet.getString(1);
           String typeId = resultSet.getString(2);
           String description = resultSet.getString(3);
-           int count = resultSet.getInt(4);
-          double price =resultSet.getDouble(5);
+          double price = resultSet.getDouble(4);
+          int count =resultSet.getInt(5);
           dto = new PackagingDto(packId, typeId, description, count, price);
 
           dtoList.add(dto);
@@ -280,5 +281,15 @@ public class PackagingModel {
         return  pstm.executeUpdate()>0;
     }
 
+
+    public boolean updatePackageCount (String packId,int count) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        String sql = "UPDATE packing SET packageCount=? WHERE packId=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);;
+
+        pstm.setInt(1,count);
+        pstm.setString(2,packId);
+        return pstm.executeUpdate()>0;
+    }
 
 }

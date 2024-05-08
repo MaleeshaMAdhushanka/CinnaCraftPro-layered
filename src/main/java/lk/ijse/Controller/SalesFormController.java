@@ -142,6 +142,8 @@ public class SalesFormController {
                 pacakageDetails.add(new ArrayList<>());
                 pacakageDetails.get(i).add(dtoList.get(i).getPackId());
                 pacakageDetails.get(i).add(String.valueOf(dtoList.get(i).getPackageCount()));
+
+                System.out.println(dtoList.get(i).getPackageCount());
             }
 
 
@@ -237,6 +239,9 @@ public class SalesFormController {
 
 
         for (int i = 0; i < tblCart.getItems().size(); i++) {
+
+
+
             if(cinnamonType.equals(colType.getCellData(i)) && packSize.equals(colSize.getCellData(i))) {
 
                 qty +=(int) colQty.getCellData(i);
@@ -298,24 +303,33 @@ public class SalesFormController {
 
         try {
             //getting Cinnamon type id
-            String cinnamonTypeId =  cinnamonTypeModel.getCinnamonType(cinnamonType);
+
+
+            String cinnamonTypeId =  cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
+
+
 
 
             //Finding packk id According to cinnamon Type id and packSize
             String packId = packagingModel.getPackId(cinnamonTypeId, packSize);
 
+
             PackagingDto dto = packagingModel.searchPackaging(packId);
+
+
 
             //get Details From Packaging Details Array List
 
-            int cout = getPackageCount(packId);
+            int count = getPackageCount(packId);
 
 
             //set Values
-            txtCount.setText(String.valueOf(cout));
+            txtCount.setText(String.valueOf(count));
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+            e.printStackTrace();
         }
 
 
@@ -451,6 +465,7 @@ public class SalesFormController {
                 return Integer.parseInt(pacakageDetails.get(i).get(1));
             }
         }
+
         return 0;
 
     }
@@ -504,7 +519,8 @@ public class SalesFormController {
         try {
             boolean isSuccess = placeCinnamonOrderModel.placeOrder(dto);
 
-            if (!isSuccess) {
+            if (
+                    isSuccess) {
                 new Alert(Alert.AlertType.CONFIRMATION, "order Completed").show();
                 setFieldsForReport(orderId, cusId, txtName.getText(), txtNetTotal.getText());
                 tblCart.getItems().clear();
@@ -518,12 +534,12 @@ public class SalesFormController {
                 cmbCustomerNum.clear();
 
                 generateNextOrderId();
-
-
             }
 
 
         } catch (SQLException e) {
+
+            e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
@@ -627,6 +643,8 @@ public class SalesFormController {
         }
 
 
+
+
         try {
             //Getting cinnamon typed id
             String cinnamonTypeId = cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
@@ -635,12 +653,18 @@ public class SalesFormController {
             //Finding Pack id Accordig to cinnamon type id and pack size;
             String packId = packagingModel.getPackId(cinnamonTypeId, packSize);
 
+
+
+
+
             PackagingDto dto = packagingModel.searchPackaging(packId);
+
 
 
             //get  details from Packaging Details Array List
 
             int count = getPackageCount(packId);
+
 
 
             //set Values

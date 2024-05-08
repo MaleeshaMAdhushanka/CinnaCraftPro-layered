@@ -3,18 +3,25 @@ package lk.ijse.Controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.ijse.Dto.CinnamonTypeDto;
 import lk.ijse.Model.CinnamonBookModel;
+import lk.ijse.Model.CinnamonTypeModel;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 public class DashBoardMainFormController {
 
@@ -47,11 +54,13 @@ public class DashBoardMainFormController {
 
     private final CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
 
+    CinnamonTypeModel cinnamonTypeModel = new CinnamonTypeModel();
 
 
     public void initialize() {
         updateDate();
         updateTime();
+        setUpPieChart();
     }
 
 
@@ -63,6 +72,41 @@ public class DashBoardMainFormController {
     }
 
     private void setUpPieChart() {
+
+
+            int blackTea =0;
+            int greenTea =0;
+            int oolongTea =0;
+            try {
+
+                List<CinnamonTypeDto> dto = cinnamonTypeModel.getAllCinnamonType();
+
+                blackTea= (int)dto.get(0).getAmount();
+                greenTea= (int) dto.get(1).getAmount();
+                oolongTea= (int) dto.get(2).getAmount();
+
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                    new PieChart.Data("Black ", blackTea),
+                    new PieChart.Data("Green ", greenTea),
+                    new PieChart.Data("Oolong ", oolongTea));
+
+
+            pieChartData.forEach(data ->
+                    data.nameProperty().bind(
+                            Bindings.concat(
+                                    data.getName(),data.pieValueProperty()
+                            )
+                    )
+            );
+
+            chartProduction.getData().addAll(pieChartData);
+
+
     }
 
     private void setDashBoardTextFields() {
