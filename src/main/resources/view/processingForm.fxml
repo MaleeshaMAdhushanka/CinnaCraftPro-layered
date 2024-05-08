@@ -64,8 +64,8 @@
       </JFXButton>
       <TableView fx:id="tblProcessing" layoutX="482.0" layoutY="176.0" prefHeight="343.0" prefWidth="456.0">
         <columns>
-          <TableColumn fx:id="ColId" prefWidth="107.0" text="ID" />
-          <TableColumn fx:id="ColType" prefWidth="98.0" text="Type" />
+          <TableColumn fx:id="colId" prefWidth="107.0" text="ID" />
+          <TableColumn fx:id="colType" prefWidth="98.0" text="Type" />
             <TableColumn fx:id="colAmount" prefWidth="132.0" text="Amount" />
             <TableColumn fx:id="colDelete" prefWidth="117.0" text="Delete" />
         </columns>
