@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -20,15 +19,13 @@
             <Font name="Roboto" size="13.0" />
          </font>
       </Text>
-      <Text fill="#636e72" layoutX="78.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Username and Password to login in to the system." wrappingWidth="366.9736328125">
+      <Text fill="#636e72" layoutX="78.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Username and Password to login in to the system." wrappingWidth="366.9736328125">
          <font>
             <Font name="Roboto" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="txtUsername" layoutX="78.0" layoutY="265.0" onAction="#txtUserNameOnAction" prefHeight="50.0" prefWidth="320.0" />
-      <PasswordField fx:id="txtPassword" layoutX="78.0" layoutY="343.0" onAction="#txtPasswordOnAction" prefHeight="50.0" prefWidth="320.0" />
-      <Button fx:id="btnCreateAccount" layoutX="248.0" layoutY="469.0" onAction="#btnCreateAccountOnAction" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: black;" text="Create Account" textFill="#ebb619" />
-      <Text fx:id="txtForgotPassword" fill="#636e72" layoutX="270.0" layoutY="435.0" onDragDetected="#txtForgotPasswordOnAction" onMouseClicked="#txtForgotPasswordOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" wrappingWidth="138.69140625">
+      <Button fx:id="btnCreateAccount" layoutX="283.0" layoutY="469.0" onAction="#btnCreateAccountOnAction" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: black;" text="Create Account" textFill="#ebb619" />
+      <Text fx:id="txtForgotPassword" fill="#636e72" layoutX="289.0" layoutY="457.0" onDragDetected="#txtForgotPasswordOnAction" onMouseClicked="#txtForgotPasswordOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" wrappingWidth="138.69140625">
          <font>
             <Font name="Roboto" size="15.0" />
          </font>
@@ -47,5 +44,7 @@
             <Font size="22.0" />
          </font>
       </Text>
+      <TextField fx:id="txtUsername" layoutX="76.0" layoutY="255.0" onAction="#txtUsernameOnAction" prefHeight="51.0" prefWidth="328.0" promptText="UserName" />
+      <TextField fx:id="txtPassword" layoutX="76.0" layoutY="354.0" onAction="#txtPasswordOnAction" prefHeight="50.0" prefWidth="328.0" promptText="Password" />
    </children>
 </AnchorPane>

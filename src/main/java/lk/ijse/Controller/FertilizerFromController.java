@@ -21,6 +21,7 @@ import lk.ijse.Tm.FertilizerTm;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class FertilizerFromController {
@@ -151,6 +152,15 @@ public class FertilizerFromController {
 
     @FXML
     void btnAddFertilizerOnAction(ActionEvent event) {
+
+        boolean isValidated = validatedFields();
+
+        if (!isValidated) {
+            return;
+        }
+
+
+
         String fertilizerId= txtFertilizerId.getText();
         String brand= txtBrand.getText();
         String description = txtDescription.getText();
@@ -171,6 +181,35 @@ public class FertilizerFromController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+
+    }
+
+    private boolean validatedFields() {
+        String brand = txtBrand.getText();
+
+        boolean isValidateBrand = Pattern.matches("[A-Za-z ]{3,}",brand);
+        if (!isValidateBrand){
+            txtBrand.requestFocus();
+            txtBrand.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+        txtBrand.getStyleClass().removeAll("mfx-text-field-error");
+
+
+
+
+        String qty = txtQty.getText();
+
+        boolean isValidateQty = Pattern.matches("[1-9][0-9]*",qty);
+
+        if (!isValidateQty){
+            txtQty.getStyleClass().add("mfx-text-field-error");
+            txtQty.requestFocus();
+            return false;
+        }
+        txtQty.getStyleClass().removeAll("mfx-text-field-error");
+
+        return true;
 
     }
 

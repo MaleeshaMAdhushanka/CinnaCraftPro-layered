@@ -1,5 +1,7 @@
 package lk.ijse.Controller;
 
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -41,8 +42,10 @@ public class LoginFormController {
     @FXML
     private Text txtMassage;
 
+
+
     @FXML
-    private PasswordField txtPassword;
+    private TextField txtPassword;
 
     @FXML
     private TextField txtUsername;
@@ -69,7 +72,7 @@ public class LoginFormController {
     }
 
     @FXML
-    void btnLoginOnAction(ActionEvent event) throws IOException{
+    void btnLoginOnAction() throws IOException{
 
         boolean isLoginValidated = validateLogin();
 
@@ -93,9 +96,26 @@ public class LoginFormController {
 
     private boolean validateLogin() {
 
+
         String userName = txtUsername.getText();
 
+        if(Objects.equals(userName, "")){
+            txtUsername.requestFocus();
+            txtUsername.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+        txtUsername.getStyleClass().removeAll("mfx-text-field-error");
+
         String password = txtPassword.getText();
+
+        if(Objects.equals(password, "")){
+            txtPassword.requestFocus();
+            txtPassword.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+        txtPassword.getStyleClass().removeAll("mfx-text-field-error");
+
+
 
        //validate karanna userNme eka
         boolean isUsernameExist = false;
@@ -108,10 +128,17 @@ public class LoginFormController {
         }
 
         if (!isUsernameExist){
+            txtMassage.setVisible(true);
+            txtUsername.requestFocus();
+            txtMassage.setText("User doesnt exist.");
 
             new Alert(Alert.AlertType.ERROR," User doesnt exit.").show();
             return false;
         }
+
+        txtUsername.getStyleClass().removeAll("mfx-text-field-error");
+        txtMassage.setVisible(false);
+
 
 
 
@@ -127,9 +154,13 @@ public class LoginFormController {
 
 
         if (!isUserExist) {
+            txtMassage.setVisible(true);
+            txtPassword.requestFocus();
             new Alert(Alert.AlertType.ERROR," Invalid Password ").show();
             return false;
         }
+        txtPassword.getStyleClass().removeAll("mfx-text-field-error");
+        txtMassage.setVisible(false);
 
 
 
@@ -150,15 +181,21 @@ public class LoginFormController {
 
     @FXML
     void txtPasswordOnAction(ActionEvent event) throws IOException {
-        btnLoginOnAction(event);
+        btnLoginOnAction();
 
     }
 
-    @FXML
-    void txtUserNameOnAction(ActionEvent event) throws IOException{
-        btnLoginOnAction(event);
+//    @FXML
+//    void txtUserNameOnAction(ActionEvent event) throws IOException{
+//        btnLoginOnAction(event);
+//
+//    }
+      @FXML
+    void txtUsernameOnAction(ActionEvent event) throws IOException {
+        btnLoginOnAction();
 
-    }
+}
+
 
 
 }

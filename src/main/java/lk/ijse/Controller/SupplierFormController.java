@@ -177,6 +177,12 @@ public class SupplierFormController {
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
+
+
+
+
+
+
        String SupID = txtSupplierId.getText();
        String firstName =  txtFirstName.getText();
        String lastName = txtLastName.getText();

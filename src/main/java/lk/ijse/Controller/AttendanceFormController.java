@@ -30,6 +30,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class AttendanceFormController {
@@ -115,6 +116,10 @@ public class AttendanceFormController {
     @FXML
     void btnAttendOnAction(ActionEvent event) {
 
+        boolean attendanceValidate = attendanceValidate();
+        if (!attendanceValidate) {
+            return;
+        }
 
         String attendanceId = txtAttendanceId.getText();
         String empId = cmbEmployeeId.getValue();
@@ -146,6 +151,20 @@ public class AttendanceFormController {
         }
 
 
+
+    }
+
+    private boolean attendanceValidate() {
+
+        if (Objects.equals(cmbEmployeeId.getValue(), "")){
+            cmbEmployeeId.requestFocus();
+            cmbEmployeeId.getStyleClass().add("mfx-combo-box-error");
+            return false;
+        }
+
+        cmbEmployeeId.getStyleClass().removeAll("mfx-combo-box-error");
+
+        return true;
 
     }
 

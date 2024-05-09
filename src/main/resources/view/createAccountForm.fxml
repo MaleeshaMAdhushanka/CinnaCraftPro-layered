@@ -32,5 +32,10 @@
             <Font size="16.0" />
          </font>
       </JFXButton>
+      <Text fx:id="txtMassage" fill="#d93025" layoutX="90.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

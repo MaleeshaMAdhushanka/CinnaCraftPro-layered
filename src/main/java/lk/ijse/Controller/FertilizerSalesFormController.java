@@ -36,6 +36,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class FertilizerSalesFormController {
 
@@ -215,6 +216,13 @@ public class FertilizerSalesFormController {
     @FXML
     void btnAddCartOnAction(ActionEvent event) {
 
+
+        boolean isValidated = validateFields();
+
+        if (!isValidated) {
+            return;
+        }
+
         String fertilizerId = cmbFertilizer.getValue();
         String description = txtDescription.getText();
         int qty = Integer.parseInt(txtFieldQty.getText());
@@ -261,6 +269,44 @@ public class FertilizerSalesFormController {
         decreasePackageCount(fertilizerId,qty);
         itemCountRefresh();
         txtFieldQty.clear();
+
+    }
+
+    private boolean validateFields() {
+        if (Objects.equals(cmbCustomerId.getValue(), "")){
+            cmbCustomerId.requestFocus();
+            cmbCustomerId.getStyleClass().add("mfx-combo-box-error");
+            return false;
+        }
+
+        cmbCustomerId.getStyleClass().removeAll("mfx-combo-box-error");
+
+        if (Objects.equals(cmbFertilizer.getValue(), "")){
+            cmbFertilizer.requestFocus();
+            cmbFertilizer.getStyleClass().add("mfx-combo-box-error");
+            return false;
+        }
+
+        cmbFertilizer.getStyleClass().removeAll("mfx-combo-box-error");
+
+        String qty = txtFieldQty.getText();
+
+        boolean isValidateQty = Pattern.matches("[1-9][0-9]*",qty);
+
+        if (!isValidateQty){
+            txtFieldQty.requestFocus();
+            txtFieldQty.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtFieldQty.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        int count = getFertilizerCount(cmbFertilizer.getValue());
+
+        return true;
+
+
 
     }
 

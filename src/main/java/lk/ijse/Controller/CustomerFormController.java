@@ -17,6 +17,7 @@ import lk.ijse.Tm.CustomerTm;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CustomerFormController {
 
@@ -141,6 +142,11 @@ public class CustomerFormController {
     @FXML
     void btnAddCustomerOnAction(ActionEvent event) {
 
+        boolean isCustomerValidated = validateCustomer();
+        if (!isCustomerValidated ) {
+            return;
+        }
+
         String cusId= txtCustomerId.getText();
         String firstName= txtFirstName.getText();
         String lastName = txtLastName.getText();
@@ -161,6 +167,67 @@ public class CustomerFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+
+    }
+
+    private boolean validateCustomer() {
+
+        String firstName= txtFirstName.getText();
+        boolean isFirstNameValidated = Pattern.matches("[A-Za-z]{3,}",firstName);
+        if (!isFirstNameValidated){
+            txtFirstName.requestFocus();
+            txtFirstName.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtFirstName.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        String lastName = txtLastName.getText();
+        boolean isLastNameValidated = Pattern.matches("[A-Za-z]{3,}",lastName);
+        if (!isLastNameValidated){
+            txtLastName.requestFocus();
+            txtLastName.getStyleClass().add("mfx-text-field-error");
+
+            return false;
+        }
+
+        txtLastName.getStyleClass().removeAll("mfx-text-field-error");
+
+        String address = txtAddress.getText();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/ ]{3,}",address);
+        if (!isAddressValidated){
+            txtAddress.requestFocus();
+            txtAddress.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtAddress.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        String email = txtEmail.getText();
+        boolean isEmailValidated = Pattern.matches("[A-Za-z0-9@.]{3,}",email);
+        if (!isEmailValidated){
+            txtEmail.requestFocus();
+            txtEmail.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtEmail.getStyleClass().removeAll("mfx-text-field-error");
+
+        String mobileNo = txtMobileNo.getText();
+        boolean isMobileNoValidated = Pattern.matches("[0-9]{3,}",mobileNo);
+        if (!isMobileNoValidated){
+            txtMobileNo.requestFocus();
+            txtMobileNo.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtMobileNo.getStyleClass().removeAll("mfx-text-field-error");
+
+        return true;
+
+
 
     }
 
