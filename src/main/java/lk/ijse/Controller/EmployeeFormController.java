@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class EmployeeFormController {
 
@@ -166,6 +168,13 @@ public class EmployeeFormController {
 
     @FXML
     void btnAddEmployeeOnAction(ActionEvent event) {
+        boolean isEmployeeValidated = validateEmployee();
+
+        if (!isEmployeeValidated ) {
+            return;
+        }
+
+
         String empId = txtEmployeeId.getText();
         String fistName = txtFirstName.getText();
         String lastName = txtLastName.getText();
@@ -188,6 +197,68 @@ public class EmployeeFormController {
 
 
     }
+    private boolean validateEmployee() {
+
+        String firstName = txtFirstName.getText();
+        boolean isFirstNameValid = Pattern.matches("[A-Za-z]{3,}",firstName);
+        if (!isFirstNameValid){
+            txtFirstName.requestFocus();
+            txtFirstName.getStyleClass().removeAll("mfx-text-field-error");
+            return false;
+        }
+
+        txtFirstName.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        String lastName = txtLastName.getText();
+        boolean isLastNameValid = Pattern.matches("[A-Za-z]{3,}",lastName);
+        if (!isLastNameValid){
+            txtLastName.requestFocus();
+            txtLastName.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtLastName.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        String address = txtAddress.getText();
+        boolean isAddressValid = Pattern.matches("[A-Za-z0-9/ ]{3,}",address);
+        if (!isAddressValid){
+            txtAddress.requestFocus();
+            txtAddress.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtAddress.getStyleClass().removeAll("mfx-text-field-error");
+
+
+
+        if (Objects.equals(cmbSex.getText(), "")){
+            cmbSex.requestFocus();
+            cmbSex.getStyleClass().add("mfx-combo-box-error");
+            return false;
+        }
+
+        cmbSex.getStyleClass().removeAll("mfx-combo-box-error");
+
+
+
+
+
+
+        String mobileNo = txtMobileNo.getText();
+        boolean isMobileNoValid = Pattern.matches("[0-9]{3,}",mobileNo);
+        if (!isMobileNoValid){
+            txtMobileNo.requestFocus();
+            txtMobileNo.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtMobileNo.getStyleClass().removeAll("mfx-text-field-error");
+
+        return true;
+    }
+
 
     private void clearFields() {
         generateNextEmployeeId();

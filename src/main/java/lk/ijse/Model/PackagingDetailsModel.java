@@ -59,7 +59,7 @@ public class PackagingDetailsModel {
         Connection connection = DbConnection.getInstance().getConnection();
 
 
-        String sql = "INSERT INO packaging_details VALUES(?, ?, ?, ?, ?,?) ";
+        String sql = "INSERT INO packaging_details VALUES(?, ?, ?, ?, ?,?,?) ";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getPackagingDetailsId());
@@ -68,6 +68,7 @@ public class PackagingDetailsModel {
         pstm.setString(4, String.valueOf(dto.getCount()));
         pstm.setDouble(5, dto.getAmount());
         pstm.setBoolean(6, dto.isConfirmed());
+        pstm.setDouble(7, dto.getTotal());
 
        return pstm.executeUpdate()>0;
 
@@ -111,7 +112,8 @@ public class PackagingDetailsModel {
                     resultSet.getString(3),
                     resultSet.getInt(4),
                     resultSet.getDouble(5),
-                    resultSet.getBoolean(6)
+                    resultSet.getBoolean(6),
+                    resultSet.getDouble(7)
             );
 
             dtoList.add(dto);

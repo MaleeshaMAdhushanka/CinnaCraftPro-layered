@@ -32,7 +32,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="522.0" layoutX="400.0" layoutY="161.0" stroke="WHITE" strokeType="INSIDE" width="563.0" />
       <DatePicker fx:id="dpDate" layoutX="515.0" layoutY="37.0" onAction="#dpDateOnAction" prefHeight="43.0" prefWidth="198.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="827.0" layoutY="35.0" stroke="WHITE" strokeType="INSIDE" width="146.0" />
-      <Text fx:id="txtTime" layoutX="834.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="11.4951171875">
+      <Text fx:id="txtTime" layoutX="830.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="139.3798828125">
          <font>
             <Font size="22.0" />
          </font>

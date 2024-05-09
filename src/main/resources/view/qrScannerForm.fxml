@@ -6,16 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="444.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.QrScannerFormController">
+<AnchorPane prefHeight="486.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.QrScannerFormController">
    <children>
       <Text fill="#ebb619" layoutX="193.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QR Scanner">
          <font>
             <Font name="Segoe UI Semibold" size="30.0" />
          </font>
       </Text>
-      <ImageView fx:id="imgView" fitHeight="270.0" fitWidth="366.0" layoutX="105.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" />
-      <JFXButton buttonType="RAISED" layoutX="215.0" layoutY="377.0" onAction="#btnCloseOnAction" prefHeight="47.0" prefWidth="133.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
+      <ImageView fx:id="imgView" fitHeight="322.0" fitWidth="418.0" layoutX="80.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton buttonType="RAISED" layoutX="215.0" layoutY="405.0" onAction="#btnCloseOnAction" prefHeight="47.0" prefWidth="133.0" style="-fx-background-color: black;" text="Cancel" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>

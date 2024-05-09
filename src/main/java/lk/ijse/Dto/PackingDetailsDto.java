@@ -26,4 +26,6 @@ public class PackingDetailsDto {
 
     private boolean isConfirmed;
 
+    private double total;
+
 }

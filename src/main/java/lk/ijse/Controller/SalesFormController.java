@@ -549,7 +549,7 @@ public class SalesFormController {
         ///Active The receipt Button
 
 
-        btnReceipt.setVisible(false);
+        btnReceipt.setVisible(true);
 
         this.lastCusId = cusId;
         this.lastCusName = name;
@@ -573,11 +573,7 @@ public class SalesFormController {
     @FXML
     void btnReceiptOnAction(ActionEvent event) {
 
-        HashMap map = new HashMap<>();
 
-        map.put("cusId", lastCusId);
-        map.put("cusName",lastCusName);
-        map.put("total" , lastTotal);
 
     }
 

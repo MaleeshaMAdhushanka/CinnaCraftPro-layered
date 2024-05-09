@@ -27,16 +27,15 @@ import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Optional;
 
 public class FertilizerSalesFormController {
 
@@ -128,6 +127,7 @@ public class FertilizerSalesFormController {
     private String lastSupId;
     private String lastSupName;
     private String lastTotal;
+
 
     public  void  initialize(){
 
@@ -416,45 +416,29 @@ public class FertilizerSalesFormController {
     }
 
     @FXML
-    void btnReceiptOnAction(ActionEvent event) {
+    void btnReceiptOnAction(ActionEvent event) throws JRException, SQLException {
 
-//        HashMap map = new HashMap<>();
-//
-//        map.put("supId, ", lastSupId);
-//        map.put("supName,", lastSupName);
-//        map.put("total,", lastTotal);
-//
-//        try {
-//            JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("src/main/resources/report/Jreport.jrxml.fxml"));
-//
-//            JRDesignQuery jrDesignQuery = new JRDesignQuery();
-//
-//            String query = "SELECT f.brand,f.description,f.size,fod.qty FROM fertilizer_order_details fod JOIN fertilizer_orders fo ON fod.fertOid = fo.fertOid JOIN fertilizer f ON fod.fertilizerId = f.fertilizerId WHERE fod.fertOid = '"+lastFertilizerOrderId+"';";
-//
-//
-//            jrDesignQuery.setText(query);
-//            jasperDesign.setQuery(jrDesignQuery);
-//
-//            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-//
-//            JasperPrint jasperPrint =
-//                    JasperFillManager.fillReport(
-//                            jasperReport, //compiled report
-//                            map,
-//                            DbConnection.getInstance().getConnection() //database connection
-//                    );
-//
-//            JFrame frame = new JFrame("Jasper Report Viewer");
-//            JRViewer viewer = new JRViewer(jasperPrint);
-//
-//            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//            frame.getContentPane().add(viewer);
-//            frame.setSize(new Dimension(1200, 800));
-//            frame.setVisible(true);
-//
-//        }catch (JRException | SQLException e){
-//            e.printStackTrace();
-//        }
+
+        JasperDesign jasperDesign =
+                JRXmlLoader.load("src/main/resources/report/CD.jrxml");
+        JasperReport jasperReport =
+                JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("OrderId",txtOrderId.getText());
+       data.put("NetTotal",txtNetTotal.getText());
+
+
+
+
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport,
+                        data,
+                        DbConnection.getInstance().getConnection());
+
+        JasperViewer.viewReport(jasperPrint,false);
 
 
 
