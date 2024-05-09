@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="attendancePane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AttendanceFormController">
+<AnchorPane fx:id="attendancePane" prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AttendanceFormController">
    <children>
       <Text fill="#636e72" layoutX="61.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance">
          <font>
@@ -28,8 +28,8 @@
             </DropShadow>
          </effect>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="416.0" layoutX="69.0" layoutY="159.0" stroke="WHITE" strokeType="INSIDE" width="314.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="413.0" layoutX="400.0" layoutY="161.0" stroke="WHITE" strokeType="INSIDE" width="563.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="522.0" layoutX="69.0" layoutY="159.0" stroke="WHITE" strokeType="INSIDE" width="314.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="522.0" layoutX="400.0" layoutY="161.0" stroke="WHITE" strokeType="INSIDE" width="563.0" />
       <DatePicker fx:id="dpDate" layoutX="515.0" layoutY="37.0" onAction="#dpDateOnAction" prefHeight="43.0" prefWidth="198.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="827.0" layoutY="35.0" stroke="WHITE" strokeType="INSIDE" width="146.0" />
       <Text fx:id="txtTime" layoutX="834.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" wrappingWidth="11.4951171875">
@@ -105,7 +105,7 @@
             <Font size="19.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnAttend" buttonType="RAISED" layoutX="160.0" layoutY="488.0" onAction="#btnAttendOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: black;" text="Attend" textFill="#ebb619">
+      <JFXButton fx:id="btnAttend" buttonType="RAISED" layoutX="155.0" layoutY="585.0" onAction="#btnAttendOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: black;" text="Attend" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>
@@ -117,7 +117,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblAttendance" layoutX="421.0" layoutY="190.0" prefHeight="355.0" prefWidth="522.0">
+      <TableView fx:id="tblAttendance" layoutX="421.0" layoutY="190.0" prefHeight="405.0" prefWidth="522.0">
         <columns>
           <TableColumn fx:id="colEmployeeId" prefWidth="75.0" text="A-ID" />
           <TableColumn fx:id="colName" prefWidth="87.0" text="Name" />
@@ -127,7 +127,7 @@
             <TableColumn fx:id="colRemove" prefWidth="95.0" text="Remove" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="172.0" layoutY="627.0" onAction="#btnEmployeeOnAction" prefHeight="56.0" prefWidth="159.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
+      <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="155.0" layoutY="734.0" onAction="#btnEmployeeOnAction" prefHeight="56.0" prefWidth="159.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -138,7 +138,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="429.0" layoutY="627.0" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
+      <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="737.0" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -149,7 +149,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="640.0" layoutY="627.0" onAction="#btnSalaryOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
+      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="661.0" layoutY="734.0" onAction="#btnSalaryOnAction" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>

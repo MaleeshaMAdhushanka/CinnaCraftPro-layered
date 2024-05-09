@@ -8,10 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import lk.ijse.Db.DbConnection;
 import lk.ijse.Dto.FertilizerDto;
 import lk.ijse.Dto.PlaceFertilizerOrderDto;
 import lk.ijse.Dto.SupplierDto;
@@ -20,11 +22,19 @@ import lk.ijse.Model.FertilizerOrderModel;
 import lk.ijse.Model.PlaceFertilizerOrderModel;
 import lk.ijse.Model.SupplierModel;
 import lk.ijse.Tm.FertilizeSalesCartTm;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,6 +121,13 @@ public class FertilizerSalesFormController {
     FertilizerOrderModel fertilizerOrderModel = new FertilizerOrderModel();
 
     PlaceFertilizerOrderModel placeFertilizerOrderModel = new PlaceFertilizerOrderModel();
+
+    //For report generation
+    private  String lastFertilizerOrderId;
+
+    private String lastSupId;
+    private String lastSupName;
+    private String lastTotal;
 
     public  void  initialize(){
 
@@ -211,6 +228,8 @@ public class FertilizerSalesFormController {
 
                 qty += (int) colQty.getCellData(i);
                 total = qty * unitPrice;
+
+                //uda hadagthth list eke ob list ta yewwa
 
                 obList.get(i).setQty(qty);
                 obList.get(i).setTotal(total);
@@ -350,6 +369,7 @@ public class FertilizerSalesFormController {
         String orderId = txtOrderId.getText();
         LocalDate date = LocalDate.now();
         String cusId = cmbCustomerId.getValue();
+        double total = Double.parseDouble(txtNetTotal.getText());
 
 
         List<FertilizeSalesCartTm> tmList = new ArrayList<>();
@@ -363,6 +383,7 @@ public class FertilizerSalesFormController {
                 orderId,
                 cusId,
                 date,
+                total,
                 tmList
         );
 
@@ -396,6 +417,47 @@ public class FertilizerSalesFormController {
 
     @FXML
     void btnReceiptOnAction(ActionEvent event) {
+
+//        HashMap map = new HashMap<>();
+//
+//        map.put("supId, ", lastSupId);
+//        map.put("supName,", lastSupName);
+//        map.put("total,", lastTotal);
+//
+//        try {
+//            JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("src/main/resources/report/Jreport.jrxml.fxml"));
+//
+//            JRDesignQuery jrDesignQuery = new JRDesignQuery();
+//
+//            String query = "SELECT f.brand,f.description,f.size,fod.qty FROM fertilizer_order_details fod JOIN fertilizer_orders fo ON fod.fertOid = fo.fertOid JOIN fertilizer f ON fod.fertilizerId = f.fertilizerId WHERE fod.fertOid = '"+lastFertilizerOrderId+"';";
+//
+//
+//            jrDesignQuery.setText(query);
+//            jasperDesign.setQuery(jrDesignQuery);
+//
+//            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+//
+//            JasperPrint jasperPrint =
+//                    JasperFillManager.fillReport(
+//                            jasperReport, //compiled report
+//                            map,
+//                            DbConnection.getInstance().getConnection() //database connection
+//                    );
+//
+//            JFrame frame = new JFrame("Jasper Report Viewer");
+//            JRViewer viewer = new JRViewer(jasperPrint);
+//
+//            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//            frame.getContentPane().add(viewer);
+//            frame.setSize(new Dimension(1200, 800));
+//            frame.setVisible(true);
+//
+//        }catch (JRException | SQLException e){
+//            e.printStackTrace();
+//        }
+
+
+
 
     }
 

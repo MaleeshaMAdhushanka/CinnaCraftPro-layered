@@ -21,5 +21,7 @@ public class PlaceCinnamonOrderDto {
 
     private LocalDate date;
 
+    private double total;
+
     private List<SalesCartTm> TmList = new ArrayList<>();
 }

@@ -26,13 +26,14 @@ public class CinnamonOrderDetailModel {
         Connection connection = DbConnection.getInstance().getConnection();
 
 
-        String sql = "INSERT INTO Cinnamon_order_details VALUES(?,?,?)";
+        String sql = "INSERT INTO Cinnamon_order_details VALUES(?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
 
         pstm.setString(1, CinnamonOrderId);
         pstm.setString(2, salesCartTm.getPackId());
         pstm.setInt(3, salesCartTm.getQty());
+        pstm.setDouble(4, salesCartTm.getTotal());
 
         return pstm.executeUpdate()>0;
     }

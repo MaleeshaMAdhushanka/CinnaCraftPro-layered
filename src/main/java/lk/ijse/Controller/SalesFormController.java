@@ -21,10 +21,7 @@ import lk.ijse.Tm.SalesCartTm;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class SalesFormController {
@@ -39,7 +36,7 @@ public class SalesFormController {
     private JFXButton btnPlaceOrder;
 
     @FXML
-    private JFXButton btnRecipt;
+    private JFXButton btnReceipt;
 
     @FXML
     private MFXComboBox<String> cmbCinnamonType;
@@ -128,7 +125,7 @@ public class SalesFormController {
         loadPackageDetails();
 
         //disable until order placed
-        btnRecipt.setVisible(true);
+        btnReceipt.setVisible(true);
 
 
 
@@ -494,6 +491,7 @@ public class SalesFormController {
 
         String orderId = txtOrderId.getText();
         String cusNum = cmbCustomerNum.getValue();
+        double total = Double.parseDouble(txtNetTotal.getText());
 
         String cusId = null;
 
@@ -513,6 +511,7 @@ public class SalesFormController {
           orderId,
           cusId,
           date,
+          total,
           tmList
         );
 
@@ -550,7 +549,7 @@ public class SalesFormController {
         ///Active The receipt Button
 
 
-        btnRecipt.setVisible(false);
+        btnReceipt.setVisible(false);
 
         this.lastCusId = cusId;
         this.lastCusName = name;
@@ -572,9 +571,16 @@ public class SalesFormController {
     }
 
     @FXML
-    void btnReciptOnAction(ActionEvent event) {
+    void btnReceiptOnAction(ActionEvent event) {
+
+        HashMap map = new HashMap<>();
+
+        map.put("cusId", lastCusId);
+        map.put("cusName",lastCusName);
+        map.put("total" , lastTotal);
 
     }
+
 
     @FXML
     void cmbCinnamonTypeOnAction(ActionEvent event) {

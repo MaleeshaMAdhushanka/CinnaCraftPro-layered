@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SalesFormController">
+<AnchorPane prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SalesFormController">
    <children>
       <Text fill="#636e72" layoutX="40.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinnamon Sales" wrappingWidth="311.29052734375">
          <font>
@@ -165,7 +165,7 @@
             <Font size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnRecipt" buttonType="RAISED" layoutX="811.0" layoutY="499.0" onAction="#btnReciptOnAction" prefHeight="43.0" prefWidth="114.0" style="-fx-background-color: black;" text="Recipt" textFill="#ebb619">
+      <JFXButton fx:id="btnReceipt" buttonType="RAISED" layoutX="811.0" layoutY="499.0" onAction="#btnReceiptOnAction" prefHeight="43.0" prefWidth="114.0" style="-fx-background-color: black;" text="Recipt" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>

@@ -24,7 +24,7 @@ public class FertilizerOrderDetailModel {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO fertilizer_order_details VALUES (?,?,?)";
+        String sql = "INSERT INTO fertilizer_order_details VALUES (?,?,?,?)";
 
 
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -32,6 +32,7 @@ public class FertilizerOrderDetailModel {
         pstm.setString(1,fertilizerOrderId);
         pstm.setString(2,cartTm.getFertilizerId());
         pstm.setInt(3,cartTm.getQty());
+        pstm.setDouble(4, cartTm.getTotal());
 
         return pstm.executeUpdate() > 0;
 

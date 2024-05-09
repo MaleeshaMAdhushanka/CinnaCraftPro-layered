@@ -74,16 +74,16 @@ public class DashBoardMainFormController {
     private void setUpPieChart() {
 
 
-            int blackTea =0;
-            int greenTea =0;
-            int oolongTea =0;
+            int Cassia =0;
+            int verum =0;
+            int burmannii =0;
             try {
 
                 List<CinnamonTypeDto> dto = cinnamonTypeModel.getAllCinnamonType();
 
-                blackTea= (int)dto.get(0).getAmount();
-                greenTea= (int) dto.get(1).getAmount();
-                oolongTea= (int) dto.get(2).getAmount();
+                Cassia= (int)dto.get(0).getAmount();
+                verum= (int) dto.get(1).getAmount();
+                burmannii= (int) dto.get(2).getAmount();
 
 
             } catch (SQLException e) {
@@ -91,9 +91,9 @@ public class DashBoardMainFormController {
             }
 
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                    new PieChart.Data("Black ", blackTea),
-                    new PieChart.Data("Green ", greenTea),
-                    new PieChart.Data("Oolong ", oolongTea));
+                    new PieChart.Data(" Cassia", Cassia),
+                    new PieChart.Data("verum ", verum),
+                    new PieChart.Data("burmannii ", burmannii));
 
 
             pieChartData.forEach(data ->

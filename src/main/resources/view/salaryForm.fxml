@@ -14,11 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="salaryPane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SalaryFormController">
+<AnchorPane fx:id="salaryPane" prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SalaryFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="464.0" layoutX="86.0" layoutY="113.0" stroke="WHITE" strokeType="INSIDE" width="344.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="542.0" layoutX="86.0" layoutY="113.0" stroke="WHITE" strokeType="INSIDE" width="344.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" layoutX="437.0" layoutY="114.0" stroke="WHITE" strokeType="INSIDE" width="521.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="367.0" layoutX="438.0" layoutY="202.0" stroke="WHITE" strokeType="INSIDE" width="521.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="452.0" layoutX="438.0" layoutY="202.0" stroke="WHITE" strokeType="INSIDE" width="521.0" />
       <Text fill="#636e72" layoutX="69.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary">
          <font>
             <Font name="Roboto Medium" size="37.0" />
@@ -96,7 +96,7 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnPay" buttonType="RAISED" layoutX="172.0" layoutY="520.0" onAction="#btnPayOnAction" prefHeight="43.0" prefWidth="167.0" style="-fx-background-color: black;" text="Pay" textFill="#ebb619">
+      <JFXButton fx:id="btnPay" buttonType="RAISED" layoutX="175.0" layoutY="569.0" onAction="#btnPayOnAction" prefHeight="43.0" prefWidth="167.0" style="-fx-background-color: black;" text="Pay" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>
@@ -127,7 +127,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblSalary" layoutX="463.0" layoutY="224.0" prefHeight="323.0" prefWidth="470.0">
+      <TableView fx:id="tblSalary" layoutX="463.0" layoutY="224.0" prefHeight="369.0" prefWidth="470.0">
         <columns>
           <TableColumn fx:id="colSalaryId" prefWidth="105.0" text="Salary Id" />
           <TableColumn fx:id="colDaysCount" prefWidth="125.0" text="Days Count" />
@@ -135,7 +135,7 @@
             <TableColumn fx:id="colDate" prefWidth="112.0" text="Date" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="213.0" layoutY="619.0" onAction="#btnEmployeeOnAction" prefHeight="54.0" prefWidth="178.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
+      <JFXButton fx:id="btnEmployee" buttonType="RAISED" layoutX="194.0" layoutY="695.0" onAction="#btnEmployeeOnAction" prefHeight="54.0" prefWidth="178.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -147,7 +147,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="432.0" layoutY="619.0" onAction="#btnAttendanceOnAction" prefHeight="54.0" prefWidth="167.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
+      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="422.0" layoutY="695.0" onAction="#btnAttendanceOnAction" prefHeight="54.0" prefWidth="167.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -159,7 +159,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="667.0" layoutY="619.0" prefHeight="54.0" prefWidth="140.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
+      <JFXButton buttonType="RAISED" layoutX="665.0" layoutY="695.0" prefHeight="54.0" prefWidth="140.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>

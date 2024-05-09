@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="fertilizerPane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FertilizerFromController">
+<AnchorPane fx:id="fertilizerPane" prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.FertilizerFromController">
    <children>
       <Text fill="#636e72" layoutX="53.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fertilizer">
          <font>
@@ -39,7 +39,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblFertilizer" layoutX="28.0" layoutY="281.0" prefHeight="334.0" prefWidth="984.0">
+      <TableView fx:id="tblFertilizer" layoutX="35.0" layoutY="319.0" prefHeight="364.0" prefWidth="984.0">
         <columns>
           <TableColumn fx:id="colFertilizerId" prefWidth="205.0" text="Fertilizer ID" />
           <TableColumn fx:id="colBrand" prefWidth="129.0" text="Brand" />
@@ -49,7 +49,7 @@
             <TableColumn fx:id="colQty" prefWidth="121.0" text="QTY" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnSales" buttonType="RAISED" layoutX="472.0" layoutY="639.0" onAction="#btnSalesOnAction" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Sales" textFill="#ebb619">
+      <JFXButton fx:id="btnSales" buttonType="RAISED" layoutX="469.0" layoutY="755.0" onAction="#btnSalesOnAction" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Sales" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>
@@ -61,7 +61,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnFertilizer" buttonType="RAISED" layoutX="646.0" layoutY="639.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Fertilizer" textFill="#ebb619">
+      <JFXButton fx:id="btnFertilizer" buttonType="RAISED" layoutX="694.0" layoutY="755.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #d63031;" text="Fertilizer" textFill="#ebb619">
          <font>
             <Font size="18.0" />
          </font>

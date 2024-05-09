@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="employeePane" prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.EmployeeFormController">
+<AnchorPane fx:id="employeePane" prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.EmployeeFormController">
    <children>
       <Text fill="#636e72" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
          <font>
@@ -33,7 +33,7 @@
             <Font name="Roboto Medium" size="22.0" />
          </font>
       </Text>
-      <TableView fx:id="tblEmployee" layoutX="14.0" layoutY="293.0" prefHeight="302.0" prefWidth="1010.0">
+      <TableView fx:id="tblEmployee" layoutX="17.0" layoutY="302.0" prefHeight="374.0" prefWidth="1010.0">
         <columns>
           <TableColumn fx:id="colEmployeeId" prefWidth="161.0" text="Employee-ID" />
           <TableColumn fx:id="colFirstName" prefWidth="141.0" text="First Name" />
@@ -54,7 +54,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="250.0" layoutY="625.0" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
+      <JFXButton buttonType="RAISED" layoutX="236.0" layoutY="707.0" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: black;" text="Employee" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -65,7 +65,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="431.0" layoutY="625.0" onAction="#btnAttendanceOnAction" prefHeight="56.0" prefWidth="168.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
+      <JFXButton fx:id="btnAttendance" buttonType="RAISED" layoutX="469.0" layoutY="707.0" onAction="#btnAttendanceOnAction" prefHeight="56.0" prefWidth="168.0" style="-fx-background-color: #d63031;" text="Attendance" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>
@@ -76,7 +76,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="744.0" layoutY="632.0" onAction="#btnSalaryOnAction" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
+      <JFXButton fx:id="btnSalary" buttonType="RAISED" layoutX="737.0" layoutY="707.0" onAction="#btnSalaryOnAction" prefHeight="56.0" prefWidth="143.0" style="-fx-background-color: #d63031;" text="Salary" textFill="#ebb619">
          <font>
             <Font size="16.0" />
          </font>

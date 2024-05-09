@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.PackagingFromController">
+<AnchorPane prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.PackagingFromController">
    <children>
       <Text fill="#636e72" layoutX="63.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Packing">
          <font>
@@ -28,8 +28,8 @@
             </DropShadow>
          </effect>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="455.0" layoutX="55.0" layoutY="240.0" stroke="WHITE" strokeType="INSIDE" width="913.0" />
-      <TableView fx:id="tblPackaging" layoutX="59.0" layoutY="245.0" prefHeight="445.0" prefWidth="913.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="316.0" layoutX="55.0" layoutY="240.0" stroke="WHITE" strokeType="INSIDE" width="913.0" />
+      <TableView fx:id="tblPackaging" layoutX="55.0" layoutY="246.0" prefHeight="524.0" prefWidth="913.0">
         <columns>
           <TableColumn fx:id="colPackId" prefWidth="189.0" text="Package ID" />
           <TableColumn fx:id="colType" prefWidth="172.0" text="Type" />

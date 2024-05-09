@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerFormController">
+<AnchorPane prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CustomerFormController">
    <children>
       <Text fill="#636e72" layoutX="56.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
          <font>
@@ -27,14 +27,14 @@
             </DropShadow>
          </effect>
       </Text>
-      <TableView fx:id="tblCustomer" layoutX="68.0" layoutY="400.0" prefHeight="286.0" prefWidth="933.0">
+      <TableView fx:id="tblCustomer" layoutX="61.0" layoutY="424.0" prefHeight="377.0" prefWidth="963.0">
         <columns>
           <TableColumn fx:id="colCustomerId" prefWidth="117.0" text="Customer ID" />
           <TableColumn fx:id="colFirstName" prefWidth="179.0" text="First Name" />
             <TableColumn fx:id="colLastName" prefWidth="125.0" text="Last Name" />
             <TableColumn fx:id="colAddress" prefWidth="112.0" text="Address" />
-            <TableColumn fx:id="colEmail" prefWidth="172.0" text="Email" />
-            <TableColumn fx:id="colMobileNo" prefWidth="227.0" text="Mobile No" />
+            <TableColumn fx:id="colEmail" prefWidth="192.0" text="Email" />
+            <TableColumn fx:id="colMobileNo" prefWidth="232.0" text="Mobile No" />
         </columns>
       </TableView>
       <Text fill="#636e72" layoutX="550.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">

@@ -8,18 +8,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashBoardFormController">
+<AnchorPane prefHeight="859.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashBoardFormController">
    <children>
-      <AnchorPane prefHeight="730.0" prefWidth="250.0" style="-fx-background-color: #2d3436;">
+      <AnchorPane prefHeight="859.0" prefWidth="263.0" style="-fx-background-color: #2d3436;">
          <children>
             <Text fill="#ebb619" layoutX="34.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cinna">
                <font>
                   <Font name="Roboto Medium" size="29.0" />
                </font>
             </Text>
-            <VBox layoutX="17.0" layoutY="141.0" prefHeight="314.0" prefWidth="216.0">
+            <VBox layoutX="17.0" layoutY="141.0" prefHeight="372.0" prefWidth="216.0">
                <children>
-                  <JFXButton fx:id="btnDashboard" onAction="#btnDashboardOnAction" prefHeight="54.0" prefWidth="216.0" text=" Dashboard" textFill="WHITE">
+                  <JFXButton fx:id="btnDashboard" onAction="#btnDashboardOnAction" prefHeight="96.0" prefWidth="216.0" text=" Dashboard" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -31,7 +31,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnPackaging" onAction="#btnPackagingOnAction" prefHeight="58.0" prefWidth="222.0" text="  Packaging" textFill="WHITE">
+                  <JFXButton fx:id="btnPackaging" onAction="#btnPackagingOnAction" prefHeight="87.0" prefWidth="216.0" text="  Packaging" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnSales" onAction="#btnSalesOnAction" prefHeight="57.0" prefWidth="216.0" text="CinnamonSales" textFill="WHITE">
+                  <JFXButton fx:id="btnSales" onAction="#btnSalesOnAction" prefHeight="82.0" prefWidth="216.0" text="CinnamonSales" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -55,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btnFertilizer" onAction="#btnFertilizerOnAction" prefHeight="41.0" prefWidth="216.0" text="  Fertilizer" textFill="WHITE">
+                  <JFXButton fx:id="btnFertilizer" onAction="#btnFertilizerOnAction" prefHeight="84.0" prefWidth="216.0" text="  Fertilizer" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -79,7 +79,7 @@
                   <Image url="@../assets/dashboardCinnamon.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btnSupplier" layoutX="23.0" layoutY="461.0" onAction="#btnSupplierOnAction" prefHeight="39.0" prefWidth="216.0" text="  Supplier" textFill="WHITE">
+            <JFXButton fx:id="btnSupplier" layoutX="17.0" layoutY="495.0" onAction="#btnSupplierOnAction" prefHeight="72.0" prefWidth="216.0" text="  Supplier" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -91,7 +91,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnEmployee" layoutX="2.0" layoutY="516.0" onAction="#btnEmployeeOnAction" prefHeight="41.0" prefWidth="240.0" text="Employee" textFill="WHITE">
+            <JFXButton fx:id="btnEmployee" layoutX="5.0" layoutY="575.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="240.0" text="Employee" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -103,7 +103,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnCustomer" layoutX="21.0" layoutY="580.0" onAction="#btnCustomerOnAction" prefHeight="39.0" prefWidth="216.0" text="Customer" textFill="WHITE">
+            <JFXButton fx:id="btnCustomer" layoutX="14.0" layoutY="644.0" onAction="#btnCustomerOnAction" prefHeight="60.0" prefWidth="216.0" text="Customer" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -115,7 +115,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnLogout" layoutX="21.0" layoutY="649.0" onAction="#btnLogoutOnAction" prefHeight="41.0" prefWidth="203.0" text="Logout" textFill="WHITE">
+            <JFXButton fx:id="btnLogout" layoutX="15.0" layoutY="721.0" onAction="#btnLogoutOnAction" prefHeight="72.0" prefWidth="203.0" text="Logout" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -129,6 +129,6 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainPane" layoutX="260.0" layoutY="10.0" prefHeight="720.0" prefWidth="1030.0" />
+      <AnchorPane fx:id="mainPane" layoutX="260.0" layoutY="10.0" prefHeight="848.0" prefWidth="1054.0" />
    </children>
 </AnchorPane>

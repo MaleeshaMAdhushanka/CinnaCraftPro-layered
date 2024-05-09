@@ -20,6 +20,8 @@ public class PlaceFertilizerOrderDto {
 
     LocalDate date;
 
+    private double total;
+
     private List<FertilizeSalesCartTm> tmList = new ArrayList<>();
 
 }
