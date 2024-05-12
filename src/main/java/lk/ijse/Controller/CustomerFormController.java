@@ -1,6 +1,7 @@
 package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -61,16 +62,16 @@ public class CustomerFormController {
     private Text txtCustomerId;
 
     @FXML
-    private TextField txtEmail;
+    private MFXTextField txtEmail;
 
     @FXML
-    private TextField txtFirstName;
+    private MFXTextField txtFirstName;
 
     @FXML
-    private TextField txtLastName;
+    private MFXTextField txtLastName;
 
     @FXML
-    private TextField txtMobileNo;
+    private MFXTextField txtMobileNo;
 
     @FXML
     private TextField txtSearch;

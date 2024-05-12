@@ -21,6 +21,7 @@ import lk.ijse.Tm.SupplierTm;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class SupplierFormController {
 
@@ -178,8 +179,10 @@ public class SupplierFormController {
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
 
-
-
+        boolean isSupplierValidated = validateSupplier();
+        if (!isSupplierValidated) {
+            return;
+        }
 
 
 
@@ -208,6 +211,82 @@ public class SupplierFormController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+
+    }
+
+    private boolean validateSupplier() {
+
+        String firstName= txtFirstName.getText();
+        boolean isFirstNameValidated = Pattern.matches("[A-Za-z]{3,}",firstName);
+        if (!isFirstNameValidated){
+            txtFirstName.requestFocus();
+            txtFirstName.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+        txtFirstName.getStyleClass().removeAll("mfx-text-field-error");
+
+        String lastName = txtLastName.getText();
+
+        boolean isLastNameValidated = Pattern.matches("[A-Za-z]{3,}",lastName);
+
+        if (!isLastNameValidated){
+            txtLastName.requestFocus();
+            txtLastName.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+        txtLastName.getStyleClass().removeAll("mfx-text-field-error");
+
+        String address = txtAddress.getText();
+
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/ ]{3,}",address);
+
+        if (!isAddressValidated){
+            txtAddress.requestFocus();
+            txtAddress.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtAddress.getStyleClass().removeAll("mfx-text-field-error");
+
+        String bank = txtBank.getText();
+
+        boolean isBankValidated = Pattern.matches("[A-Za-z0-9/ ]{3,}",bank);
+
+        if (!isBankValidated){
+            txtBank.requestFocus();
+            txtBank.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtBank.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        String bankNo = txtBankNo.getText();
+
+        boolean isBankNoValidated = Pattern.matches("[0-9]{3,}",bankNo);
+
+        if (!isBankNoValidated){
+            txtBankNo.requestFocus();
+            txtBankNo.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtBankNo.getStyleClass().removeAll("mfx-text-field-error");
+
+
+
+        String mobileNo = txtMobileNo.getText();
+        boolean isMobileNoValid = Pattern.matches("[0-9]{3,}",mobileNo);
+        if (!isMobileNoValid){
+            txtMobileNo.requestFocus();
+            txtMobileNo.getStyleClass().add("mfx-text-field-error");
+            return false;
+        }
+
+        txtMobileNo.getStyleClass().removeAll("mfx-text-field-error");
+
+
+        return true;
 
     }
 
