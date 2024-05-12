@@ -1,5 +1,6 @@
 package lk.ijse.Controller;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
@@ -9,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -25,10 +25,11 @@ import java.util.Objects;
 public class LoginFormController {
 
     @FXML
-    private Button btnCreateAccount;
+    private MFXButton btnCreateAccount;
+
 
     @FXML
-    private Button btnLogin;
+    private MFXButton btnLogin;
 
     @FXML
     private AnchorPane loginUiPane;
@@ -45,10 +46,10 @@ public class LoginFormController {
 
 
     @FXML
-    private TextField txtPassword;
+    private MFXPasswordField txtPassword;
 
     @FXML
-    private TextField txtUsername;
+    private MFXTextField txtUsername;
 
     private final UserModel userModel = new UserModel();
 
@@ -70,6 +71,7 @@ public class LoginFormController {
         loginUiPane.getChildren().clear();
         loginUiPane.getChildren().add(registerPane);
     }
+
 
     @FXML
     void btnLoginOnAction() throws IOException{
@@ -179,23 +181,29 @@ public class LoginFormController {
 
     }
 
+
     @FXML
     void txtPasswordOnAction(ActionEvent event) throws IOException {
         btnLoginOnAction();
 
     }
 
+
+
 //    @FXML
 //    void txtUserNameOnAction(ActionEvent event) throws IOException{
 //        btnLoginOnAction(event);
 //
 //    }
-      @FXML
+
+    @FXML
     void txtUsernameOnAction(ActionEvent event) throws IOException {
         btnLoginOnAction();
 
-}
-
-
+    }
 
 }
+
+
+
+

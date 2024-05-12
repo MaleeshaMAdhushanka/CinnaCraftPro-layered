@@ -1,0 +1,38 @@
+
+@import '../fonts/Fonts.css';
+
+/*******************************************************************************
+*                                                                              *
+* MaterialFX -Text Fields                                                      *
+*                                                                              *
+*******************************************************************************/
+
+.mfx-text-field{
+    -mfx-main: #55efc4;
+    -fx-font-size: 12;
+    -fx-font-family: 'Roboto Bold';
+}
+
+.mfx-text-field-error{
+    -mfx-main:  red;
+}
+
+
+
+/*******************************************************************************
+*                                                                              *
+* MaterialFX -Buttons                                                          *
+*                                                                              *
+*******************************************************************************/
+
+.mfx-button-Customer {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+}
+
+.mfx-button-Cancel {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 15;
+    -fx-text-fill:  #FFFFFF;
+}
