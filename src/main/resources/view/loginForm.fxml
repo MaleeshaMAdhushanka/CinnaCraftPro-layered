@@ -44,7 +44,7 @@
          </font>
       </Text>
       <MFXTextField fx:id="txtUsername" floatingText="Username" layoutX="76.0" layoutY="264.0" onAction="#txtUsernameOnAction" prefHeight="70.0" prefWidth="307.0" stylesheets="@../assets/css/MFXLogin.css" />
-      <MFXPasswordField fx:id="txtPassword" floatingText="Password" layoutX="80.0" layoutY="344.0" onAction="#txtPasswordOnAction" prefHeight="70.0" prefWidth="307.0" stylesheets="@../assets/css/MFXLogin.css" />
+      <MFXPasswordField fx:id="txtPassword" floatingText="Password" layoutX="76.0" layoutY="361.0" onAction="#txtPasswordOnAction" prefHeight="70.0" prefWidth="307.0" stylesheets="@../assets/css/MFXLogin.css" />
       <MFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="76.0" layoutY="503.0" onAction="#btnLoginOnAction" prefHeight="51.0" prefWidth="139.0" style="-fx-background-color: black;" styleClass="mfx-button-login" stylesheets="@../assets/css/MFXLogin.css" text="Login" textFill="#ebb619" />
       <MFXButton fx:id="btnCreateAccount" buttonType="RAISED" layoutX="308.0" layoutY="504.0" onAction="#btnCreateAccountOnAction" prefHeight="50.0" prefWidth="139.0" style="-fx-background-color: black;" styleClass="mfx-button-CreateAccount" stylesheets="@../assets/css/MFXLogin.css" text="Create Account" />
    </children>

@@ -8,32 +8,15 @@
 
 .mfx-text-field{
     -mfx-main: #55efc4;
-     -fx-border-redius : 4;
-    -fx-padding: 10px;
-    -fx-font-size: 20;
-    -fx-border-color: #55efc4; /*default border colour */
-    -fx-font-family: 'Visby Round CF Medium';
+    -mfx-font-size: 12;
+    -mfx-font-family: 'Roboto Bold';
 }
 
 .mfx-text-field-error{
-
-    -fx-border-color: red;
-
+    -mfx-main:  red;
 }
 
-.mfx-text-field:floating .floating-text{
 
-    -fx-font-size: 15px;
-    -fx-text-fill: #636e72;
-    -fx-font-family: 'Visby Round CF Medium';
-
-}
-
-.mfx-text-field .floating-text {
-    -fx-font-size: 15px;
-    -fx-text-fill: #636e72;
-    -fx-font-family: 'Visby Round CF Medium';
-}
 
 /*******************************************************************************
 *                                                                              *
@@ -41,14 +24,9 @@
 *                                                                              *
 *******************************************************************************/
 
-.mfx-button-login {
+.mfx-button-Customer {
     -fx-font-family: 'Roboto Bold';
     -fx-font-size: 15;
-    -fx-text-fill: #ebb619;
+    -fx-text-fill: #FFFFFF;
 }
 
-.mfx-button-CreateAccount {
-    -fx-font-family: 'Roboto Bold';
-    -fx-font-size: 15;
-    -fx-text-fill:  #ebb619;
-}

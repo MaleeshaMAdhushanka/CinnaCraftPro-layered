@@ -16,11 +16,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.Model.UserModel;
+import javafx.css.PseudoClass;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.Objects;
+
 
 public class LoginFormController {
 
@@ -51,10 +53,14 @@ public class LoginFormController {
     @FXML
     private MFXTextField txtUsername;
 
+    private final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+
     private final UserModel userModel = new UserModel();
 
     public  void initialize(){
         setGreetings();
+        txtUsername.getStyleClass().add("mfx-text-field");
+        txtPassword.getStyleClass().add("mfx-text-field");
     }
 
     private void setGreetings() {
@@ -167,6 +173,7 @@ public class LoginFormController {
 
 
         UserModel.userName = userName;
+        txtMassage.setVisible(true);
         
 
         return true;
