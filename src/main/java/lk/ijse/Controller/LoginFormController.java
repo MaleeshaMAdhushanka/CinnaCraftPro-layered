@@ -16,7 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.Model.UserModel;
-import javafx.css.PseudoClass;
+//import javafx.css.PseudoClass;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,13 +53,13 @@ public class LoginFormController {
     @FXML
     private MFXTextField txtUsername;
 
-    private final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+   // private final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
 
     private final UserModel userModel = new UserModel();
 
     public  void initialize(){
         setGreetings();
-        txtUsername.getStyleClass().add("mfx-text-field");
+       txtUsername.getStyleClass().add("mfx-text-field");
         txtPassword.getStyleClass().add("mfx-text-field");
     }
 

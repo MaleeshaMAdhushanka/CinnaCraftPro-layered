@@ -18,7 +18,7 @@ public class Launcher extends Application {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/mainForm.fxml"));
         Scene scene = new Scene(rootNode);
 
-        scene.getStylesheets().add(String.valueOf(getClass().getResource("src/main/resources/assets/css/MFXLogin.css")));
+
         Stage stage1 = new Stage();
         stage1.setScene(scene);
         stage1.setTitle("Login Form");

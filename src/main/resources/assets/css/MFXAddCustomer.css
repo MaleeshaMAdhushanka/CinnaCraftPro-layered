@@ -8,15 +8,30 @@
 
 .mfx-text-field{
     -mfx-main: #55efc4;
-    -mfx-font-size: 12;
-    -mfx-font-family: 'Roboto Bold';
+    -fx-border-redius : 4;
+    -fx-padding: 10px;
+    -fx-font-size: 12;
+    -fx-border-color: #55efc4; /*default border colour */
+    -fx-font-family: 'Roboto Bold';
 }
 
 .mfx-text-field-error{
-    -mfx-main:  red;
+
+    -fx-border-color: red;
 }
 
+.mfx-text-field .floating-text {
+    -fx-font-size: 15px;
+    -fx-text-fill: #636e72;
+    -fx-font-family: 'Visby Round CF Medium';
+}
+.mfx-text-field:floating .floating-text{
 
+    -fx-font-size: 15px;
+    -fx-text-fill: #636e72;
+    -fx-font-family: 'Visby Round CF Medium';
+
+}
 
 /*******************************************************************************
 *                                                                              *

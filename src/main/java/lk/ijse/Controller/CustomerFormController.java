@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import lk.ijse.Dto.CustomerDto;
 import lk.ijse.Model.CustomerModel;
+
 import lk.ijse.Tm.CustomerTm;
 
 import java.sql.SQLException;
@@ -80,11 +81,21 @@ public class CustomerFormController {
     CustomerModel customerModel = new CustomerModel();
 
 
+
+
     public void initialize() throws SQLException {
         setCellValueFactory();
         loadCustomerDetails();
         generateNextCustomerId();
         setListener();
+
+        txtFirstName.getStyleClass().add("mfx-text-field");
+        txtLastName.getStyleClass().add("mfx-text-field");
+        txtAddress.getStyleClass().add("mfx-text-field");
+        txtEmail.getStyleClass().add("mfx-text-field");
+        txtMobileNo.getStyleClass().add("mfx-text-field");
+
+
     }
 
     private void setListener() {
