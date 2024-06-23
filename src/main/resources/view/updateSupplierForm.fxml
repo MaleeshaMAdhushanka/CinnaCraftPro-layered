@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="630.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.UpdateSupplierFormController">
+<AnchorPane prefHeight="630.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CinnaCraft.Controller.UpdateSupplierFormController">
    <children>
       <Text fill="#ebb619" layoutX="67.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Supplier">
          <font>

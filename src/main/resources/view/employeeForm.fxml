@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="employeePane" prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.EmployeeFormController">
+<AnchorPane fx:id="employeePane" prefHeight="848.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CinnaCraft.Controller.EmployeeFormController">
    <children>
       <Text fill="#636e72" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
          <font>

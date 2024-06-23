@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="otpPane" prefHeight="630.0" prefWidth="475.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CreateAccountOtpFormController">
+<AnchorPane fx:id="otpPane" prefHeight="630.0" prefWidth="475.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.CinnaCraft.Controller.CreateAccountOtpFormController">
    <children>
       <Text layoutX="80.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter OTP">
          <font>
