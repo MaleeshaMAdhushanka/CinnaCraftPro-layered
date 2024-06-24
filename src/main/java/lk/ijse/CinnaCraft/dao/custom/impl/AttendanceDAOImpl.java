@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttendanceDAOImpl implements AttendanceDAO {
+public  class AttendanceDAOImpl implements AttendanceDAO {
 
     @Override
     public ArrayList<AttendanceDto> getAll() throws SQLException {

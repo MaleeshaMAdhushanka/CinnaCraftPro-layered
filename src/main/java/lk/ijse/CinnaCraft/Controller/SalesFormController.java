@@ -16,7 +16,6 @@ import lk.ijse.CinnaCraft.Dto.CustomerDto;
 import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Dto.PlaceCinnamonOrderDto;
 import lk.ijse.CinnaCraft.Model.*;
-import lk.ijse.Model.*;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 
 import java.sql.SQLException;
