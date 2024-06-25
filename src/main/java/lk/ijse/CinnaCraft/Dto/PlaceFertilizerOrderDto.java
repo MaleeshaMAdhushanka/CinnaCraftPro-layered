@@ -22,6 +22,6 @@ public class PlaceFertilizerOrderDto {
 
     private double total;
 
-    private List<FertilizeSalesCartTm> tmList = new ArrayList<>();
+   private List<FertilizeSalesCartTm> tmList = new ArrayList<>();
 
 }
