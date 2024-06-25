@@ -93,7 +93,7 @@ public class CinnamonBarkStockDAOImpl implements CinnamonBarkStockDAO {
 
     @Override
     public CinnamonBarkStockDto search(String id) throws SQLException {
-        ResultSet resultSet =SQLUtil.crudUtil("SELECT * FROM Cinnamon_Bark_stock WHERE CinnamonStockID=?", id),;
+        ResultSet resultSet =SQLUtil.crudUtil("SELECT * FROM Cinnamon_Bark_stock WHERE CinnamonStockID=?", id);
 
         if (resultSet.next()) {
             return new CinnamonBarkStockDto(
