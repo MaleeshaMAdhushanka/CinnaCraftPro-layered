@@ -16,6 +16,8 @@ import lk.ijse.CinnaCraft.Dto.CustomerDto;
 import lk.ijse.CinnaCraft.Model.CustomerModel;
 
 import lk.ijse.CinnaCraft.Tm.CustomerTm;
+import lk.ijse.CinnaCraft.dao.custom.CustomerDAO;
+import lk.ijse.CinnaCraft.dao.custom.impl.CustomerDAOImpl;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -79,6 +81,9 @@ public class CustomerFormController {
 
 
     CustomerModel customerModel = new CustomerModel();
+
+
+    CustomerDAO customerDAO = new CustomerDAOImpl();
 
 
 

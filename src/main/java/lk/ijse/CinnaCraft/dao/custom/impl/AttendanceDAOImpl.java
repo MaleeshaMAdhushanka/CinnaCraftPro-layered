@@ -7,10 +7,12 @@ import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+
 import java.util.List;
 
-public  class AttendanceDAOImpl implements AttendanceDAO {
+public class AttendanceDAOImpl implements AttendanceDAO {
 
     @Override
     public ArrayList<AttendanceDto> getAll() throws SQLException {

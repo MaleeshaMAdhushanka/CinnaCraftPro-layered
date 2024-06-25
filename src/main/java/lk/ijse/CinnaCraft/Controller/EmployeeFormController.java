@@ -185,7 +185,7 @@ public class EmployeeFormController {
         try {
             boolean isSaved = employeeModel.saveEmployee(dto);
             if (isSaved ) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Employee saved").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "EmployeeDAO saved").show();
                 clearFields();
                 loadEmployeeDetails();
             }
@@ -322,7 +322,7 @@ public class EmployeeFormController {
            boolean isUpdated = employeeModel.updateEmployee(new EmployeeDto(empId, firstName, lastName, address, sex, mobileNo));
 
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Employee Updated").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "EmployeeDAO Updated").show();
                 loadEmployeeDetails();
             }
         } catch (Exception e) {

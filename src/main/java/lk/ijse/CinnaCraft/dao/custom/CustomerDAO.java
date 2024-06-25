@@ -14,5 +14,4 @@ import java.util.List;
 public interface CustomerDAO extends CrudDAO<CustomerDto> {
 
          String searchCustomerId (String cusNum) throws SQLException;
-
     }

@@ -91,7 +91,8 @@ public class AttendanceFormController {
 
     private final EmployeeModel employeeModel = new EmployeeModel();
 
-  AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    AttendanceModel attendanceModel = new AttendanceModel();
+
 
     public void  initialize(){
         setCurrentDate();
@@ -132,11 +133,11 @@ public class AttendanceFormController {
 
         try{
 
-            if (attendanceDAO.searchAttendance(empId,date)){
+            if (attendanceModel.searchAttendance(empId,date)){
                 new Alert(Alert.AlertType.WARNING, "Attendance Already Marked").show();
             }
             else {
-                boolean isAdded = attendanceDAO.markAttendance(dto);
+                boolean isAdded = attendanceModel.markAttendance(dto);
 
                 if (isAdded) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Attendance Marked").show();
@@ -213,7 +214,7 @@ public class AttendanceFormController {
 
         try{
 
-            List<AttendanceDto> attendanceList = attendanceDAO.getAllAttendanceDetails(date);
+            List<AttendanceDto> attendanceList = attendanceModel.getAllAttendanceDetails(date);
 
             ObservableList<AttendanceTm> obList = FXCollections.observableArrayList();
 
@@ -295,7 +296,7 @@ public class AttendanceFormController {
         try {
 
             //Update The Out Time
-            attendanceDAO.updateOutTime(empId,outTime,currentDate);
+            attendanceModel.updateOutTime(empId,outTime,currentDate);
             loadAllAttendanceDetails(LocalDate.now());
         }
         catch (SQLException e){
@@ -311,7 +312,7 @@ public class AttendanceFormController {
 
         try {
             System.out.println(attendanceId);
-            boolean isDeleted = attendanceDAO.deleteAttendance(attendanceId);
+            boolean isDeleted = attendanceModel.deleteAttendance(attendanceId);
 
 
             if (isDeleted){
@@ -356,7 +357,7 @@ public class AttendanceFormController {
 
         try{
 
-            String attendanceId = attendanceDAO.generateId();
+            String attendanceId = attendanceModel.generateNextAttendanceId();
             txtAttendanceId.setText(attendanceId);
 
         }
@@ -364,7 +365,6 @@ public class AttendanceFormController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
         }
-
 
 
     }
@@ -431,12 +431,12 @@ public class AttendanceFormController {
                     return;
                 }
 
-                boolean isAttend= attendanceDAO.searchAttendance(empId,date);
+                boolean isAttend= attendanceModel.searchAttendance(empId,date);
 
                 if (!isAttend){
                     String attendanceId = txtAttendanceId.getText();
                     AttendanceDto dto = new AttendanceDto(attendanceId,date,empId,inTime,null,false);
-                    boolean isAdded = attendanceDAO.markAttendance(dto);
+                    boolean isAdded = attendanceModel.markAttendance(dto);
                     if (isAdded) {
                         loadAllAttendanceDetails(dpDate.getValue());
                         generateNextAttendanceId();
@@ -444,10 +444,10 @@ public class AttendanceFormController {
                     }
                 }
                 else {
-                    boolean isOutTimeNull = attendanceDAO.searchOutTime(empId,date);
+                    boolean isOutTimeNull = attendanceModel.searchOutTime(empId,date);
                     if (!isOutTimeNull){
                         LocalTime outTime = LocalTime.now();
-                        attendanceDAO.updateOutTime(empId,outTime,date);
+                        attendanceModel.updateOutTime(empId,outTime,date);
                         loadAllAttendanceDetails(dpDate.getValue());
                     }
                     else {

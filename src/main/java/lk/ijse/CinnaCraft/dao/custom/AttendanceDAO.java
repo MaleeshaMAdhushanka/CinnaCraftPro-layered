@@ -15,11 +15,11 @@ public interface AttendanceDAO  extends CrudDAO<AttendanceDto> {
 
     List<AttendanceDto> getAllAttendanceDetails(LocalDate date) throws SQLException;
 
-     boolean markAttendance(AttendanceDto dto) throws SQLException;
+//     boolean markAttendance(AttendanceDto dto) throws SQLException;
 
      boolean searchAttendance(String empId, LocalDate date) throws SQLException;
 
-     boolean deleteAttendance(String attendanceID) throws SQLException;
+//     boolean deleteAttendance(String attendanceID) throws SQLException;
 
      void updateOutTime(String empId, LocalTime outTime, LocalDate currentDate) throws SQLException;
 
