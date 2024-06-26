@@ -1,9 +1,9 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 
-import lk.ijse.CinnaCraft.Dto.SupplierDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.SupplierDAO;
+import lk.ijse.CinnaCraft.entity.Supplier;
 
 
 import java.sql.ResultSet;
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class SupplierDAOImpl implements SupplierDAO {
 
   @Override
-    public ArrayList<SupplierDto> getAll() throws SQLException {
+    public ArrayList<Supplier> getAll() throws SQLException {
 
        ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier");
 
-         ArrayList<SupplierDto> dtoList = new ArrayList<>();
+         ArrayList<Supplier> dtoList = new ArrayList<>();
         while (resultSet.next()) {
-            SupplierDto dto = new SupplierDto(
+            Supplier dto = new Supplier(
              resultSet.getString("SupId"),
              resultSet.getString("firstName"),
              resultSet.getString("lastName"),
@@ -37,27 +37,27 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
      @Override
-    public boolean save(SupplierDto dto) throws SQLException {
+    public boolean save(Supplier entity) throws SQLException {
 
 
        return  SQLUtil.crudUtil("INSERT INTO Cinnamon_Supplier VALUES(?, ?, ?, ?, ?, ?, ?)",
-               dto.getSupId(),
-               dto.getFirstName(),
-               dto.getLastName(),
-               dto.getAddress(),
-               dto.getBank(),
-               dto.getBankNo(),
-               dto.getMobileNo());
+               entity.getSupId(),
+               entity.getFirstName(),
+               entity.getLastName(),
+               entity.getAddress(),
+               entity.getBank(),
+               entity.getBankNo(),
+               entity.getMobileNo());
 
 
     }
     @Override
-    public boolean update(SupplierDto dto) throws SQLException {
+    public boolean update(Supplier entity) throws SQLException {
 
 
         return SQLUtil.crudUtil("UPDATE Cinnamon_Supplier SET SupID = ? , firstName = ? , lastName = ?, address = ?, bank = ?, bankNo = ?, mobileNo = ?  WHERE CusId = ?",
 
-                dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getBank(), dto.getBankNo(), dto.getMobileNo(), dto.getSupId());
+                entity.getFirstName(), entity.getLastName(), entity.getAddress(), entity.getBank(), entity.getBankNo(), entity.getMobileNo(), entity.getSupId());
 
 
 
@@ -116,14 +116,14 @@ public class SupplierDAOImpl implements SupplierDAO {
 
 
     @Override
-    public SupplierDto search(String supId) throws SQLException {
+    public Supplier search(String supId) throws SQLException {
 
 
        ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier WHERE SupId = ?", supId);
-        SupplierDto dto = null;
+        Supplier entity = null;
 
         if (resultSet.next()) {
-            dto = new SupplierDto(
+            entity = new Supplier(
              resultSet.getString("supID"),
              resultSet.getString("firstName"),
              resultSet.getString("lastName"),
@@ -136,7 +136,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
         }
 
-        return dto;
+        return entity;
     }
     @Override
     public String getSupplierName(String supId) throws SQLException {

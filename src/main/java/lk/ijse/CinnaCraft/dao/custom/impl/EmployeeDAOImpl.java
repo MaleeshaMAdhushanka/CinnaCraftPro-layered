@@ -1,9 +1,9 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.EmployeeDAO;
+import lk.ijse.CinnaCraft.entity.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,15 +17,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 
     @Override
-    public ArrayList<EmployeeDto> getAll() throws SQLException {
+    public ArrayList<Employee> getAll() throws SQLException {
 
         ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM employee");
-        ArrayList<EmployeeDto> allEmployee = new ArrayList<>();
+        ArrayList<Employee> allEmployee = new ArrayList<>();
 
 
 
         while (resultSet.next()) {
-            EmployeeDto  dto = new EmployeeDto(
+            Employee dto = new Employee(
                     resultSet.getString("empID"),
                     resultSet.getString("firstName"),
                     resultSet.getString("lastName"),
@@ -40,7 +40,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     }
      @Override
-    public boolean save(EmployeeDto dto) throws SQLException{
+    public boolean save(Employee dto) throws SQLException{
 
       return SQLUtil.crudUtil("INSERT INTO employee VALUES(?, ?, ?, ?, ?, ?)", dto.getEmpID(), dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(), dto.getMobileNo());
 
@@ -48,7 +48,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public boolean update(EmployeeDto dto) throws  SQLException{
+    public boolean update(Employee dto) throws  SQLException{
 
 
          return  SQLUtil.crudUtil("UPDATE employee SET firstName = ? , lastName = ? , address = ?, sex = ?, mobileNo = ? WHERE empID = ?", dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(), dto.getMobileNo(), dto.getEmpID());
@@ -80,14 +80,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public EmployeeDto search(String id) throws SQLException {
+    public Employee search(String id) throws SQLException {
 
         ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM employee WHERE empID = ?", id);
 
-        EmployeeDto dto = null;
+        Employee entity = null;
 
         if (resultSet.next()){
-            dto = new EmployeeDto(resultSet.getString("empID"),
+            entity = new Employee(resultSet.getString("empID"),
                     resultSet.getString("firstName"),
                     resultSet.getString("lastName"),
                     resultSet.getString("address"),
@@ -96,7 +96,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             );
         }
 
-        return dto;
+        return entity;
     }
     private String splitEmployeeId(String currentEmployeeId) {
 

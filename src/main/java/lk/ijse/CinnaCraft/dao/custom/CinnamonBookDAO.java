@@ -1,8 +1,8 @@
 package lk.ijse.CinnaCraft.dao.custom;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CinnamonBookDto;
 import lk.ijse.CinnaCraft.dao.CrudDAO;
+import lk.ijse.CinnaCraft.entity.CinnamonBook;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CinnamonBookDAO extends CrudDAO<CinnamonBookDto> {
+public interface CinnamonBookDAO extends CrudDAO<CinnamonBook> {
 
 
      boolean updateCinnamonBookAmount(String CinnamonBookId, double amount) throws SQLException;

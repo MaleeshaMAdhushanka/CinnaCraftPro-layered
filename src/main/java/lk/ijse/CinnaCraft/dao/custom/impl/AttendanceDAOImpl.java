@@ -1,8 +1,8 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
-import lk.ijse.CinnaCraft.Dto.AttendanceDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
+import lk.ijse.CinnaCraft.entity.Attendance;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -15,18 +15,18 @@ import java.util.List;
 public class AttendanceDAOImpl implements AttendanceDAO {
 
     @Override
-    public ArrayList<AttendanceDto> getAll() throws SQLException {
+    public ArrayList<Attendance> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public boolean save(AttendanceDto dto) throws SQLException {
-        return SQLUtil.crudUtil("INSERT INTO attendance VALUES(?, ?, ?, ?, ?, ?)", dto.getAttendanceId(), dto.getDate(), dto.getEmpId(), dto.getInTime(), dto.getOutTime(), dto.isPayed());
+    public boolean save(Attendance entity) throws SQLException {
+        return SQLUtil.crudUtil("INSERT INTO attendance VALUES(?, ?, ?, ?, ?, ?)", entity.getAttendanceId(), entity.getDate(), entity.getEmpId(), entity.getInTime(), entity.getOutTime(), entity.isPayed());
     }
 
     @Override
-    public boolean update(AttendanceDto dto) throws SQLException {
-        return SQLUtil.crudUtil("UPDATE attendance SET outTime=? WHERE empId=? AND date=?", dto.getOutTime(), dto.getEmpId(), dto.getDate());
+    public boolean update(Attendance entity) throws SQLException {
+        return SQLUtil.crudUtil("UPDATE attendance SET outTime=? WHERE empId=? AND date=?", entity.getOutTime(), entity.getEmpId(), entity.getDate());
     }
 
     @Override
@@ -41,7 +41,7 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 
 
     @Override
-    public AttendanceDto search(String id) throws SQLException {
+    public Attendance search(String id) throws SQLException {
         return null;
     }
 
@@ -92,10 +92,10 @@ public class AttendanceDAOImpl implements AttendanceDAO {
     }
 
     @Override
-    public List<AttendanceDto> getAllAttendanceDetails(LocalDate date) throws SQLException {
+    public List<Attendance> getAllAttendanceDetails(LocalDate date) throws SQLException {
         ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM attendance WHERE date=?", date);
 
-        List<AttendanceDto> attendanceList = new ArrayList<>();
+        List<Attendance> attendanceList = new ArrayList<>();
 
 
         //The Value Can Either Be null or not null
@@ -107,7 +107,7 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 //            }
 
         while (resultSet.next()) {
-            AttendanceDto attendance = new AttendanceDto(
+            Attendance attendance = new Attendance(
                     resultSet.getString(1),
                     resultSet.getDate(2).toLocalDate()
                     , resultSet.getString(3)

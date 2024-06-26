@@ -1,10 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.FertilizerDto;
 import lk.ijse.CinnaCraft.Tm.FertilizeSalesCartTm;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerDAO;
+import lk.ijse.CinnaCraft.entity.Fertilizer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,14 +16,14 @@ import java.util.List;
 public class FertilizerDAOImpl implements FertilizerDAO {
 
 
-    public  ArrayList<FertilizerDto> getAll() throws SQLException {
+    public  ArrayList<Fertilizer> getAll() throws SQLException {
 
 
         ResultSet resultSet =  SQLUtil.crudUtil( "SELECT * FROM fertilizer");
-        ArrayList<FertilizerDto> dtoList = new ArrayList<>();
+        ArrayList<Fertilizer> dtoList = new ArrayList<>();
 
         while (resultSet.next()) {
-            FertilizerDto dto = new FertilizerDto(
+            Fertilizer dto = new Fertilizer(
                     resultSet.getString("fertilizerID"),
                     resultSet.getString("brand"),
                     resultSet.getString("description"),
@@ -36,18 +36,18 @@ public class FertilizerDAOImpl implements FertilizerDAO {
         return dtoList;
     }
 
-    public  boolean save(FertilizerDto dto) throws  SQLException{
+    public  boolean save(Fertilizer entity) throws  SQLException{
 
 
-        return SQLUtil.crudUtil("INSERT INTO fertilizer VALUES(?, ?, ?, ?, ?, ?)", dto.getFertilizerID(), dto.getBrand(), dto.getDescription(), dto.getSize(), dto.getPrice(), dto.getQty());
+        return SQLUtil.crudUtil("INSERT INTO fertilizer VALUES(?, ?, ?, ?, ?, ?)", entity.getFertilizerID(), entity.getBrand(), entity.getDescription(), entity.getSize(), entity.getPrice(), entity.getQty());
 
     }
 
     @Override
-    public boolean update(FertilizerDto dto) throws SQLException {
+    public boolean update(Fertilizer entity) throws SQLException {
 
 
-        return SQLUtil.crudUtil( "UPDATE fertilizer SET brand = ? , description = ? , size = ?, price = ?,qty = ? WHERE fertilizerID = ?", dto.getBrand(), dto.getDescription(), dto.getSize(), dto.getPrice(), dto.getQty(),dto.getFertilizerID());
+        return SQLUtil.crudUtil( "UPDATE fertilizer SET brand = ? , description = ? , size = ?, price = ?,qty = ? WHERE fertilizerID = ?", entity.getBrand(), entity.getDescription(), entity.getSize(), entity.getPrice(), entity.getQty(),entity.getFertilizerID());
 
     }
 
@@ -110,15 +110,15 @@ public class FertilizerDAOImpl implements FertilizerDAO {
 
 
 
-
-    public FertilizerDto search(String id) throws SQLException {
+     @Override
+    public Fertilizer search(String id) throws SQLException {
 
         ResultSet  resultSet = SQLUtil.crudUtil( "SELECT * FROM fertilizer WHERE fertilizerId = ?", id);
 
-        FertilizerDto dto=null;
+        Fertilizer entity = null;
 
         if (resultSet.next()){
-            dto = new FertilizerDto(
+            entity = new Fertilizer(
              resultSet.getString("fertilizerID"),
              resultSet.getString("brand"),
              resultSet.getString("description"),
@@ -128,7 +128,7 @@ public class FertilizerDAOImpl implements FertilizerDAO {
             );
         }
 
-        return dto;
+        return entity;
     }
 
 

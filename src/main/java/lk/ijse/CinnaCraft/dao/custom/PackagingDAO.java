@@ -1,10 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 import lk.ijse.CinnaCraft.dao.CrudDAO;
+import lk.ijse.CinnaCraft.entity.Packaging;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface PackagingDAO extends CrudDAO<PackagingDto> {
-     List<PackagingDto> getAllPackaging (String cinnamonTypeId) throws SQLException;
+public interface PackagingDAO extends CrudDAO<Packaging> {
+     List<Packaging> getAllPackaging (String cinnamonTypeId) throws SQLException;
 
      String getPackId(String cinnamonTypeId, String packSize) throws  SQLException;
 

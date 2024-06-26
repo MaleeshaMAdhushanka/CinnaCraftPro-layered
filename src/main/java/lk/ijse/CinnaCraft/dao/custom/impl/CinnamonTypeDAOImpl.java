@@ -1,11 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CinnamonBookTypeDetailDto;
-import lk.ijse.CinnaCraft.Dto.CinnamonTypeDto;
-import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonTypeDAO;
+import lk.ijse.CinnaCraft.entity.CinnamonBookTypeDetail;
+import lk.ijse.CinnaCraft.entity.CinnamonType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,29 +16,29 @@ import java.util.List;
 public class CinnamonTypeDAOImpl  implements CinnamonTypeDAO {
 
     @Override
-    public ArrayList<CinnamonTypeDto> getAll() throws SQLException {
+    public ArrayList<CinnamonType> getAll() throws SQLException {
 
        ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM Cinnamon_types");
 
-        ArrayList<CinnamonTypeDto> dtoList = new ArrayList<>();
+        ArrayList<CinnamonType> dtoList = new ArrayList<>();
         while (resultSet.next()){
-            CinnamonTypeDto dto = new CinnamonTypeDto(
+            CinnamonType entity = new CinnamonType(
             resultSet.getString("typeID"),
             resultSet.getString("type"),
             resultSet.getDouble("amount"));
 
-            dtoList.add(dto);
+            dtoList.add(entity);
         }
         return dtoList;
     }
 
     @Override
-    public boolean save(CinnamonTypeDto dto) throws SQLException {
+    public boolean save(CinnamonType dto) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean update(CinnamonTypeDto dto) throws SQLException {
+    public boolean update(CinnamonType dto) throws SQLException {
         return false;
     }
 
@@ -59,7 +58,7 @@ public class CinnamonTypeDAOImpl  implements CinnamonTypeDAO {
     }
 
     @Override
-    public CinnamonTypeDto search(String id) throws SQLException {
+    public CinnamonType search(String id) throws SQLException {
         return null;
     }
 
@@ -87,12 +86,12 @@ public class CinnamonTypeDAOImpl  implements CinnamonTypeDAO {
 
 
     @Override
-    public boolean updateCinnamonTypeAmount(CinnamonBookTypeDetailDto dto) throws SQLException{
+    public boolean updateCinnamonTypeAmount(CinnamonBookTypeDetail entity) throws SQLException{
 
        return SQLUtil.crudUtil( "UPDATE Cinnamon_types SET amount = amount + ? WHERE typeID = ?",
 
-            dto.getAmount(),
-            dto.getTypeID());
+            entity.getAmount(),
+            entity.getTypeID());
 
     }
 

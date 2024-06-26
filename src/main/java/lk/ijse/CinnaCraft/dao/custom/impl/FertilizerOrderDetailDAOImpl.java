@@ -1,7 +1,6 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.PlaceFertilizerOrderDto;
 import lk.ijse.CinnaCraft.Tm.FertilizeSalesCartTm;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerOrderDetailDAO;

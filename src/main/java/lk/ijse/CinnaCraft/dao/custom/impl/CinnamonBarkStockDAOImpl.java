@@ -1,13 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
-import com.mysql.cj.protocol.ResultsetRow;
-import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CinnamonBarkStockDto;
+
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBarkStockDAO;
+import lk.ijse.CinnaCraft.entity.CinnamonBarkStock;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,29 +14,29 @@ public class CinnamonBarkStockDAOImpl implements CinnamonBarkStockDAO {
 
 
     @Override
-    public ArrayList<CinnamonBarkStockDto> getAll() throws SQLException {
+    public ArrayList<CinnamonBarkStock> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public boolean save(CinnamonBarkStockDto dto) throws SQLException {
+    public boolean save(CinnamonBarkStock entity) throws SQLException {
 
         return SQLUtil.crudUtil("INSERT INTO Cinnamon_Bark_stock VALUES(?, ?, ?, ?, ?)",
-                dto.getCinnamonStockID(),
-                dto.getSupID(),
-                dto.getCinnamonBookID(),
-                dto.getAmount(),
-                dto.isPayed());
+                entity.getCinnamonStockID(),
+                entity.getSupID(),
+                entity.getCinnamonBookID(),
+                entity.getAmount(),
+                entity.isPayed());
 
     }
     @Override
-    public boolean update(CinnamonBarkStockDto dto) throws SQLException {
+    public boolean update(CinnamonBarkStock entity) throws SQLException {
 
         return SQLUtil.crudUtil( "UPDATE Cinnamon_Bark_stock SET SupID=?, CinnamonBookID=?, amount=? WHERE CinnamonStockID=?",
-                dto.getSupID(),
-                dto.getCinnamonBookID(),
-                dto.getAmount(),
-                dto.getCinnamonStockID());
+                entity.getSupID(),
+                entity.getCinnamonBookID(),
+                entity.getAmount(),
+                entity.getCinnamonStockID());
 
     }
 
@@ -92,11 +89,11 @@ public class CinnamonBarkStockDAOImpl implements CinnamonBarkStockDAO {
 
 
     @Override
-    public CinnamonBarkStockDto search(String id) throws SQLException {
+    public CinnamonBarkStock search(String id) throws SQLException {
         ResultSet resultSet =SQLUtil.crudUtil("SELECT * FROM Cinnamon_Bark_stock WHERE CinnamonStockID=?", id);
 
         if (resultSet.next()) {
-            return new CinnamonBarkStockDto(
+            return new CinnamonBarkStock(
                     resultSet.getString("CinnamonStockID"),
                     resultSet.getString("SupID"),
                     resultSet.getString("CinnamonBookID"),
@@ -126,15 +123,15 @@ public class CinnamonBarkStockDAOImpl implements CinnamonBarkStockDAO {
 
     }
 
-    public List<CinnamonBarkStockDto> getAllStockDetails(String dateBookId) throws SQLException {
+    public List<CinnamonBarkStock> getAllStockDetails(String dateBookId) throws SQLException {
 
         ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM Cinnamon_Bark_stock WHERE CinnamonBookID=?", dateBookId);
 
 
-        List<CinnamonBarkStockDto> cinnamonBarkStocks = new ArrayList<>();
+        List<CinnamonBarkStock> cinnamonBarkStocks = new ArrayList<>();
 
         while (resultSet.next()) {
-            cinnamonBarkStocks.add(new CinnamonBarkStockDto(
+            cinnamonBarkStocks.add(new CinnamonBarkStock(
                     resultSet.getString("CinnamonStockID"),
                     resultSet.getString("SupID"),
                     resultSet.getString("amount"),

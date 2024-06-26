@@ -1,10 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CinnamonBookTypeDetailDto;
-import lk.ijse.CinnaCraft.Dto.CinnamonBookTypeDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBookTypeDAO;
+import lk.ijse.CinnaCraft.entity.CinnamonBookType;
+import lk.ijse.CinnaCraft.entity.CinnamonBookTypeDetail;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -14,27 +14,27 @@ import java.util.List;
 public class CinnamonBookTypeDAOImpl implements CinnamonBookTypeDAO {
 
     @Override
-    public ArrayList<CinnamonBookTypeDto> getAll() throws SQLException {
+    public ArrayList<CinnamonBookType> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public boolean save(CinnamonBookTypeDto dto) throws SQLException {
+    public boolean save(CinnamonBookType entity) throws SQLException {
 
         return SQLUtil.crudUtil( "INSERT INTO Cinnamon_book_type_details VALUES(?,?,?,?,?)",
 
-          dto.getCinnamonBookTypeId(),
-          Date.valueOf(dto.getDate()),
-          dto.getTypeId(),
-          dto.getAmount(),
-          dto.isConfirmed()
+          entity.getCinnamonBookTypeId(),
+          Date.valueOf(entity.getDate()),
+          entity.getTypeId(),
+          entity.getAmount(),
+          entity.isConfirmed()
           );
 
 
     }
 
     @Override
-    public boolean update(CinnamonBookTypeDto dto) throws SQLException {
+    public boolean update(CinnamonBookType dto) throws SQLException {
         return false;
     }
 
@@ -89,18 +89,18 @@ public class CinnamonBookTypeDAOImpl implements CinnamonBookTypeDAO {
     }
 
     @Override
-    public CinnamonBookTypeDto search(String id) throws SQLException {
+    public CinnamonBookType search(String id) throws SQLException {
         return null;
     }
 
-    public List<CinnamonBookTypeDto> getAllTeaBookTypeDetails(String date) throws SQLException {
+    public List<CinnamonBookType> getAllTeaBookTypeDetails(String date) throws SQLException {
 
      ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM Cinnamon_book_type_details WHERE date = ?", date);
 
-        ArrayList<CinnamonBookTypeDto> cinnamonBookTypeList = new ArrayList<>();
+        ArrayList<CinnamonBookType> cinnamonBookTypeList = new ArrayList<>();
 
         while (resultSet.next()) {
-          cinnamonBookTypeList.add( new CinnamonBookTypeDto(
+          cinnamonBookTypeList.add( new CinnamonBookType(
                     resultSet.getString(1),
                     resultSet.getDate(2).toLocalDate(),
                     resultSet.getString(3),
@@ -123,15 +123,16 @@ public class CinnamonBookTypeDAOImpl implements CinnamonBookTypeDAO {
      return SQLUtil.crudUtil("UPDATE  Cinnamon_book_type_details SET isConfirmed = true WHERE date =?", date);
 
     }
-    public List<CinnamonBookTypeDetailDto> getTotalAmount(LocalDate date) throws SQLException{
+
+    public List<CinnamonBookTypeDetail> getTotalAmount(LocalDate date) throws SQLException{
 
 
         ResultSet resultSet = SQLUtil.crudUtil("SELECT typeID,SUM(amount) FROM Cinnamon_book_type_details WHERE date = ? AND isConfirmed = false group by typeID", date);
 
-        ArrayList<CinnamonBookTypeDetailDto> cinnamonBookTypeDetailsDtoList = new ArrayList<>();
+        ArrayList<CinnamonBookTypeDetail> cinnamonBookTypeDetailsDtoList = new ArrayList<>();
 
         while(resultSet.next()){
-            cinnamonBookTypeDetailsDtoList.add(new CinnamonBookTypeDetailDto(
+            cinnamonBookTypeDetailsDtoList.add(new CinnamonBookTypeDetail(
            resultSet.getString(1),
             resultSet.getDouble(2)
             ));

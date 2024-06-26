@@ -1,9 +1,9 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CustomerDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.CustomerDAO;
+import lk.ijse.CinnaCraft.entity.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +14,12 @@ import java.util.List;
 
 public class CustomerDAOImpl implements CustomerDAO {
     @Override
-    public ArrayList<CustomerDto> getAll() throws SQLException {
+    public ArrayList<Customer> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Customer");
-        ArrayList<CustomerDto> allCustomer = new ArrayList<>();
+        ArrayList<Customer> allCustomer = new ArrayList<>();
 
         while (resultSet.next()) {
-            CustomerDto  customerDto = new CustomerDto(
+            Customer  entity= new Customer(
             resultSet.getString("cusId"),
             resultSet.getString("firstName"),
             resultSet.getString("lastName"),
@@ -27,21 +27,21 @@ public class CustomerDAOImpl implements CustomerDAO {
             resultSet.getString("email"),
             resultSet.getString("mobileNo")
               );
-            allCustomer.add(customerDto);
+            allCustomer.add(entity);
 
         }
         return  allCustomer;
     }
 
     @Override
-    public boolean save(CustomerDto dto) throws SQLException {
-        return SQLUtil.crudUtil("INSERT INTO Customer VALUES(?, ?, ?, ?, ?, ?)", dto.getCusId(), dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getEmail(), dto.getMobileNo());
+    public boolean save(Customer entity) throws SQLException {
+        return SQLUtil.crudUtil("INSERT INTO Customer VALUES(?, ?, ?, ?, ?, ?)", entity.getCusId(), entity.getFirstName(), entity.getLastName(), entity.getAddress(), entity.getEmail(), entity.getMobileNo());
 
     }
 
     @Override
-    public boolean update(CustomerDto dto) throws SQLException {
-        return SQLUtil.crudUtil("UPDATE Customer SET firstName = ? , lastName = ? , address = ?, email = ?, mobileNo = ? WHERE CusId = ?", dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getEmail(), dto.getMobileNo(), dto.getCusId());
+    public boolean update(Customer entity) throws SQLException {
+        return SQLUtil.crudUtil("UPDATE Customer SET firstName = ? , lastName = ? , address = ?, email = ?, mobileNo = ? WHERE CusId = ?", entity.getFirstName(), entity.getLastName(), entity.getAddress(), entity.getEmail(), entity.getMobileNo(), entity.getCusId());
     }
 
     @Override
@@ -68,14 +68,14 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public CustomerDto search(String id) throws SQLException {
+    public Customer search(String id) throws SQLException {
 
      ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM Customer WHERE CusId = ?", id);
 
-        CustomerDto dto  =null;
+        Customer entity  =null;
 
         if (resultSet.next()){
-            dto = new CustomerDto(
+            entity = new Customer(
              resultSet.getString("cusId"),
               resultSet.getString("firstName"),
              resultSet.getString("lastName"),
@@ -85,7 +85,7 @@ public class CustomerDAOImpl implements CustomerDAO {
             );
 
         }
-        return dto;
+        return entity;
     }
 
     @Override

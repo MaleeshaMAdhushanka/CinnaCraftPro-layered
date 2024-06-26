@@ -1,8 +1,8 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
-import lk.ijse.CinnaCraft.Dto.PaymentsDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.PaymentDAO;
+import lk.ijse.CinnaCraft.entity.Payments;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -12,24 +12,24 @@ import java.util.List;
 
 public class PaymentsDAOImpl implements PaymentDAO {
     @Override
-    public ArrayList<PaymentsDto> getAll() throws SQLException {
+    public ArrayList<Payments> getAll() throws SQLException {
         return null;
     }
 
 
     @Override
-    public boolean save(PaymentsDto dto) throws SQLException {
+    public boolean save(Payments entity) throws SQLException {
         return  SQLUtil.crudUtil("INSERT INTO payments VALUES(?,?,?,?,?)",
-                dto.getPaymentId(),
-                dto.getSupId(),
-                dto.getAmount(),
-                dto.getPayment(),
-                Date.valueOf(dto.getDate())
+                entity.getPaymentId(),
+                entity.getSupId(),
+                entity.getAmount(),
+                entity.getPayment(),
+                Date.valueOf(entity.getDate())
         );
     }
 
     @Override
-    public boolean update(PaymentsDto dto) throws SQLException {
+    public boolean update(Payments dto) throws SQLException {
         return false;
     }
 
@@ -73,24 +73,24 @@ public class PaymentsDAOImpl implements PaymentDAO {
     }
 
     @Override
-    public PaymentsDto search(String id) throws SQLException {
+    public Payments search(String id) throws SQLException {
         return null;
     }
 
     @Override
-    public List<PaymentsDto> getAllPaymentsDetails(String SupID) throws SQLException {
+    public List<Payments> getAllPaymentsDetails(String SupID) throws SQLException {
         ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM payments WHERE SupID=?",SupID);
-        List<PaymentsDto> dtoList = new ArrayList<>();
+        List<Payments> entityList = new ArrayList<>();
         while(resultSet.next()){
-            PaymentsDto dto = new PaymentsDto(
+            Payments dto = new Payments(
                     resultSet.getString("paymentID "),
                     resultSet.getString("SupID"),
                     resultSet.getDouble("amount"),
                     resultSet.getDouble("payment"),
                     resultSet.getDate("date").toLocalDate());
-            dtoList.add(dto);
+            entityList.add(dto);
 
         }
-        return  dtoList;
+        return  entityList;
     }
 }

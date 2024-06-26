@@ -1,9 +1,9 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.UserDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.UserDAO;
+import lk.ijse.CinnaCraft.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,24 +15,24 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public ArrayList<UserDto> getAll() throws SQLException {
+    public ArrayList<User> getAll() throws SQLException {
         return null;
     }
 
 
     @Override
-    public boolean save(UserDto dto) throws SQLException {
+    public boolean save(User entity) throws SQLException {
         return SQLUtil.crudUtil( "INSERT INTO user VALUES(?, ?, ?)",
 
-        dto.getUsername(),
-        dto.getPassword(),
-        dto.getEmail()
+        entity.getUsername(),
+        entity.getPassword(),
+        entity.getEmail()
         );
 
     }
 
     @Override
-    public boolean update(UserDto dto) throws SQLException {
+    public boolean update(User dto) throws SQLException {
         return false;
     }
 
@@ -52,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserDto search(String id) throws SQLException {
+    public User search(String id) throws SQLException {
         return null;
     }
 

@@ -1,10 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
-import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
+import lk.ijse.CinnaCraft.entity.Packaging;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,14 +15,14 @@ public class PackagingDAOImpl implements PackagingDAO {
 
 
     @Override
-    public ArrayList<PackagingDto> getAll() throws SQLException {
+    public ArrayList<Packaging> getAll() throws SQLException {
 
         ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM packing ");
 
-        ArrayList<PackagingDto> entityList = new ArrayList<>();
+        ArrayList<Packaging> entityList = new ArrayList<>();
 
         while (resultSet.next()){
-            entityList.add(new PackagingDto(
+            entityList.add(new Packaging(
                    resultSet.getString("packId"),
                     resultSet.getString("typeId"),
                     resultSet.getString("description"),
@@ -35,28 +35,28 @@ public class PackagingDAOImpl implements PackagingDAO {
     }
 
     @Override
-    public boolean save(PackagingDto dto) throws SQLException {
+    public boolean save(Packaging entity) throws SQLException {
 
        return SQLUtil.crudUtil( "INSERT INTO packing VALUES(?, ?, ?, ?, ?) ",
-               dto.getPackId(),
-               dto.getTypeId(),
-               dto.getDescription(),
-               dto.getPackageCount(),
-               dto.getPrice());
+               entity.getPackId(),
+               entity.getTypeId(),
+               entity.getDescription(),
+               entity.getPackageCount(),
+               entity.getPrice());
 
     }
 
     @Override
-    public boolean update(PackagingDto dto) throws SQLException {
+    public boolean update(Packaging entity) throws SQLException {
 
 
        return SQLUtil.crudUtil("UPDATE packing SET typeId=?, description=?,packageCount=?, price=? WHERE packId=?",
 
-        dto.getTypeId(),
-        dto.getDescription(),
-        dto.getPackageCount(),
-        dto.getPrice(),
-        dto.getPackId());
+        entity.getTypeId(),
+        entity.getDescription(),
+        entity.getPackageCount(),
+        entity.getPrice(),
+        entity.getPackId());
 
 
     }
@@ -112,14 +112,14 @@ public class PackagingDAOImpl implements PackagingDAO {
 
     }
 
-
-    public PackagingDto search(String id) throws SQLException {
+     @Override
+    public Packaging search(String id) throws SQLException {
 
 
         ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM packing WHERE packId=?", id);
 
         if (resultSet.next()) {
-            return new PackagingDto(
+            return new Packaging(
                     resultSet.getString("packId"),
                     resultSet.getString("typeId"),
                     resultSet.getString("description"),
@@ -133,15 +133,15 @@ public class PackagingDAOImpl implements PackagingDAO {
     }
 
 
-    public List<PackagingDto> getAllPackaging(String cinnamonType) throws SQLException {
+    public List<Packaging> getAllPackaging(String cinnamonType) throws SQLException {
 
 
         ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM  packing WHERE typeId=?", cinnamonType);
-        List<PackagingDto> pacakagingList = new ArrayList<>();
+        List<Packaging> pacakagingList = new ArrayList<>();
 
 
         while (resultSet.next()){
-            PackagingDto packaging = new PackagingDto(
+            Packaging packaging = new Packaging(
             resultSet.getString("packId"),
             resultSet.getString("typeId"),
             resultSet.getString("description"),

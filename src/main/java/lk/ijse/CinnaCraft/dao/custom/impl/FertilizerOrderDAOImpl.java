@@ -2,10 +2,10 @@ package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
 
-import lk.ijse.CinnaCraft.Dto.PlaceFertilizerOrderDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerDAO;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerOrderDAO;
+import lk.ijse.CinnaCraft.entity.FertilizerOrder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,19 +14,19 @@ public class FertilizerOrderDAOImpl implements FertilizerOrderDAO {
 
 
     @Override
-    public ArrayList<PlaceFertilizerOrderDto> getAll() throws SQLException {
+    public ArrayList<FertilizerOrder> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public boolean save(PlaceFertilizerOrderDto dto) throws SQLException {
+    public boolean save(FertilizerOrder entity) throws SQLException {
 
 
-       return SQLUtil.crudUtil( "INSERT INTO fertilizer_order VALUES (?,?,?)", dto.getFertilizerOrderId(), dto.getCustomerId(), dto.getDate());
+       return SQLUtil.crudUtil( "INSERT INTO fertilizer_order VALUES (?,?,?)", entity.getFertilizerOrderId(), entity.getCustomerId(), entity.getDate());
     }
 
     @Override
-    public boolean update(PlaceFertilizerOrderDto dto) throws SQLException {
+    public boolean update(FertilizerOrder entity) throws SQLException {
         return false;
     }
 
@@ -79,7 +79,7 @@ public class FertilizerOrderDAOImpl implements FertilizerOrderDAO {
     }
 
     @Override
-    public PlaceFertilizerOrderDto search(String id) throws SQLException {
+    public FertilizerOrder search(String id) throws SQLException {
         return null;
     }
 }

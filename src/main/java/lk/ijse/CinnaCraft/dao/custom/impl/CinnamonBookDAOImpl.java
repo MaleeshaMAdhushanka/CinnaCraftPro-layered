@@ -1,9 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CinnamonBookDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBookDAO;
+import lk.ijse.CinnaCraft.entity.CinnamonBook;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,14 +16,14 @@ import java.util.ArrayList;
 public class CinnamonBookDAOImpl implements CinnamonBookDAO {
 
     @Override
-    public ArrayList<CinnamonBookDto> getAll() throws SQLException {
+    public ArrayList<CinnamonBook> getAll() throws SQLException {
 
         ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM Cinnamon_Book order by date");
 
-        ArrayList<CinnamonBookDto> cinnamonBooks = new ArrayList<>();
+        ArrayList<CinnamonBook> cinnamonBooks = new ArrayList<>();
 
         while (resultSet.next()) {
-            cinnamonBooks.add(new CinnamonBookDto(
+            cinnamonBooks.add(new CinnamonBook(
                     resultSet.getString(1),
                     resultSet.getDouble(2),
                     resultSet.getString(3)
@@ -34,7 +35,7 @@ public class CinnamonBookDAOImpl implements CinnamonBookDAO {
     }
 
     @Override
-    public boolean save(CinnamonBookDto dto) throws SQLException {
+    public boolean save(CinnamonBook dto) throws SQLException {
         return SQLUtil.crudUtil("INSERT INTO Cinnamon_Book VALUES(?,?,?)",
                 dto.getCinnamonBookId(),
                 dto.getDailyAmount(),
@@ -43,7 +44,7 @@ public class CinnamonBookDAOImpl implements CinnamonBookDAO {
     }
 
     @Override
-    public boolean update(CinnamonBookDto dto) throws SQLException {
+    public boolean update(CinnamonBook dto) throws SQLException {
         return false;
     }
 
@@ -94,7 +95,7 @@ public class CinnamonBookDAOImpl implements CinnamonBookDAO {
     }
 
     @Override
-    public CinnamonBookDto search(String id) throws SQLException {
+    public CinnamonBook search(String id) throws SQLException {
         return null;
     }
 

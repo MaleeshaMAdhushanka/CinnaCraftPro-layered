@@ -1,9 +1,9 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.SalaryDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.SalaryDAO;
+import lk.ijse.CinnaCraft.entity.Salary;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -13,26 +13,26 @@ import java.util.List;
 public class SalaryDAOImpl implements SalaryDAO {
 
     @Override
-    public ArrayList<SalaryDto> getAll() throws SQLException {
+    public ArrayList<Salary> getAll() throws SQLException {
         return null;
     }
 
    @Override
-    public boolean save(SalaryDto dto) throws SQLException {
+    public boolean save(Salary entity) throws SQLException {
 
 
         return SQLUtil.crudUtil("INSERT INTO  salary VALUES(?, ?, ?, ?, ?)",
-                dto.getSalaryId(),
-                dto.getEmpID(),
-                dto.getAmount(),
-                dto.getDateCount(),
-                Date.valueOf(dto.getDate()));
+                entity.getSalaryId(),
+                entity.getEmpID(),
+                entity.getAmount(),
+                entity.getDateCount(),
+                Date.valueOf(entity.getDate()));
 
 
     }
 
     @Override
-    public boolean update(SalaryDto dto) throws SQLException {
+    public boolean update(Salary dto) throws SQLException {
         return false;
     }
 
@@ -88,25 +88,25 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public SalaryDto search(String id) throws SQLException {
+    public Salary search(String id) throws SQLException {
         return null;
     }
 
-    public List<SalaryDto> getPaymentDetails(String supplierId) throws SQLException {
+    public List<Salary> getPaymentDetails(String supplierId) throws SQLException {
 
         ResultSet resultSet = SQLUtil.crudUtil("SELECT * FROM salary WHERE empID=?", supplierId);
 
-        List<SalaryDto> salaryList = new ArrayList<>();
+        List<Salary> salaryList = new ArrayList<>();
 
         while (resultSet.next()) {
-            SalaryDto salary = new SalaryDto(
+            Salary entity = new Salary(
                     resultSet.getString("salaryId"),
                     resultSet.getString("empID"),
                     resultSet.getDouble("amount"),
                     resultSet.getInt("dateCount"),
                     resultSet.getDate("Date").toLocalDate());
 
-            salaryList.add(salary);
+            salaryList.add(entity);
 
         }
         return salaryList;

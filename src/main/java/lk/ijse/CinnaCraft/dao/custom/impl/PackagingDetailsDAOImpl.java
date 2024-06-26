@@ -1,10 +1,9 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
-import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
-import lk.ijse.CinnaCraft.Dto.PackingDetailsDto;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDetailsDAO;
+import lk.ijse.CinnaCraft.entity.PackingCountAmount;
+import lk.ijse.CinnaCraft.entity.PackingDetails;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -15,28 +14,28 @@ public class PackagingDetailsDAOImpl implements PackagingDetailsDAO {
 
 
     @Override
-    public ArrayList<PackingDetailsDto> getAll() throws SQLException {
+    public ArrayList<PackingDetails> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public boolean save(PackingDetailsDto dto) throws SQLException {
+    public boolean save(PackingDetails entity) throws SQLException {
 
 
         return  SQLUtil.crudUtil("INSERT INO packaging_details VALUES(?, ?, ?, ?, ?,?,?) ",
 
-        dto.getPackagingDetailsId(),
-        Date.valueOf(dto.getDate()),
-        dto.getPackId(),
-        dto.getCount(),
-        dto.getAmount(),
-        dto.isConfirmed(),
-        dto.getTotal());
+        entity.getPackagingDetailsId(),
+        Date.valueOf(entity.getDate()),
+        entity.getPackId(),
+        entity.getCount(),
+        entity.getAmount(),
+        entity.isConfirmed(),
+        entity.getTotal());
 
     }
 
     @Override
-    public boolean update(PackingDetailsDto dto) throws SQLException {
+    public boolean update(PackingDetails dto) throws SQLException {
         return false;
     }
 
@@ -90,7 +89,7 @@ public class PackagingDetailsDAOImpl implements PackagingDetailsDAO {
     }
 
     @Override
-    public PackingDetailsDto search(String id) throws SQLException {
+    public PackingDetails search(String id) throws SQLException {
         return null;
     }
 
@@ -104,16 +103,16 @@ public class PackagingDetailsDAOImpl implements PackagingDetailsDAO {
         return  0;
 
     }
-    public List<PackingDetailsDto> loadAllPackagingDetails(LocalDate date) throws SQLException {
+    public List<PackingDetails> loadAllPackagingDetails(LocalDate date) throws SQLException {
 
 
        ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM packaging_details WHERE date=?", date);
 
 
-        List<PackingDetailsDto> packingDetailsList = new ArrayList<>();
+        List<PackingDetails> packingDetailsList = new ArrayList<>();
 
         while (resultSet.next()) {
-                 packingDetailsList.add(new PackingDetailsDto(
+                 packingDetailsList.add(new PackingDetails(
                     resultSet.getString(1),
                     resultSet.getDate(2).toLocalDate(),
                     resultSet.getString(3),
@@ -129,16 +128,16 @@ public class PackagingDetailsDAOImpl implements PackagingDetailsDAO {
     }
 
 
-    public List<PackingCountAmountDto> getTotalCountAmount(LocalDate date) throws SQLException {
+    public List<PackingCountAmount> getTotalCountAmount(LocalDate date) throws SQLException {
 
 
         ResultSet resultSet = SQLUtil.crudUtil("SELECT packId,SUM(count),SUM(amount) FROM packaging_details WHERE date=? AND isConfirmed=0 GROUP BY packId", date);
 
 
-        List<PackingCountAmountDto> packaingCountAmountList = new ArrayList<>();
+        List<PackingCountAmount> packaingCountAmountList = new ArrayList<>();
 
         while (resultSet.next()) {
-             packaingCountAmountList .add(new PackingCountAmountDto(
+             packaingCountAmountList .add(new PackingCountAmount(
                     resultSet.getString(1),
                     resultSet.getInt(2),
                     resultSet.getDouble(3)

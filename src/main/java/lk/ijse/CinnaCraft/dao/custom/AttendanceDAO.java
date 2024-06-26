@@ -1,9 +1,10 @@
 package lk.ijse.CinnaCraft.dao.custom;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.AttendanceDto;
+
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.CrudDAO;
+import lk.ijse.CinnaCraft.entity.Attendance;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -11,11 +12,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface AttendanceDAO  extends CrudDAO<AttendanceDto> {
+public interface AttendanceDAO  extends CrudDAO<Attendance> {
 
-    List<AttendanceDto> getAllAttendanceDetails(LocalDate date) throws SQLException;
+    List<Attendance> getAllAttendanceDetails(LocalDate date) throws SQLException;
 
-//     boolean markAttendance(AttendanceDto dto) throws SQLException;
+//     boolean markAttendance(Attendance dto) throws SQLException;
 
      boolean searchAttendance(String empId, LocalDate date) throws SQLException;
 
