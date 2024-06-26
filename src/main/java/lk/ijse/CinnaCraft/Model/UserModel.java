@@ -62,7 +62,7 @@ public class UserModel {
         pstm.setString(2, userName);
 
         return  pstm.executeUpdate() > 0;
-    }
+    } 
 
     public boolean searchEmail(String email) throws  SQLException{
         Connection connection = DbConnection.getInstance().getConnection();
