@@ -16,7 +16,6 @@ import java.util.List;
 public interface PackagingBO extends SuperBo {
      List<PackagingDto> getAllPackaging (String cinnamonType) throws SQLException;
 
-
      String getPackId(String cinnamonTypeId, String packSize) throws  SQLException ;
 
      PackagingDto searchPackaging(String packId) throws SQLException ;
