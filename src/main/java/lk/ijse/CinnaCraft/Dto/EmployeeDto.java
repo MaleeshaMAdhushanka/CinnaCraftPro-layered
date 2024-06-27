@@ -14,6 +14,7 @@ public class EmployeeDto {
     private String lastName;
     private String address;
     private String sex;
+    private String dateOfBirth;
     private String mobileNo;
 
 
