@@ -86,10 +86,11 @@ public class EmployeeModel {
             String lastName = resultSet.getString(3);
             String Address = resultSet.getString(4);
             String Sex = resultSet.getString(5);
-            String mobileNo = resultSet.getString(6);
+            String don = resultSet.getString(6);
+            String mobileNo = resultSet.getString(7);
 
 
-            var dto = new EmployeeDto(empID, firstName, lastName, Address, Sex, mobileNo);
+            var dto = new EmployeeDto(empID, firstName, lastName, Address, Sex, dateOfBirth, mobileNo);
             dtoList.add(dto);
         }
         return dtoList;
