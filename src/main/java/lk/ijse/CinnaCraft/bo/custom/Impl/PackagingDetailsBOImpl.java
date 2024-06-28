@@ -4,6 +4,7 @@ import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Dto.PackingDetailsDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
 import lk.ijse.CinnaCraft.bo.custom.PackagingDetailsBO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonTypeDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
@@ -24,7 +25,7 @@ public class PackagingDetailsBOImpl implements PackagingDetailsBO {
 
     PackagingDAO packagingDAO = new PackagingDAOImpl();
     PackagingDetailsDAO packagingDetailsDAO = new PackagingDetailsDAOImpl();
-    CinnamonTypeDAO cinnamonTypeDAO = new CinnamonTypeDAOImpl();
+   CinnamonTypeBO cinnamonTypeDAO = new CinnamonTypeBOImpl();
 
     @Override
     public String generateNextPackId() throws SQLException {
@@ -97,27 +98,28 @@ public class PackagingDetailsBOImpl implements PackagingDetailsBO {
     public boolean confirmPackaging(LocalDate date, List<PackingCountAmountDto> dtoList) throws SQLException {
 
 
-//        boolean result = false;
-//
-//        try {
-//
-//            TransactionUtil.autoCommitFalse();
-//            boolean isConfirmed = confirmPackaging(date);
-//
-//            if (isConfirmed) {
-//                boolean isSaved = packagingDAO.updatePackagingCount(dtoList);
-//                if (isSaved) {
-//                    boolean isUpdate = cinnamonTypeDAO.updateAmount();
-//                    if (isUpdate) {
-//                        TransactionUtil.commit();
-//                        result = true;
-//                    }
-//                }
-//            }
-//        } catch (SQLException e) {
-//            TransactionUtil.rollback();
-//        }
-//        return result;
-        return confirmPackaging(date);
+        boolean result = false;
+
+        try {
+
+            TransactionUtil.autoCommitFalse();
+
+            boolean isConfirmed = confirmPackaging(date);
+
+            if (isConfirmed) {
+                boolean isSaved = packagingDAO.updatePackagingCount(dtoList);
+                if (isSaved) {
+                    boolean isUpdate = cinnamonTypeDAO.updateAmount(dtoList);
+                    if (isUpdate) {
+                        TransactionUtil.commit();
+                        result = true;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            TransactionUtil.rollback();
+        }
+        return result;
+
     }
 }
