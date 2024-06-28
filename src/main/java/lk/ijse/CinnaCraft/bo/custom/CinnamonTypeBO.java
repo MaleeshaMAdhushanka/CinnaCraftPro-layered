@@ -1,18 +1,13 @@
-package lk.ijse.CinnaCraft.bo;
+package lk.ijse.CinnaCraft.bo.custom;
 
-import lk.ijse.CinnaCraft.Db.DbConnection;
-import lk.ijse.CinnaCraft.Dto.CinnamonBookTypeDetailDto;
 import lk.ijse.CinnaCraft.Dto.CinnamonTypeDto;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
+import lk.ijse.CinnaCraft.bo.SuperBo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public interface CinnamonTypeBO  extends SuperBo{
+public interface CinnamonTypeBO  extends SuperBo {
 
 
     public List<CinnamonTypeDto> getAllCinnamonType() throws SQLException;

@@ -1,9 +1,8 @@
 package lk.ijse.CinnaCraft.bo.custom.Impl;
 
-import lk.ijse.CinnaCraft.Dto.CinnamonBookTypeDetailDto;
 import lk.ijse.CinnaCraft.Dto.CinnamonTypeDto;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
-import lk.ijse.CinnaCraft.bo.CinnamonTypeBO;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonTypeDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonTypeDAOImpl;
