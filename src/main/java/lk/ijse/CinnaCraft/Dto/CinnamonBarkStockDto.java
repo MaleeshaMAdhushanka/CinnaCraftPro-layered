@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CinnamonBarkStock {
+public class CinnamonBarkStockDto {
     private String CinnamonStockID;
 
     private String SupID;

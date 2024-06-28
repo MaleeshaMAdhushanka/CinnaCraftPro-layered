@@ -1,6 +1,6 @@
 package lk.ijse.CinnaCraft.Model;
 
-import lk.ijse.CinnaCraft.Dto.CinnamonBarkStock;
+import lk.ijse.CinnaCraft.Dto.CinnamonBarkStockDto;
 import lk.ijse.CinnaCraft.Db.DbConnection;
 
 import java.sql.Connection;
@@ -12,7 +12,7 @@ public class AddCinnamonBarkTransactionModel {
     private final CinnamonBarkStockModel cinnamonBarkStockModel = new CinnamonBarkStockModel();
     private final CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
 
-    public boolean saveCinnamonBarkStock(CinnamonBarkStock cinnamonBarkStockDto, String CinnamonBookId) throws SQLException {
+    public boolean addCinnamonBarkStock(CinnamonBarkStockDto cinnamonBarkStockDto, String CinnamonBookId) throws SQLException {
 
             boolean result = false;
             Connection connection = null;

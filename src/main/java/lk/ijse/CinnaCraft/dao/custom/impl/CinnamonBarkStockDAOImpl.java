@@ -20,7 +20,6 @@ public class CinnamonBarkStockDAOImpl implements CinnamonBarkStockDAO {
 
     @Override
     public boolean save(CinnamonBarkStock entity) throws SQLException {
-
         return SQLUtil.crudUtil("INSERT INTO Cinnamon_Bark_stock VALUES(?, ?, ?, ?, ?)",
                 entity.getCinnamonStockID(),
                 entity.getSupID(),

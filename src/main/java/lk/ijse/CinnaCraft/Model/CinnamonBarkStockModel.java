@@ -1,6 +1,6 @@
 package lk.ijse.CinnaCraft.Model;
 
-import lk.ijse.CinnaCraft.Dto.CinnamonBarkStock;
+import lk.ijse.CinnaCraft.Dto.CinnamonBarkStockDto;
 import lk.ijse.CinnaCraft.Db.DbConnection;
 
 import java.sql.Connection;
@@ -52,7 +52,7 @@ public class CinnamonBarkStockModel {
         return "CS001";
     }
 
-    public boolean saveCinnamonBarkStock(CinnamonBarkStock dto) throws SQLException {
+    public boolean saveCinnamonBarkStock(CinnamonBarkStockDto dto) throws SQLException {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -83,7 +83,7 @@ public class CinnamonBarkStockModel {
         return resultSet.getDouble(1);
     }
 
-    public List<CinnamonBarkStock> getAllStockDetails(String dateBookId) throws SQLException {
+    public List<CinnamonBarkStockDto> getAllStockDetails(String dateBookId) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM Cinnamon_Bark_stock WHERE CinnamonBookID=?";
@@ -91,7 +91,7 @@ public class CinnamonBarkStockModel {
 
         pstm.setString(1, dateBookId);
 
-        List<CinnamonBarkStock> dtoList = new ArrayList<>();
+        List<CinnamonBarkStockDto> dtoList = new ArrayList<>();
 
         ResultSet resultSet = pstm.executeQuery();
 
@@ -102,14 +102,14 @@ public class CinnamonBarkStockModel {
             double amount = resultSet.getDouble(4);
             boolean isPayed = resultSet.getBoolean(5);
 
-            CinnamonBarkStock dto = new CinnamonBarkStock(CinnamonStockID, SupID, CinnamonBookID, amount, isPayed);
+            CinnamonBarkStockDto dto = new CinnamonBarkStockDto(CinnamonStockID, SupID, CinnamonBookID, amount, isPayed);
             dtoList.add(dto);
         }
         return dtoList;
 
     }
 
-    public CinnamonBarkStock searchCinnamonBarkStock(String text) throws SQLException {
+    public CinnamonBarkStockDto searchCinnamonBarkStock(String text) throws SQLException {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -121,7 +121,7 @@ public class CinnamonBarkStockModel {
 
         ResultSet resultSet = pstm.executeQuery();
 
-        CinnamonBarkStock dto = null;
+        CinnamonBarkStockDto dto = null;
 
         if (resultSet.next()) {
             String CinnamonStockID = resultSet.getString(1);
@@ -130,7 +130,7 @@ public class CinnamonBarkStockModel {
             double amount = resultSet.getDouble(4);
             boolean isPayed = resultSet.getBoolean(5);
 
-            dto = new CinnamonBarkStock(CinnamonStockID, SupID, CinnamonBookID, amount, isPayed);
+            dto = new CinnamonBarkStockDto(CinnamonStockID, SupID, CinnamonBookID, amount, isPayed);
         }
 
         return dto;
@@ -148,7 +148,7 @@ public class CinnamonBarkStockModel {
 
     }
 
-    public boolean updateCinnamonBarkStock(CinnamonBarkStock cinnamonBarkStockDto) throws SQLException {
+    public boolean updateCinnamonBarkStock(CinnamonBarkStockDto cinnamonBarkStockDto) throws SQLException {
 
         Connection connection = DbConnection.getInstance().getConnection();
 
