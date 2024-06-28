@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 
-public class PlaceCinnamonOrder {
+public class CinnamonOrder {
     private String Cinnamon_order_ID;
 
     private String CusID;

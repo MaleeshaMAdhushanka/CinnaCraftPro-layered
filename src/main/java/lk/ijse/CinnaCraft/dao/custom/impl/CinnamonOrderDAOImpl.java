@@ -4,6 +4,7 @@ import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBarkStockDAO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonOrderDAO;
+import lk.ijse.CinnaCraft.entity.CinnamonOrder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,12 +47,12 @@ public class CinnamonOrderDAOImpl  implements CinnamonOrderDAO {
     }
 
     @Override
-    public  boolean saveOrder(String Cinnamon_order_ID, String CusID, LocalDate date) throws SQLException{
+    public  boolean saveOrder(CinnamonOrder entity) throws SQLException{
 
       return SQLUtil.crudUtil("INSERT INTO Cinnamon_orders VALUES(?, ?, ?)",
-             Cinnamon_order_ID,
-              CusID,
-             java.sql.Date.valueOf(date));
+           entity.getCinnamon_order_ID(),
+              entity.getCusID(),
+              entity.getDate());
     }
 
     @Override
