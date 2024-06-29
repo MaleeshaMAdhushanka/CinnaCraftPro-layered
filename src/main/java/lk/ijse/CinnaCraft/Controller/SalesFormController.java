@@ -17,6 +17,11 @@ import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Dto.PlaceCinnamonOrderDto;
 import lk.ijse.CinnaCraft.Model.*;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonOrderBo;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
+import lk.ijse.CinnaCraft.bo.custom.CustomerBO;
+import lk.ijse.CinnaCraft.bo.custom.PackagingBO;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -95,16 +100,15 @@ public class SalesFormController {
 
     private final ObservableList<SalesCartTm> obList = FXCollections.observableArrayList();
 
-    private final CustomerModel customerModel = new CustomerModel();
+    private final CustomerBO customerBO = (CustomerBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CUSTOMER);
 
-    private final CinnamonOrderModel cinnamonOrderModel = new CinnamonOrderModel();
+    private final CinnamonOrderBo cinnamonOrderBo = (CinnamonOrderBo) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_ORDER);
 
 
-    private final CinnamonTypeModel cinnamonTypeModel = new CinnamonTypeModel();
+    private final CinnamonTypeBO cinnamonTypeBO = (CinnamonTypeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_TYPE);
 
-    private final PackagingModel packagingModel =new PackagingModel();
+    private final PackagingBO packagingBO = (PackagingBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.PACKAGING);
 
-    private final PlaceCinnamonOrderModel placeCinnamonOrderModel = new PlaceCinnamonOrderModel();
 
 
     //for report Generation
@@ -133,7 +137,7 @@ public class SalesFormController {
 
     private void loadPackageDetails() {
         try {
-           List<PackagingDto> dtoList =  packagingModel.getAllPackaging();
+           List<PackagingDto> dtoList =  packagingBO.getAllPackaging();
 
             for (int i = 0; i < dtoList.size(); i++) {
                 pacakageDetails.add(new ArrayList<>());
@@ -166,7 +170,7 @@ public class SalesFormController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            List<CinnamonTypeDto> cinnamonTypesList = cinnamonTypeModel.getAllCinnamonType();
+            List<CinnamonTypeDto> cinnamonTypesList = cinnamonTypeBO.getAllCinnamonType();
 
 
             for (CinnamonTypeDto  dto: cinnamonTypesList){
@@ -188,7 +192,7 @@ public class SalesFormController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-         List<CustomerDto>cusList =  customerModel.getAllCustomers();
+         List<CustomerDto>cusList =  customerBO.getAllCustomers();
          for (CustomerDto dto : cusList){
              obList.add(dto.getMobileNo());
          }
@@ -202,7 +206,7 @@ public class SalesFormController {
     private void generateNextOrderId() {
 
         try {
-          String orderId =  cinnamonOrderModel.generateNextOrderId();
+          String orderId =  cinnamonOrderBo.generateNextOrderId();
           txtOrderId.setText(orderId);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getLocalizedMessage()).show();
@@ -261,8 +265,8 @@ public class SalesFormController {
         String packId = null;
 
         try {
-            String cinnamonTypeId=  cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
-            packId = packagingModel.getPackId(cinnamonTypeId, packSize);
+            String cinnamonTypeId=  cinnamonTypeBO.getCinnamonTypeId(cinnamonType);
+            packId = packagingBO.getPackId(cinnamonTypeId, packSize);
         } catch (SQLException e) {
             throw  new RuntimeException(e);
 
@@ -302,16 +306,16 @@ public class SalesFormController {
             //getting Cinnamon type id
 
 
-            String cinnamonTypeId =  cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
+            String cinnamonTypeId =  cinnamonTypeBO.getCinnamonTypeId(cinnamonType);
 
 
 
 
             //Finding packk id According to cinnamon Type id and packSize
-            String packId = packagingModel.getPackId(cinnamonTypeId, packSize);
+            String packId = packagingBO.getPackId(cinnamonTypeId, packSize);
 
 
-            PackagingDto dto = packagingModel.searchPackaging(packId);
+            PackagingDto dto = packagingBO.searchPackaging(packId);
 
 
 
@@ -425,10 +429,10 @@ public class SalesFormController {
 
         try {
             //Getting Cinnamon type id
-          String cinnamonTypeId = cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
+          String cinnamonTypeId = cinnamonTypeBO.getCinnamonTypeId(cinnamonType);
 
             //Finding Pack id According to Cinnamon type id and pack size
-          String packId = packagingModel.getPackId(cinnamonTypeId, packSize);
+          String packId = packagingBO.getPackId(cinnamonTypeId, packSize);
 
           //Get Details From Packing Details Arry List
             count = getPackageCount(packId);
@@ -496,7 +500,7 @@ public class SalesFormController {
         String cusId = null;
 
         try {
-            cusId = customerModel.searchCustomerId(cusNum);
+            cusId = customerBO.searchCustomerId(cusNum);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -516,7 +520,7 @@ public class SalesFormController {
         );
 
         try {
-            boolean isSuccess = placeCinnamonOrderModel.placeOrder(dto);
+            boolean isSuccess = cinnamonOrderBo.placeOrder(dto);
 
             if (
                     isSuccess) {
@@ -600,9 +604,9 @@ public class SalesFormController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            String cinnamonTypeId  = cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
+            String cinnamonTypeId  = cinnamonTypeBO.getCinnamonTypeId(cinnamonType);
 
-            List<PackagingDto> packagingList = packagingModel.getAllPackaging(cinnamonTypeId);
+            List<PackagingDto> packagingList = packagingBO.getAllPackaging(cinnamonTypeId);
 
             for (PackagingDto dto: packagingList){
                 obList.add(dto.getDescription());
@@ -623,8 +627,8 @@ public class SalesFormController {
 
         try {
 
-            String cusId = customerModel.searchCustomerId(cusNum);
-            CustomerDto dto = customerModel.searchCustomer(cusId);
+            String cusId = customerBO.searchCustomerId(cusNum);
+            CustomerDto dto = customerBO.searchCustomer(cusId);
             txtName.setText(dto.getFirstName());
 
 
@@ -654,17 +658,17 @@ public class SalesFormController {
 
         try {
             //Getting cinnamon typed id
-            String cinnamonTypeId = cinnamonTypeModel.getCinnamonTypeId(cinnamonType);
+            String cinnamonTypeId = cinnamonTypeBO.getCinnamonTypeId(cinnamonType);
 
 
             //Finding Pack id Accordig to cinnamon type id and pack size;
-            String packId = packagingModel.getPackId(cinnamonTypeId, packSize);
+            String packId = packagingBO.getPackId(cinnamonTypeId, packSize);
 
 
 
 
 
-            PackagingDto dto = packagingModel.searchPackaging(packId);
+            PackagingDto dto = packagingBO.searchPackaging(packId);
 
 
 

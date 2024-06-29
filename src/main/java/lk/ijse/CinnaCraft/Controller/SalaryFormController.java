@@ -16,7 +16,11 @@ import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.Dto.SalaryDto;
 import lk.ijse.CinnaCraft.Model.*;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.AttendanceBO;
+import lk.ijse.CinnaCraft.bo.custom.CinnaCraftBo;
 import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
+import lk.ijse.CinnaCraft.bo.custom.SalaryBO;
 import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.AttendanceDAOImpl;
@@ -91,17 +95,16 @@ public class SalaryFormController {
     private Text txtTotal;
 
 
-    private final EmployeeBO employeeBO = (EmployeeBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.EMPLOYEE);
 
-    private final AttendanceModel attendanceModel = new AttendanceModel();
+    private final AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.ATTENDANCE);
 
-    private final SalaryTransactionModel salaryTransactionModel = new SalaryTransactionModel();
+    private final SalaryBO salaryBO = (SalaryBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.SALARY);
 
-    private final CinaCraftDetailModel cinaCraftDetailModel = new CinaCraftDetailModel();
+    private final CinnaCraftBo cinnaCraftBo = (CinnaCraftBo) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNACRAFT_DETAIL);
 
-    private final SalaryModel salaryModel = new SalaryModel();
 
-    AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+
 
 
     public void  initialize(){
@@ -122,8 +125,8 @@ public class SalaryFormController {
     private void loadHourRateAndOt() {
 
         try {
-            double hourlyRate = cinaCraftDetailModel.getHourlyRate();
-            double otRate = cinaCraftDetailModel.getOTRate();
+            double hourlyRate = cinnaCraftBo.getHourlyRate();
+            double otRate = cinnaCraftBo.getOTRate();
 
             txtFieldHourlyRate.setText(String.valueOf(hourlyRate));
             txtFieldOt.setText(String.valueOf(otRate));
@@ -159,7 +162,7 @@ public class SalaryFormController {
     private void generateNextSalaryId() {
 
         try {
-           String salaryId =  salaryModel.generateNextSalaryId();
+           String salaryId =  salaryBO.generateNextSalaryId();
            txtSalaryId.setText(salaryId);
 
         } catch (SQLException e) {
@@ -177,7 +180,7 @@ public class SalaryFormController {
 
 
         try {
-            List<SalaryDto> salaryDtoList= salaryModel.getPaymentDetails(empID);
+            List<SalaryDto> salaryDtoList= salaryBO.getPaymentDetails(empID);
 
             for (SalaryDto dto : salaryDtoList){
 
@@ -236,7 +239,7 @@ public class SalaryFormController {
         int workDaysCount = 0;
 
         try {
-            workDaysCount = attendanceModel.getWorkedDaysCount(empID);
+            workDaysCount = attendanceBO.getWorkedDaysCount(empID);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -245,7 +248,7 @@ public class SalaryFormController {
 
 
         try {
-            boolean isAdded =  salaryTransactionModel.addSalary(dto);
+            boolean isAdded =  salaryBO.addSalary(dto);
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Added Successfully").show();
                 loadEmployeePaymentDetails(empID);
@@ -341,7 +344,7 @@ public class SalaryFormController {
 
 
         try {
-            boolean isUpdated = cinaCraftDetailModel.updateHourlyRateAndOt(Double.parseDouble(hourlyRate), Double.parseDouble(otRate));
+            boolean isUpdated = cinnaCraftBo.updateHourlyRateAndOt(Double.parseDouble(hourlyRate), Double.parseDouble(otRate));
 
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Hourly Rate and OT Rate Updated").show();
@@ -389,8 +392,8 @@ public class SalaryFormController {
 
         //Getting Date from the test Fileds
 
-        int workedHoursCount = attendanceDAO.getWorkedHoursCount(empID);
-        int workedDaysCount = attendanceDAO.getWorkedDaysCount(empID);
+        int workedHoursCount = attendanceBO.getWorkedHoursCount(empID);
+        int workedDaysCount = attendanceBO.getWorkedDaysCount(empID);
 
         //calculate required hours count
 
