@@ -2,6 +2,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.EmployeeDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.EmployeeDAOImpl;
 import lk.ijse.CinnaCraft.entity.Employee;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeBOImpl implements EmployeeBO {
-    EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+    EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
 
 
     @Override

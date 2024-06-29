@@ -3,6 +3,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 import lk.ijse.CinnaCraft.Dto.PaymentsDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
 import lk.ijse.CinnaCraft.bo.custom.PaymentsBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBarkStockDAO;
 import lk.ijse.CinnaCraft.dao.custom.PaymentDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonBarkStockDAOImpl;
@@ -15,8 +16,9 @@ import java.util.List;
 
 public class PaymentsBOImpl implements PaymentsBO {
 
-    PaymentDAO paymentDAO = new PaymentsDAOImpl();
-    CinnamonBarkStockDAO cinnamonBarkStockDAO = new CinnamonBarkStockDAOImpl();
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PAYMENTS);
+
+    CinnamonBarkStockDAO cinnamonBarkStockDAO = (CinnamonBarkStockDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_BARK_STOCK);
     @Override
     public String generateNextPaymentId() throws SQLException {
         return paymentDAO.generateId();

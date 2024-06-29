@@ -3,6 +3,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 import lk.ijse.CinnaCraft.Dto.SalaryDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
 import lk.ijse.CinnaCraft.bo.custom.SalaryBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
 import lk.ijse.CinnaCraft.dao.custom.SalaryDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.AttendanceDAOImpl;
@@ -15,8 +16,8 @@ import java.util.List;
 
 public class SalaryBOImpl implements SalaryBO {
 
-    SalaryDAO salaryDAO =  new SalaryDAOImpl();
-    AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    SalaryDAO salaryDAO =  (SalaryDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SALARY);;
+    AttendanceDAO attendanceDAO = (AttendanceDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
 
 
     @Override

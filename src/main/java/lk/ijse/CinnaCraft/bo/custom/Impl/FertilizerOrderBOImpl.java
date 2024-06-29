@@ -5,6 +5,7 @@ import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Dto.PlaceFertilizerOrderDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
 import lk.ijse.CinnaCraft.bo.custom.FertilizerOrderBo;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerDAO;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerOrderDAO;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerOrderDetailDAO;
@@ -18,9 +19,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class FertilizerOrderBOImpl implements FertilizerOrderBo {
-    FertilizerDAO fertilizerDAO = new FertilizerDAOImpl();
-    FertilizerOrderDAO fertilizerOrderDAO = new FertilizerOrderDAOImpl();
-    FertilizerOrderDetailDAO fertilizerOrderDetailDAO = new FertilizerOrderDetailDAOImpl();
+    FertilizerDAO fertilizerDAO = (FertilizerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.FERTILIZER);
+
+    FertilizerOrderDAO fertilizerOrderDAO = (FertilizerOrderDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.FERTILIZER_ORDER);
+
+    FertilizerOrderDetailDAO fertilizerOrderDetailDAO = (FertilizerOrderDetailDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_ORDER_DETAIL);
 
 
     @Override

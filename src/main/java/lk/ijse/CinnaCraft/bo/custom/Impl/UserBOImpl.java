@@ -2,6 +2,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.Dto.UserDto;
 import lk.ijse.CinnaCraft.bo.custom.UserBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.UserDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.UserDAOImpl;
 import lk.ijse.CinnaCraft.entity.User;
@@ -12,7 +13,7 @@ public class UserBOImpl implements UserBO {
 
     public static String userName;
 
-    UserDAO userDAO = new UserDAOImpl();
+    UserDAO userDAO = (UserDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.USER);
 
     @Override
     public boolean saveUser(UserDto dto) throws SQLException {

@@ -4,6 +4,7 @@ import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 import lk.ijse.CinnaCraft.bo.custom.PackagingBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.PackagingDAOImpl;
 import lk.ijse.CinnaCraft.entity.Packaging;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class PackagingBoImpl implements PackagingBO {
 
-    PackagingDAO packagingDAO = new PackagingDAOImpl();
+    PackagingDAO packagingDAO = (PackagingDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PACKAGING);
 
     @Override
     public List<PackagingDto> getAllPackaging(String cinnamonType) throws SQLException {

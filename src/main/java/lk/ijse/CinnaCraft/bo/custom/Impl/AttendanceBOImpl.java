@@ -2,6 +2,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.Dto.AttendanceDto;
 import lk.ijse.CinnaCraft.bo.custom.AttendanceBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.AttendanceDAOImpl;
 import lk.ijse.CinnaCraft.entity.Attendance;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttendanceBOImpl implements AttendanceBO {
-    AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    AttendanceDAO attendanceDAO = (AttendanceDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
+
 
     @Override
     public String generateNextAttendanceId() throws SQLException {

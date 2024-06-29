@@ -2,6 +2,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.Dto.CinnamonBookDto;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonBookBo;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBookDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonBookDAOImpl;
 import lk.ijse.CinnaCraft.entity.CinnamonBook;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CinnamonBookBOImpl implements CinnamonBookBo {
-    CinnamonBookDAO cinnamonBookDAO = new CinnamonBookDAOImpl();
+    CinnamonBookDAO cinnamonBookDAO = (CinnamonBookDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_BOOK);
 
 
     @Override

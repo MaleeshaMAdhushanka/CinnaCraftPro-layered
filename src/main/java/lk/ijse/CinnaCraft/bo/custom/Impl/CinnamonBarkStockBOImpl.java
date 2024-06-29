@@ -3,6 +3,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 import lk.ijse.CinnaCraft.Dto.CinnamonBarkStockDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonBarkStockBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBarkStockDAO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBookDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonBarkStockDAOImpl;
@@ -15,9 +16,9 @@ import java.util.List;
 
 public class CinnamonBarkStockBOImpl implements CinnamonBarkStockBO {
 
-    CinnamonBarkStockDAO cinnamonBarkStockDAO = new CinnamonBarkStockDAOImpl();
+    CinnamonBarkStockDAO cinnamonBarkStockDAO = (CinnamonBarkStockDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_BARK_STOCK);
 
-    CinnamonBookDAO cinnamonBookDAO = new CinnamonBookDAOImpl();
+    CinnamonBookDAO cinnamonBookDAO = (CinnamonBookDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_BOOK);
 
 
     @Override

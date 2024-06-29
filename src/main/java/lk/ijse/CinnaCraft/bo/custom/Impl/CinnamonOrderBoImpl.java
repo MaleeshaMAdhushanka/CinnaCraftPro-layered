@@ -5,6 +5,7 @@ import lk.ijse.CinnaCraft.Dto.PlaceCinnamonOrderDto;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonOrderBo;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonOrderDAO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonOrderDetailDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
@@ -20,11 +21,11 @@ import java.util.List;
 
 public class CinnamonOrderBoImpl implements CinnamonOrderBo {
 
-    PackagingDAO packagingDAO = new PackagingDAOImpl();
+    PackagingDAO packagingDAO = (PackagingDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PACKAGING);
 
-    CinnamonOrderDAO cinnamonOrderDAO = new CinnamonOrderDAOImpl();
+    CinnamonOrderDAO cinnamonOrderDAO = (CinnamonOrderDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_ORDER);
 
-    CinnamonOrderDetailDAO cinnamonOrderDetailDAO = new CinnamonOrderDetailDAOImpl();
+    CinnamonOrderDetailDAO cinnamonOrderDetailDAO = (CinnamonOrderDetailDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_ORDER_DETAIL);
 
 
     @Override

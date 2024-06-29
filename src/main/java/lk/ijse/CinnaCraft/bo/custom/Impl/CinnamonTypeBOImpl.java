@@ -3,6 +3,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 import lk.ijse.CinnaCraft.Dto.CinnamonTypeDto;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonTypeDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonTypeDAOImpl;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CinnamonTypeBOImpl  implements CinnamonTypeBO {
-    CinnamonTypeDAO cinnamonTypeDAO = new CinnamonTypeDAOImpl();
-    PackagingDAO packagingDAO = new PackagingDAOImpl();
+    CinnamonTypeDAO cinnamonTypeDAO = (CinnamonTypeDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_TYPE);
+    PackagingDAO packagingDAO = (PackagingDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PACKAGING);
 
     @Override
     public List<CinnamonTypeDto> getAllCinnamonType() throws SQLException {

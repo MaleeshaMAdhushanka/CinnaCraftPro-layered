@@ -3,6 +3,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 import lk.ijse.CinnaCraft.Dto.FertilizerDto;
 import lk.ijse.CinnaCraft.Tm.FertilizeSalesCartTm;
 import lk.ijse.CinnaCraft.bo.custom.FertilizerBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.FertilizerDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.FertilizerDAOImpl;
 import lk.ijse.CinnaCraft.entity.Fertilizer;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class FertilizerBOImpl implements FertilizerBO {
 
-    FertilizerDAO fertilizerDAO = new FertilizerDAOImpl();
+    FertilizerDAO fertilizerDAO =  (FertilizerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.FERTILIZER);
 
     @Override
     public String generateNextFertilizerId() throws SQLException {

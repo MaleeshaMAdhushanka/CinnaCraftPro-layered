@@ -1,6 +1,7 @@
 package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.bo.custom.CinnaCraftBo;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnaCraftDetailDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnaCraftDetailDAOImpl;
 
@@ -8,8 +9,7 @@ import java.sql.SQLException;
 
 public class CinnaCraftDetailBOImpl implements CinnaCraftBo {
 
-    CinnaCraftDetailDAO cinnaCraftDetailDAO = new CinnaCraftDetailDAOImpl();
-
+    CinnaCraftDetailDAO cinnaCraftDetailDAO = (CinnaCraftDetailDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNACRAFT_DETAIL);
     @Override
     public double getHourlyRate() throws SQLException {
         return cinnaCraftDetailDAO.getHourlyRate();

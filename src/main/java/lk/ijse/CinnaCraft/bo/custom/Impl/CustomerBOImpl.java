@@ -2,6 +2,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.Dto.CustomerDto;
 import lk.ijse.CinnaCraft.bo.custom.CustomerBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CustomerDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.CinnaCraft.entity.Customer;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class CustomerBOImpl  implements CustomerBO {
 
-    CustomerDAO customerDAO = new CustomerDAOImpl();
+    CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CUSTOMER);
 
 
     @Override

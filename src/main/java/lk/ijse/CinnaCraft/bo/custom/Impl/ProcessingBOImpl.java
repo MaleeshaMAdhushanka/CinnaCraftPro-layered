@@ -4,6 +4,7 @@ import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Dto.CinnamonBookTypeDetailDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
 import lk.ijse.CinnaCraft.bo.custom.ProcessingBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonBookTypeDAO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonTypeDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonBookTypeDAOImpl;
@@ -18,9 +19,9 @@ import java.util.List;
 
 public class ProcessingBOImpl implements ProcessingBO {
 
-      CinnamonBookTypeDAO cinnamonBookTypeDAO = new CinnamonBookTypeDAOImpl();
+      CinnamonBookTypeDAO cinnamonBookTypeDAO = (CinnamonBookTypeDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_BOOK_TYPE);
 
-      CinnamonTypeDAO cinnamonTypeDAO = new CinnamonTypeDAOImpl();
+      CinnamonTypeDAO cinnamonTypeDAO = (CinnamonTypeDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_TYPE);
     @Override
     public boolean updateDetails(LocalDate date, List<CinnamonBookTypeDetailDto> dtoList) throws SQLException {
 

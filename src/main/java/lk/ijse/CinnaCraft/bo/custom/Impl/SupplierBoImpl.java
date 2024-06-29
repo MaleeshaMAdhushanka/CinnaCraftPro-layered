@@ -2,6 +2,7 @@ package lk.ijse.CinnaCraft.bo.custom.Impl;
 
 import lk.ijse.CinnaCraft.Dto.SupplierDto;
 import lk.ijse.CinnaCraft.bo.custom.SupplierBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.SupplierDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.SupplierDAOImpl;
 import lk.ijse.CinnaCraft.entity.Supplier;
@@ -12,8 +13,7 @@ import java.util.List;
 
 public class SupplierBoImpl implements SupplierBO {
 
-    SupplierDAO supplierDAO = new SupplierDAOImpl();
-
+    SupplierDAO supplierDAO = (SupplierDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SUPPLIER);
 
     @Override
     public boolean saveSupplier(SupplierDto dto) throws SQLException {

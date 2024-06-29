@@ -4,8 +4,10 @@ import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Dto.PackingDetailsDto;
 import lk.ijse.CinnaCraft.Util.TransactionUtil;
+import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
 import lk.ijse.CinnaCraft.bo.custom.PackagingDetailsBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonTypeDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDetailsDAO;
@@ -23,9 +25,11 @@ import java.util.List;
 
 public class PackagingDetailsBOImpl implements PackagingDetailsBO {
 
-    PackagingDAO packagingDAO = new PackagingDAOImpl();
-    PackagingDetailsDAO packagingDetailsDAO = new PackagingDetailsDAOImpl();
-   CinnamonTypeBO cinnamonTypeDAO = new CinnamonTypeBOImpl();
+    PackagingDAO packagingDAO = (PackagingDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PACKAGING);
+
+    PackagingDetailsDAO packagingDetailsDAO = (PackagingDetailsDAO)DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PACKAGING_DETAILS);
+
+   CinnamonTypeBO cinnamonTypeDAO = (CinnamonTypeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_TYPE);
 
     @Override
     public String generateNextPackId() throws SQLException {
