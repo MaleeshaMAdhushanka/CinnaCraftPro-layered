@@ -18,7 +18,7 @@ public class SupplierBoImpl implements SupplierBO {
     @Override
     public boolean saveSupplier(SupplierDto dto) throws SQLException {
         return supplierDAO.save(new Supplier(
-                dto.getSupId(),
+                dto.getSupID(),
                 dto.getFirstName(),
                 dto.getLastName(),
                 dto.getAddress(),
@@ -44,7 +44,7 @@ public class SupplierBoImpl implements SupplierBO {
         List<SupplierDto> dtoList = new ArrayList<>();
         for (Supplier supplier: supplierList) {
             dtoList.add(new SupplierDto(
-                    supplier.getSupId(),
+                    supplier.getSupID(),
                     supplier.getFirstName(),
                     supplier.getLastName(),
                     supplier.getAddress(),
@@ -61,7 +61,7 @@ public class SupplierBoImpl implements SupplierBO {
         Supplier supplier = supplierDAO.search(supId);
         if (supplier != null) {
             return  new SupplierDto(
-                    supplier.getSupId(),
+                    supplier.getSupID(),
                     supplier.getFirstName(),
                     supplier.getLastName(),
                     supplier.getAddress(),
@@ -76,7 +76,7 @@ public class SupplierBoImpl implements SupplierBO {
     @Override
     public boolean updateSupplier(SupplierDto supplierDto) throws SQLException {
         return  supplierDAO.update(new Supplier(
-                supplierDto.getSupId(),
+                supplierDto.getSupID(),
                 supplierDto.getFirstName(),
                 supplierDto.getLastName(),
                 supplierDto.getAddress(),

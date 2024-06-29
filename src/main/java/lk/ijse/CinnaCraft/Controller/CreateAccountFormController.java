@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.CinnaCraft.Dto.UserDto;
 import lk.ijse.CinnaCraft.Model.UserModel;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.UserBO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -44,7 +46,8 @@ public class CreateAccountFormController {
     @FXML
     private Text txtMassage;
 
-    private UserModel userModel = new UserModel();
+
+    private final UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.USER);
 
     @FXML
     void btnCancelOnAction(ActionEvent event) throws IOException {
@@ -111,7 +114,7 @@ public class CreateAccountFormController {
         boolean isEmailExist = false;
 
         try {
-            isEmailExist = userModel.searchEmail(email);
+            isEmailExist = userBO.searchEmail(email);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -143,7 +146,7 @@ public class CreateAccountFormController {
         boolean isUsernameExist = false;
 
         try {
-            isUsernameExist = userModel.searchUser(userName);
+            isUsernameExist = userBO.searchUser(userName);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

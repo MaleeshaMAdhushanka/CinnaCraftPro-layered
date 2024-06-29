@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.UserDto;
 import lk.ijse.CinnaCraft.Model.UserModel;
 import lk.ijse.CinnaCraft.Util.EmailService;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.UserBO;
 
 
 import java.io.IOException;
@@ -35,7 +37,7 @@ public class CreateAccountOtpFormController {
     @FXML
     private TextField txtFieldOtp;
 
-    private UserModel userModel = new UserModel();
+    private final UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.USER);
 
 
     @FXML
@@ -77,7 +79,7 @@ public class CreateAccountOtpFormController {
         }
 
         try{
-            boolean isSaved = userModel.saveUser(userDto);
+            boolean isSaved = userBO.saveUser(userDto);
             if (isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION, "Account Created").show();
                 switchToLogin();

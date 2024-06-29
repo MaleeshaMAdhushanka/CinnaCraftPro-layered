@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class SupplierDto {
-    String SupId;
+    String SupID;
     String firstName;
     String lastName;
     String address;

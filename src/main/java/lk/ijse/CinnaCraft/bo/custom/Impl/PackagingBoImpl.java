@@ -114,6 +114,9 @@ public class PackagingBoImpl implements PackagingBO {
         return packagingDAO.updatedPack(packId, typeId, size, price);
     }
 
-
+    @Override
+    public boolean updatePackageCount(String packId, int count) throws SQLException {
+        return packagingDAO.updatePackageCount(packId, count);
+    }
 }
 

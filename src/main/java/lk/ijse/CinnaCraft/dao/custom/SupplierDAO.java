@@ -14,6 +14,6 @@ import java.util.List;
 
 public interface SupplierDAO extends CrudDAO<Supplier> {
 
-     String getSupplierName(String supId) throws SQLException ;
+     String getSupplierName(String SupID) throws SQLException ;
 
 }

@@ -49,7 +49,7 @@ public class SupplierModel {
         String sql = "INSERT INTO Cinnamon_Supplier VALUES(?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getSupId());
+        pstm.setString(1, dto.getSupID());
         pstm.setString(2, dto.getFirstName());
         pstm.setString(3, dto.getLastName());
         pstm.setString(4, dto.getAddress());
@@ -128,7 +128,7 @@ public class SupplierModel {
         pstm.setString(4, supplierDto.getBank());
         pstm.setString(5, supplierDto.getBankNo());
         pstm.setString(6, supplierDto.getMobileNo());
-        pstm.setString(7, supplierDto.getSupId());
+        pstm.setString(7, supplierDto.getSupID());
 
         return pstm.executeUpdate() > 0;
 

@@ -12,18 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface SupplierBO  extends SuperBo {
-    public List<SupplierDto> getAllSuppliers() throws SQLException;
+     List<SupplierDto> getAllSuppliers() throws SQLException;
 
 
-    public boolean saveSupplier(SupplierDto dto) throws SQLException ;
+     boolean saveSupplier(SupplierDto dto) throws SQLException ;
 
-    public String generateNextSupplierId() throws SQLException ;
+     String generateNextSupplierId() throws SQLException ;
 
 
-    public  boolean deleteSupplier(String supplierid) throws SQLException;
+      boolean deleteSupplier(String supplierid) throws SQLException;
 
-    public boolean updateSupplier(SupplierDto supplierDto) throws SQLException ;
+     boolean updateSupplier(SupplierDto supplierDto) throws SQLException ;
 
-    public SupplierDto searchSupplier(String supId) throws SQLException ;
-    public String getSupplierName(String supId) throws SQLException ;
+     SupplierDto searchSupplier(String supId) throws SQLException ;
+     String getSupplierName(String supId) throws SQLException ;
 }

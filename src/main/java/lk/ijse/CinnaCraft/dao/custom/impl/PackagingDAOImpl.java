@@ -1,11 +1,14 @@
 package lk.ijse.CinnaCraft.dao.custom.impl;
 
+import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Dto.PackingCountAmountDto;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
 import lk.ijse.CinnaCraft.entity.Packaging;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -218,4 +221,12 @@ public class PackagingDAOImpl implements PackagingDAO {
 
 
     }
+
+    @Override
+    public boolean updatePackageCount(String packId, int count) throws SQLException {
+
+
+          return  SQLUtil.crudUtil("UPDATE packing SET packageCount=? WHERE packId=?", packId, count);
+
+        }
 }

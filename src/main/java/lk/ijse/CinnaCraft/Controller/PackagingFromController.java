@@ -19,6 +19,9 @@ import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Model.CinnamonTypeModel;
 import lk.ijse.CinnaCraft.Model.PackagingModel;
 import lk.ijse.CinnaCraft.Tm.PackagingTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
+import lk.ijse.CinnaCraft.bo.custom.PackagingBO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -66,9 +69,9 @@ public class PackagingFromController {
 
 
 
-        PackagingModel packagingModel = new PackagingModel();
+        private final PackagingBO packagingBO = (PackagingBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.PACKAGING);
 
-    CinnamonTypeModel cinnamonTypeModel = new CinnamonTypeModel();
+        private final CinnamonTypeBO cinnamonTypeBO = (CinnamonTypeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_TYPE);
 
 
 
@@ -104,12 +107,12 @@ public class PackagingFromController {
         ObservableList<PackagingTm> obList = FXCollections.observableArrayList();
 
 
-        List<PackagingDto> dtoList = packagingModel.getAllPackaging();
+        List<PackagingDto> dtoList = packagingBO.getAllPackaging();
 
         for (PackagingDto dto : dtoList){
             obList.add(new PackagingTm(
                     dto.getPackId(),
-                    cinnamonTypeModel.getCinnamonType(dto.getTypeId()),
+                    cinnamonTypeBO.getCinnamonType(dto.getTypeId()),
                     dto.getDescription(),
                      dto.getPrice(),
                     dto.getPackageCount()
@@ -154,7 +157,7 @@ public class PackagingFromController {
         String packId = lblId.getText();
         String count =  txtFieldCount.getText();
 
-       boolean isUpdated = packagingModel.updatePackageCount(packId, Integer.parseInt(count));
+       boolean isUpdated = packagingBO.updatePackageCount(packId, Integer.parseInt(count));
          if(isUpdated){
              new Alert(Alert.AlertType.CONFIRMATION, "packaging updaated").show();
              loadPackingDetails();

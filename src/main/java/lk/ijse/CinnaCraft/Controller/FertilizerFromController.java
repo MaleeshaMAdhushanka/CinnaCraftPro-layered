@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.FertilizerDto;
 import lk.ijse.CinnaCraft.Model.FertilizerModel;
 import lk.ijse.CinnaCraft.Tm.FertilizerTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.FertilizerBO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -84,7 +86,7 @@ public class FertilizerFromController {
     @FXML
     private TextField txtSize;
 
-    FertilizerModel fertilizerModel = new FertilizerModel();
+    private final FertilizerBO fertilizerBO = (FertilizerBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.FERTILIZER);
 
     public void initialize() throws SQLException {
         setCellValueFactory();
@@ -113,7 +115,7 @@ public class FertilizerFromController {
     private void generteNextFertilizerId() {
 
         try {
-            String fertilizerId =  fertilizerModel.generateNextFertilizerId();
+            String fertilizerId =  fertilizerBO.generateNextFertilizerId();
             txtFertilizerId.setText(fertilizerId);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -123,7 +125,7 @@ public class FertilizerFromController {
 
     private void loadFertilizerDetails() throws SQLException {
        ObservableList<FertilizerTm > obList =  FXCollections.observableArrayList();
-        List<FertilizerDto> dtoList = fertilizerModel.getAllFertilizer();
+        List<FertilizerDto> dtoList = fertilizerBO.getAllFertilizer();
 
         for (FertilizerDto dto : dtoList){
             obList.add(new FertilizerTm(
@@ -169,7 +171,7 @@ public class FertilizerFromController {
         FertilizerDto dto = new FertilizerDto(fertilizerId,brand,description,size,price, qty);
 
         try {
-            boolean isSaved = fertilizerModel.saveFertilizer(dto);
+            boolean isSaved = fertilizerBO.saveFertilizer(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "fertilizer  saved!").show();
                 clearFields();
@@ -235,7 +237,7 @@ public class FertilizerFromController {
         String fertilierId = txtFertilizerId.getText();
 
         try {
-            boolean isDeleted = fertilizerModel.deleteFertilizer(fertilierId);
+            boolean isDeleted = fertilizerBO.deleteFertilizer(fertilierId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Fertlizer deleted!").show();
                 loadFertilizerDetails();

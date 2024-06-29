@@ -139,7 +139,9 @@ public class DashBoardFormController {
     void btnSupplierOnAction(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/supplierForm.fxml"));
+        System.out.println("Hiiiiiiiii");
         Pane registerPane = (Pane) fxmlLoader.load();
+
         mainPane.getChildren().clear();
         mainPane.getChildren().add(registerPane);
     }

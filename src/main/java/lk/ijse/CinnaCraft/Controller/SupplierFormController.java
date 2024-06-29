@@ -15,8 +15,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.SupplierDto;
-import lk.ijse.CinnaCraft.Model.SupplierModel;
 import lk.ijse.CinnaCraft.Tm.SupplierTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.SupplierBO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -97,11 +98,12 @@ public class SupplierFormController {
     @FXML
     private Text txtSupplierId;
 
-    SupplierModel supplierModel = new SupplierModel();
+    private final SupplierBO supplierBO = (SupplierBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.SUPPLIER);
 
     public void initialize() throws SQLException {
         setCellValueFavctory();
         loadSupplierDetails();
+        System.out.println("3");
         generateNextSupplierId();
         setListener();
 
@@ -112,13 +114,13 @@ public class SupplierFormController {
     private void setListener() {
         tblSupplier.getSelectionModel().selectedItemProperty()
                 .addListener((observable , oldValue, newValue)->{
-                SupplierDto dto = new SupplierDto(newValue.getSupId(), newValue.getFirstName(), newValue.getLastName(), newValue.getAddress(), newValue.getBank(), newValue.getBankNo(), newValue.getMobileNo());
+                SupplierDto dto = new SupplierDto(newValue.getSupID(), newValue.getFirstName(), newValue.getLastName(), newValue.getAddress(), newValue.getBank(), newValue.getBankNo(), newValue.getMobileNo());
                 setFields(dto);
         } );
     }
 
     private void setFields(SupplierDto dto) {
-        txtSupplierId.setText(dto.getSupId());
+        txtSupplierId.setText(dto.getSupID());
         txtFirstName.setText(dto.getFirstName());
         txtLastName.setText(dto.getLastName());
         txtAddress.setText(dto.getAddress());
@@ -130,7 +132,7 @@ public class SupplierFormController {
     private void generateNextSupplierId()  {
 
         try {
-           String supplierId = supplierModel.generateNextSupplierId();
+           String supplierId = supplierBO.generateNextSupplierId();
             txtSupplierId.setText(supplierId);
 
         } catch (SQLException e) {
@@ -142,15 +144,17 @@ public class SupplierFormController {
 
     }
 
-    private void loadSupplierDetails() throws SQLException {
+    public void loadSupplierDetails() throws SQLException {
+        ObservableList<SupplierTm> obList =  FXCollections.observableArrayList();
+        System.out.println("last");
 
-       ObservableList<SupplierTm> obList =  FXCollections.observableArrayList();
 
-      List<SupplierDto> dtoList =  supplierModel.getAllSuppliers();
+      List<SupplierDto> dtoList =  supplierBO.getAllSuppliers();
 
       for (SupplierDto dto:dtoList){
+
           obList.add(new SupplierTm(
-                  dto.getSupId(),
+                  dto.getSupID(),
                   dto.getFirstName(),
                   dto.getLastName(),
                   dto.getAddress(),
@@ -158,7 +162,8 @@ public class SupplierFormController {
                   dto.getBankNo(),
                   dto.getMobileNo()
 
-          ));
+          )
+          );
       }
       tblSupplier.setItems(obList);
 
@@ -199,7 +204,7 @@ public class SupplierFormController {
 
 
         try {
-           boolean isSaved =  supplierModel.saveSupplier(dto);
+           boolean isSaved =  supplierBO.saveSupplier(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier saved!").show();
                 clearFields();
@@ -314,7 +319,7 @@ public class SupplierFormController {
         String  supplierId= txtSupplierId.getText();
 
         try {
-            boolean isDeleted = SupplierModel.deleteSupplier(supplierId);
+            boolean isDeleted = supplierBO.deleteSupplier(supplierId);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier deleted!").show();
                 loadSupplierDetails();
@@ -351,7 +356,7 @@ public class SupplierFormController {
          String mobileNo =  txtMobileNo.getText();
 
         try {
-         boolean isUpdated =   supplierModel.updateSupplier(new SupplierDto(SupID, firstName, lastName, address, bank, bankNo, mobileNo));
+         boolean isUpdated =   supplierBO.updateSupplier(new SupplierDto(SupID, firstName, lastName, address, bank, bankNo, mobileNo));
          if (isUpdated){
              new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated").show();
              loadSupplierDetails();

@@ -35,6 +35,6 @@ public interface PackagingBO extends SuperBo {
 
      boolean updatedPack(String packId, String typeId, String size, double price) throws  SQLException ;
 
-//     boolean updatePackageCount (String packId,int count) throws SQLException ;
+       boolean updatePackageCount (String packId,int count) throws SQLException ;
 
 }

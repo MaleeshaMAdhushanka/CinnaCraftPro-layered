@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class SupplierTm {
 
-    private String supId;
+    private String supID;
     private String firstName;
     private  String lastName;
     private  String address;

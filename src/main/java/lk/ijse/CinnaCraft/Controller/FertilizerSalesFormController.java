@@ -19,9 +19,13 @@ import lk.ijse.CinnaCraft.Dto.SupplierDto;
 import lk.ijse.CinnaCraft.Model.FertilizerModel;
 import lk.ijse.CinnaCraft.Model.FertilizerOrderModel;
 import lk.ijse.CinnaCraft.Model.PlaceFertilizerOrderModel;
-import lk.ijse.CinnaCraft.Model.SupplierModel;
+
 import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Tm.FertilizeSalesCartTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.FertilizerBO;
+import lk.ijse.CinnaCraft.bo.custom.FertilizerOrderBo;
+import lk.ijse.CinnaCraft.bo.custom.SupplierBO;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -110,13 +114,18 @@ public class FertilizerSalesFormController {
 
     private final ObservableList<FertilizeSalesCartTm> obList = FXCollections.observableArrayList();
 
-    SupplierModel supplierModel = new SupplierModel();
+//    SupplierModel supplierModel = new SupplierModel();
+    private final SupplierBO supplierBO = (SupplierBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.SUPPLIER);
 
-    FertilizerModel fertilizerModel = new FertilizerModel();
+//    FertilizerModel fertilizerModel = new FertilizerModel();
+    private final FertilizerBO fertilizerBO =(FertilizerBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.FERTILIZER);
 
-    FertilizerOrderModel fertilizerOrderModel = new FertilizerOrderModel();
+//    FertilizerOrderModel fertilizerOrderModel = new FertilizerOrderModel();
+    private final FertilizerOrderBo fertilizerOrderBo = (FertilizerOrderBo) BOFactory.getInstance().getBO(BOFactory.BoTypes.FERTILIZER_ORDER);
 
-    PlaceFertilizerOrderModel placeFertilizerOrderModel = new PlaceFertilizerOrderModel();
+//    PlaceFertilizerOrderModel placeFertilizerOrderModel = new PlaceFertilizerOrderModel();
+
+
 
     //For report generation
     private  String lastFertilizerOrderId;
@@ -140,7 +149,7 @@ public class FertilizerSalesFormController {
 
         try{
 
-            List<FertilizerDto> dtoList = fertilizerModel.getAllFertilizer();
+            List<FertilizerDto> dtoList = fertilizerBO.getAllFertilizer();
 
             for (int i = 0; i < dtoList.size(); i++){
                 fertilizerDetails.add(new ArrayList<>());
@@ -165,7 +174,7 @@ public class FertilizerSalesFormController {
 
     private void generateNextFertilizerOrderId() {
         try{
-            String orderId =fertilizerOrderModel.generateNextFertilizerOrderId();
+            String orderId =fertilizerOrderBo.generateNextFertilizerOrderId();
             txtOrderId.setText(orderId);
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -176,7 +185,7 @@ public class FertilizerSalesFormController {
 
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<FertilizerDto> allFertilizers = fertilizerModel.getAllFertilizer();
+            List<FertilizerDto> allFertilizers = fertilizerBO.getAllFertilizer();
             for (FertilizerDto dto:allFertilizers){
                 obList.add(dto.getFertilizerID());
             }
@@ -191,9 +200,9 @@ public class FertilizerSalesFormController {
     private void loadSupplierIds()  {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<SupplierDto> allSuppliers = supplierModel.getAllSuppliers();
+            List<SupplierDto> allSuppliers = supplierBO.getAllSuppliers();
             for (SupplierDto dto:allSuppliers){
-                obList.add(dto.getSupId());
+                obList.add(dto.getSupID());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -431,7 +440,7 @@ public class FertilizerSalesFormController {
 
         try{
 
-            boolean isSuccess = placeFertilizerOrderModel.placeFertilizerOrder(dto);
+            boolean isSuccess = fertilizerOrderBo.placeFertilizerOrder(dto);
 
             if (isSuccess){
                 new Alert(Alert.AlertType.CONFIRMATION,"Order Placed Successfully").show();
@@ -493,7 +502,7 @@ public class FertilizerSalesFormController {
         String supId= cmbCustomerId.getValue();
 
         try {
-            SupplierDto dto = supplierModel.searchSupplier(supId);
+            SupplierDto dto = supplierBO.searchSupplier(supId);
             txtName.setText(dto.getFirstName());
         }
         catch (SQLException e){
@@ -508,7 +517,7 @@ public class FertilizerSalesFormController {
         String fertilizerId = cmbFertilizer.getValue();
 
         try {
-            FertilizerDto dto = fertilizerModel.searchFertilizer(fertilizerId);
+            FertilizerDto dto = fertilizerBO.searchFertilizer(fertilizerId);
             txtDescription.setText(dto.getDescription());
             txtQtyOnHand.setText(String.valueOf(dto.getQty()));
             txtUnitPrice.setText(String.valueOf(dto.getPrice()));

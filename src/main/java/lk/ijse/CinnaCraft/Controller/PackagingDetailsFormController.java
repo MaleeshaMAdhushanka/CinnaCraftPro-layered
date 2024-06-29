@@ -15,6 +15,9 @@ import lk.ijse.CinnaCraft.Dto.PackagingDto;
 import lk.ijse.CinnaCraft.Model.CinnamonTypeModel;
 import lk.ijse.CinnaCraft.Model.PackagingModel;
 import lk.ijse.CinnaCraft.Tm.PackagingDetailsTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
+import lk.ijse.CinnaCraft.bo.custom.PackagingBO;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -70,9 +73,9 @@ public class PackagingDetailsFormController {
     private Text txtPackId;
 
 
-     private final PackagingModel packagingModel = new PackagingModel();
+     private final PackagingBO packagingBO =  (PackagingBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.PACKAGING);
 
-     private final CinnamonTypeModel cinnamonTypeModel = new CinnamonTypeModel();
+     private final CinnamonTypeBO cinnamonTypeBO = (CinnamonTypeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_TYPE);
 
 
      public void initialize(){
@@ -127,11 +130,11 @@ public class PackagingDetailsFormController {
 
         try {
 
-            List<PackagingDto> dtoList = packagingModel.getAllPackaging();
+            List<PackagingDto> dtoList = packagingBO.getAllPackaging();
 
             for (PackagingDto dto : dtoList) {
 
-                String type = cinnamonTypeModel.getCinnamonType(dto.getTypeId());
+                String type = cinnamonTypeBO.getCinnamonType(dto.getTypeId());
 
                 oblist.add(new PackagingDetailsTm(
                                 dto.getPackId(),
@@ -173,7 +176,7 @@ public class PackagingDetailsFormController {
     private void deletePackage(String packId) {
 
         try {
-            boolean isDeleted = packagingModel.deletePackage(packId);
+            boolean isDeleted = packagingBO.deletePackage(packId);
             if (isDeleted) {
                 new  Alert(Alert.AlertType.CONFIRMATION, "Package Deleted");
                 loadAllPackages();
@@ -189,7 +192,7 @@ public class PackagingDetailsFormController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try{
-            List<CinnamonTypeDto> cinnamonTypesList = cinnamonTypeModel.getAllCinnamonType();
+            List<CinnamonTypeDto> cinnamonTypesList = cinnamonTypeBO.getAllCinnamonType();
             for (CinnamonTypeDto cinnamonTypeDto : cinnamonTypesList){
                 obList.add(cinnamonTypeDto.getType());
             }
@@ -214,7 +217,7 @@ public class PackagingDetailsFormController {
 
          try {
 
-             String lastPackId = packagingModel.generateNextPackId();
+             String lastPackId = packagingBO.generateNextPackId();
              txtPackId.setText(lastPackId);
          }catch (SQLException e){
              new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -233,7 +236,7 @@ public class PackagingDetailsFormController {
            String packId =  txtPackId.getText();
            String type = cmbCinnamonType.getText();
 
-           String typeId =  cinnamonTypeModel.getCinnamonTypeId(type);
+           String typeId =  cinnamonTypeBO.getCinnamonTypeId(type);
 
           String size =  txtFieldSize.getText();
           String price = txtFieldPrice.getText();
@@ -241,7 +244,7 @@ public class PackagingDetailsFormController {
             PackagingDto dto = new PackagingDto(packId, typeId, size, 0, Double.parseDouble(price));
 
 
-            boolean isAdded = packagingModel.addPackage(dto);
+            boolean isAdded = packagingBO.addPackage(dto);
 
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Package Added").show();
@@ -321,11 +324,11 @@ public class PackagingDetailsFormController {
         try {
             String packId = txtPackId.getText();
             String type = cmbCinnamonType.getText();
-            String typeId = cinnamonTypeModel.getCinnamonTypeId(type);
+            String typeId = cinnamonTypeBO.getCinnamonTypeId(type);
             String size = txtFieldSize.getText();;
             String price = txtFieldPrice.getText();
 
-            boolean isAdded = packagingModel.updatedPack(packId, typeId, size, Double.parseDouble(price));
+            boolean isAdded = packagingBO.updatedPack(packId, typeId, size, Double.parseDouble(price));
             if (isAdded ) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Package updated!").show();
                 loadAllPackages();

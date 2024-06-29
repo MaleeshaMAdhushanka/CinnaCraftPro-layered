@@ -15,6 +15,9 @@ import javafx.util.Duration;
 import lk.ijse.CinnaCraft.Dto.CinnamonTypeDto;
 import lk.ijse.CinnaCraft.Model.CinnamonBookModel;
 import lk.ijse.CinnaCraft.Model.CinnamonTypeModel;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonBookBo;
+import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -52,9 +55,9 @@ public class DashBoardMainFormController {
     @FXML
     private PieChart chartProduction;
 
-    private final CinnamonBookModel cinnamonBookModel = new CinnamonBookModel();
+    private final CinnamonBookBo cinnamonBookBo = (CinnamonBookBo) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_BOOK);
 
-    CinnamonTypeModel cinnamonTypeModel = new CinnamonTypeModel();
+    private final CinnamonTypeBO cinnamonTypeBO = (CinnamonTypeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_TYPE);
 
 
     public void initialize() {
@@ -79,7 +82,7 @@ public class DashBoardMainFormController {
             int burmannii =0;
             try {
 
-                List<CinnamonTypeDto> dto = cinnamonTypeModel.getAllCinnamonType();
+                List<CinnamonTypeDto> dto = cinnamonTypeBO.getAllCinnamonType();
 
                 Cassia= (int)dto.get(0).getAmount();
                 verum= (int) dto.get(1).getAmount();
