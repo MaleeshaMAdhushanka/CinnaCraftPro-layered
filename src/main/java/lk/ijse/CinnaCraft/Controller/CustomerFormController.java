@@ -16,6 +16,9 @@ import lk.ijse.CinnaCraft.Dto.CustomerDto;
 import lk.ijse.CinnaCraft.Model.CustomerModel;
 
 import lk.ijse.CinnaCraft.Tm.CustomerTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.CustomerBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CustomerDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CustomerDAOImpl;
 
@@ -80,11 +83,9 @@ public class CustomerFormController {
     private TextField txtSearch;
 
 
-    CustomerModel customerModel = new CustomerModel();
 
 
-    CustomerDAO customerDAO = new CustomerDAOImpl();
-
+    private  final CustomerBO customerBO = (CustomerBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CUSTOMER);
 
 
 
@@ -134,7 +135,7 @@ public class CustomerFormController {
 
         ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
 
-        List<CustomerDto> dtoList = customerModel.getAllCustomers();
+        List<CustomerDto> dtoList = customerBO.getAllCustomers();
 
         for (CustomerDto dto:dtoList){
 
@@ -174,7 +175,7 @@ public class CustomerFormController {
         CustomerDto dto = new CustomerDto(cusId,firstName,lastName,address,email,mobileNo);
 
         try {
-            boolean isSaved = customerModel.saveCustomer(dto);
+            boolean isSaved = customerBO.saveCustomer(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer saved!").show();
                 clearFields();
@@ -259,7 +260,7 @@ public class CustomerFormController {
 
     private void generateNextCustomerId() {
         try{
-            String customerId=customerModel.generateNextCustomerId();
+            String customerId=customerBO.generateNextCustomerId();
             txtCustomerId.setText(customerId);
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -280,7 +281,7 @@ public class CustomerFormController {
         String customerId = txtCustomerId.getText();
 
         try {
-            boolean isDeleted = customerModel.deleteCustomer(customerId);
+            boolean isDeleted = customerBO.deleteCustomer(customerId);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer deleted!").show();
                 loadCustomerDetails();
@@ -304,7 +305,7 @@ public class CustomerFormController {
         String mobileNo = txtMobileNo.getText();
 
         try{
-            boolean isUpdated = customerModel.updateCustomer(new CustomerDto(cusId,firstName,lastName,address,email,mobileNo));
+            boolean isUpdated = customerBO.updateCustomer(new CustomerDto(cusId,firstName,lastName,address,email,mobileNo));
 
             if (isUpdated){
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer updated").show();

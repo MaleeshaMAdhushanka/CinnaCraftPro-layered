@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.Tm.EmployeeTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
 import lk.ijse.CinnaCraft.dao.DAOFactory;
 
@@ -92,7 +93,7 @@ public class EmployeeFormController {
     private TextField txtSearch;
 
 
-    EmployeeBO  employeeBO = (EmployeeBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+    EmployeeBO  employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.EMPLOYEE);
 
     public void initialize()throws SQLException {
         setcellValueFactory();
