@@ -15,6 +15,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.CinnaCraft.Model.UserModel;
+import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.UserBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 //import javafx.css.PseudoClass;
 
 import java.io.IOException;
@@ -54,7 +57,7 @@ public class LoginFormController {
 
    // private final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
 
-    private final UserModel userModel = new UserModel();
+    private final UserBO userBO= (UserBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.USER);
 
     public  void initialize(){
         setGreetings();
@@ -128,7 +131,7 @@ public class LoginFormController {
         boolean isUsernameExist = false;
         
         try {
-            isUsernameExist = userModel.searchUser(userName);
+            isUsernameExist = userBO.searchUser(userName);
         }
         catch (SQLException e){
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -153,7 +156,7 @@ public class LoginFormController {
         //To validate both user name and password
         boolean isUserExist = false;
         try {
-            isUserExist = userModel.searchUsernameAndPassword(userName,password);
+            isUserExist = userBO.searchUsernameAndPassword(userName,password);
         }
         catch (SQLException e){
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.Dto.SalaryDto;
 import lk.ijse.CinnaCraft.Model.*;
+import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.AttendanceDAOImpl;
 import lk.ijse.CinnaCraft.Tm.SalaryTm;
@@ -89,7 +91,7 @@ public class SalaryFormController {
     private Text txtTotal;
 
 
-    private final EmployeeModel employeeModel = new EmployeeModel();
+    private final EmployeeBO employeeBO = (EmployeeBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
 
     private final AttendanceModel attendanceModel = new AttendanceModel();
 
@@ -140,7 +142,7 @@ public class SalaryFormController {
 
         try {
 
-            List<EmployeeDto> employeeList =  employeeModel.getAllEmployee();
+            List<EmployeeDto> employeeList =  employeeBO.getAllEmployee();
 
          for (EmployeeDto dto : employeeList){
              employeeIdList.add(dto.getEmpID());
@@ -369,7 +371,7 @@ public class SalaryFormController {
 
         try {
             loadEmployeePaymentDetails(empID);
-            EmployeeDto employeeDto = employeeModel.searchEmployee(empID);
+            EmployeeDto employeeDto = employeeBO.searchEmployee(empID);
             txtNAme.setText(employeeDto.getFirstName());
             calculateSalary();
 

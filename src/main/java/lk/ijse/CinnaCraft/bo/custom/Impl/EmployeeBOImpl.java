@@ -23,7 +23,6 @@ public class EmployeeBOImpl implements EmployeeBO {
                 dto.getLastName(),
                 dto.getAddress(),
                 dto.getSex(),
-                dto.getDateOfBirth(),
                 dto.getMobileNo()
         ));
     }
@@ -36,7 +35,6 @@ public class EmployeeBOImpl implements EmployeeBO {
                 employee.getLastName(),
                 employee.getAddress(),
                 employee.getSex(),
-                employee.getDateOfBirth(),
                 employee.getMobileNo()
         ));
     }
@@ -55,7 +53,6 @@ public class EmployeeBOImpl implements EmployeeBO {
                 employee.getLastName(),
                 employee.getAddress(),
                 employee.getSex(),
-                employee.getDateOfBirth(),
                 employee.getMobileNo()
         );
     }
@@ -71,7 +68,6 @@ public class EmployeeBOImpl implements EmployeeBO {
                     employee.getLastName(),
                     employee.getAddress(),
                     employee.getSex(),
-                    employee.getDateOfBirth(),
                     employee.getMobileNo()
             ));
 

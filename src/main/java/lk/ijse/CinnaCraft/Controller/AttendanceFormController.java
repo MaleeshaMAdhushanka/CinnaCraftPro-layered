@@ -20,11 +20,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.CinnaCraft.Dto.AttendanceDto;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
-import lk.ijse.CinnaCraft.Model.AttendanceModel;
-import lk.ijse.CinnaCraft.Model.EmployeeModel;
 import lk.ijse.CinnaCraft.Tm.AttendanceTm;
-import lk.ijse.CinnaCraft.dao.custom.AttendanceDAO;
-import lk.ijse.CinnaCraft.dao.custom.impl.AttendanceDAOImpl;
+import lk.ijse.CinnaCraft.bo.custom.AttendanceBO;
+import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -89,9 +88,9 @@ public class AttendanceFormController {
     private Text txtTime;
 
 
-    private final EmployeeModel employeeModel = new EmployeeModel();
+    private final EmployeeBO employeeBO = (EmployeeBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
 
-    AttendanceModel attendanceModel = new AttendanceModel();
+    AttendanceBO attendanceBO = (AttendanceBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
 
 
     public void  initialize(){
@@ -133,11 +132,11 @@ public class AttendanceFormController {
 
         try{
 
-            if (attendanceModel.searchAttendance(empId,date)){
+            if (attendanceBO.searchAttendance(empId,date)){
                 new Alert(Alert.AlertType.WARNING, "Attendance Already Marked").show();
             }
             else {
-                boolean isAdded = attendanceModel.markAttendance(dto);
+                boolean isAdded = attendanceBO.markAttendance(dto);
 
                 if (isAdded) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Attendance Marked").show();
@@ -214,7 +213,7 @@ public class AttendanceFormController {
 
         try{
 
-            List<AttendanceDto> attendanceList = attendanceModel.getAllAttendanceDetails(date);
+            List<AttendanceDto> attendanceList = attendanceBO.getAllAttendanceDetails(date);
 
             ObservableList<AttendanceTm> obList = FXCollections.observableArrayList();
 
@@ -225,7 +224,7 @@ public class AttendanceFormController {
 
                 String inTime = dto.getInTime().format(formatter);
 
-                String empName =  employeeModel.searchEmployee(dto.getEmpId()).getFirstName();
+                String empName =  employeeBO.searchEmployee(dto.getEmpId()).getFirstName();
 
                 String outTime ;
 
@@ -296,7 +295,7 @@ public class AttendanceFormController {
         try {
 
             //Update The Out Time
-            attendanceModel.updateOutTime(empId,outTime,currentDate);
+            attendanceBO.updateOutTime(empId,outTime,currentDate);
             loadAllAttendanceDetails(LocalDate.now());
         }
         catch (SQLException e){
@@ -312,7 +311,7 @@ public class AttendanceFormController {
 
         try {
             System.out.println(attendanceId);
-            boolean isDeleted = attendanceModel.deleteAttendance(attendanceId);
+            boolean isDeleted = attendanceBO.deleteAttendance(attendanceId);
 
 
             if (isDeleted){
@@ -333,7 +332,7 @@ public class AttendanceFormController {
 
         try{
 
-            List<EmployeeDto> employeeList = employeeModel.getAllEmployee();
+            List<EmployeeDto> employeeList = employeeBO.getAllEmployee();
 
             for (EmployeeDto dto : employeeList){
                 employeeIdList.add(dto.getEmpID());
@@ -357,7 +356,7 @@ public class AttendanceFormController {
 
         try{
 
-            String attendanceId = attendanceModel.generateNextAttendanceId();
+            String attendanceId = attendanceBO.generateNextAttendanceId();
             txtAttendanceId.setText(attendanceId);
 
         }
@@ -399,7 +398,7 @@ public class AttendanceFormController {
         String empId = cmbEmployeeId.getValue();
 
         try{
-            EmployeeDto dto = employeeModel.searchEmployee(empId);
+            EmployeeDto dto = employeeBO.searchEmployee(empId);
             txtFirstName.setText(dto.getFirstName());
             txtLastName.setText(dto.getLastName());
         }
@@ -425,18 +424,18 @@ public class AttendanceFormController {
 
             try{
 
-                EmployeeDto edto = employeeModel.searchEmployee(empId);
+                EmployeeDto edto = employeeBO.searchEmployee(empId);
                 if (edto==null){
                     new Alert(Alert.AlertType.WARNING, "Invalid ID").show();
                     return;
                 }
 
-                boolean isAttend= attendanceModel.searchAttendance(empId,date);
+                boolean isAttend= attendanceBO.searchAttendance(empId,date);
 
                 if (!isAttend){
                     String attendanceId = txtAttendanceId.getText();
                     AttendanceDto dto = new AttendanceDto(attendanceId,date,empId,inTime,null,false);
-                    boolean isAdded = attendanceModel.markAttendance(dto);
+                    boolean isAdded = attendanceBO.markAttendance(dto);
                     if (isAdded) {
                         loadAllAttendanceDetails(dpDate.getValue());
                         generateNextAttendanceId();
@@ -444,10 +443,10 @@ public class AttendanceFormController {
                     }
                 }
                 else {
-                    boolean isOutTimeNull = attendanceModel.searchOutTime(empId,date);
+                    boolean isOutTimeNull = attendanceBO.searchOutTime(empId,date);
                     if (!isOutTimeNull){
                         LocalTime outTime = LocalTime.now();
-                        attendanceModel.updateOutTime(empId,outTime,date);
+                        attendanceBO.updateOutTime(empId,outTime,date);
                         loadAllAttendanceDetails(dpDate.getValue());
                     }
                     else {

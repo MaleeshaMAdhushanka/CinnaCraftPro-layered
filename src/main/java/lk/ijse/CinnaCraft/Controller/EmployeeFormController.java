@@ -13,8 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
-import lk.ijse.CinnaCraft.Model.EmployeeModel;
 import lk.ijse.CinnaCraft.Tm.EmployeeTm;
+import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
+import lk.ijse.CinnaCraft.dao.DAOFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -91,7 +92,7 @@ public class EmployeeFormController {
     private TextField txtSearch;
 
 
-    EmployeeModel employeeModel = new EmployeeModel();
+    EmployeeBO  employeeBO = (EmployeeBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
 
     public void initialize()throws SQLException {
         setcellValueFactory();
@@ -128,7 +129,7 @@ public class EmployeeFormController {
     private void loadEmployeeDetails() throws SQLException {
        ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
 
-      List<EmployeeDto> dtoList =  employeeModel.getAllEmployee();
+      List<EmployeeDto> dtoList =  employeeBO.getAllEmployee();
 
       for (EmployeeDto dto:dtoList){
         obList.add(new EmployeeTm(
@@ -156,7 +157,7 @@ public class EmployeeFormController {
     }
     private void generateNextEmployeeId(){
         try{
-            String employeeId = employeeModel.generateNextEmployeeId();
+            String employeeId = employeeBO.generateNextEmployeeId();
             txtEmployeeId.setText(employeeId);
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -183,7 +184,7 @@ public class EmployeeFormController {
         EmployeeDto dto = new EmployeeDto(empId, fistName, lastName, address, sex, mobileNo);
 
         try {
-            boolean isSaved = employeeModel.saveEmployee(dto);
+            boolean isSaved = employeeBO.saveEmployee(dto);
             if (isSaved ) {
                 new Alert(Alert.AlertType.CONFIRMATION, "EmployeeDAO saved").show();
                 clearFields();
@@ -289,7 +290,7 @@ public class EmployeeFormController {
         String employeeId = txtEmployeeId.getText();
 
         try {
-           boolean isDeleted = employeeModel.deleteEmployee(employeeId);
+           boolean isDeleted = employeeBO.deleteEmployee(employeeId);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer deleted!").show();
                 loadEmployeeDetails();
@@ -319,7 +320,7 @@ public class EmployeeFormController {
         String mobileNo =  txtMobileNo.getText();
 
         try {
-           boolean isUpdated = employeeModel.updateEmployee(new EmployeeDto(empId, firstName, lastName, address, sex, mobileNo));
+           boolean isUpdated = employeeBO.updateEmployee(new EmployeeDto(empId, firstName, lastName, address, sex, mobileNo));
 
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "EmployeeDAO Updated").show();

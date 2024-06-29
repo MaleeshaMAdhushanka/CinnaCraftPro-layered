@@ -31,7 +31,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                     resultSet.getString("lastName"),
                     resultSet.getString("Address"),
                     resultSet.getString("Sex"),
-                    resultSet.getString("dob"),
                     resultSet.getString("mobileNo"));
             allEmployee .add(dto);
 
@@ -43,7 +42,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
      @Override
     public boolean save(Employee dto) throws SQLException{
 
-      return SQLUtil.crudUtil("INSERT INTO employee VALUES(?, ?, ?, ?, ?,?, ?)", dto.getEmpID(), dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(),dto.getDateOfBirth(), dto.getMobileNo());
+      return SQLUtil.crudUtil("INSERT INTO employee VALUES(?, ?, ?, ?, ?, ?)", dto.getEmpID(), dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(), dto.getMobileNo());
 
 
     }
@@ -52,7 +51,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public boolean update(Employee dto) throws  SQLException{
 
 
-         return  SQLUtil.crudUtil("UPDATE employee SET firstName = ? , lastName = ? , address = ?, sex = ?, dob = ? , mobileNo = ? WHERE empID = ?", dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(),dto.getDateOfBirth(), dto.getMobileNo(), dto.getEmpID());
+         return  SQLUtil.crudUtil("UPDATE employee SET firstName = ? , lastName = ? , address = ?, sex = ?, dob = ? , mobileNo = ? WHERE empID = ?", dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(), dto.getMobileNo(), dto.getEmpID());
 
     }
 
@@ -93,7 +92,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                     resultSet.getString("lastName"),
                     resultSet.getString("address"),
                     resultSet.getString("sex"),
-                    resultSet.getString("dob"),
                     resultSet.getString("mobileNo")
             );
         }
