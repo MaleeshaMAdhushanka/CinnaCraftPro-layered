@@ -17,7 +17,7 @@ public class SupplierDAOImpl implements SupplierDAO {
   @Override
     public ArrayList<Supplier> getAll() throws SQLException {
 
-       ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier");
+       ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier ");
          ArrayList<Supplier> dtoList = new ArrayList<>();
 
         while (resultSet.next()) {
@@ -56,7 +56,7 @@ public class SupplierDAOImpl implements SupplierDAO {
     public boolean update(Supplier entity) throws SQLException {
 
 
-        return SQLUtil.crudUtil("UPDATE Cinnamon_Supplier SET SupID = ? , firstName = ? , lastName = ?, address = ?, bank = ?, bankNo = ?, mobileNo = ?  WHERE CusId = ?",
+        return SQLUtil.crudUtil("UPDATE Cinnamon_Supplier SET SupID = ? , firstName = ? , lastName = ?, address = ?, bank = ?, bankNo = ?, mobileNo = ?  WHERE CusID = ?",
 
                 entity.getFirstName(), entity.getLastName(), entity.getAddress(), entity.getBank(), entity.getBankNo(), entity.getMobileNo(), entity.getSupID());
 
@@ -71,14 +71,14 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public  boolean delete(String id) throws SQLException {
 
-      return  SQLUtil.crudUtil("DELETE FROM Cinnamon_Supplier WHERE SupId = ?", id);
+      return  SQLUtil.crudUtil("DELETE FROM Cinnamon_Supplier WHERE SupID = ?", id);
 
     }
 
     @Override
     public String generateId() throws SQLException {
 
-        ResultSet resultSet = SQLUtil.crudUtil("SELECT SupId FROM Cinnamon_Supplier  ORDER BY SupId DESC LIMIT 1");
+        ResultSet resultSet = SQLUtil.crudUtil("SELECT SupId FROM Cinnamon_Supplier  ORDER BY SupID DESC LIMIT 1");
 
         String currentSupplierId = null;
 
@@ -120,12 +120,12 @@ public class SupplierDAOImpl implements SupplierDAO {
     public Supplier search(String SupID) throws SQLException {
 
 
-       ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier WHERE SupId = ?", SupID);
+       ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier WHERE SupID = ?", SupID);
         Supplier entity = null;
 
         if (resultSet.next()) {
             entity = new Supplier(
-             resultSet.getString("supID"),
+             resultSet.getString("SupID"),
              resultSet.getString("firstName"),
              resultSet.getString("lastName"),
              resultSet.getString("address"),
@@ -143,7 +143,7 @@ public class SupplierDAOImpl implements SupplierDAO {
     public String getSupplierName(String SupID) throws SQLException {
 
 
-        ResultSet resultSet = SQLUtil.crudUtil( "SELECT firstName FROM Cinnamon_Supplier WHERE SupId = ?", SupID);
+        ResultSet resultSet = SQLUtil.crudUtil( "SELECT firstName FROM Cinnamon_Supplier WHERE SupID = ?", SupID);
 
         String name = null;
 

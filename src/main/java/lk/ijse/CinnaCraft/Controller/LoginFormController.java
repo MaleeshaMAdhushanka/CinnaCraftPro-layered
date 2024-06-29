@@ -14,8 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lk.ijse.CinnaCraft.Model.UserModel;
 import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.Impl.UserBOImpl;
 import lk.ijse.CinnaCraft.bo.custom.UserBO;
 import lk.ijse.CinnaCraft.dao.DAOFactory;
 //import javafx.css.PseudoClass;
@@ -174,7 +174,7 @@ public class LoginFormController {
 
 
 
-        UserModel.userName = userName;
+        UserBOImpl.userName = userName;
         txtMassage.setVisible(true);
         
 

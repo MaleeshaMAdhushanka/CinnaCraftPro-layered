@@ -24,6 +24,6 @@ public interface SupplierBO  extends SuperBo {
 
      boolean updateSupplier(SupplierDto supplierDto) throws SQLException ;
 
-     SupplierDto searchSupplier(String supId) throws SQLException ;
-     String getSupplierName(String supId) throws SQLException ;
+     SupplierDto searchSupplier(String SupID) throws SQLException ;
+     String getSupplierName(String SupID) throws SQLException ;
 }

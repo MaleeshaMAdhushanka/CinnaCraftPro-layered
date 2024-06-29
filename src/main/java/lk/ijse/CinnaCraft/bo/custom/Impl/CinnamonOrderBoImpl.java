@@ -9,6 +9,7 @@ import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonOrderDAO;
 import lk.ijse.CinnaCraft.dao.custom.CinnamonOrderDetailDAO;
 import lk.ijse.CinnaCraft.dao.custom.PackagingDAO;
+import lk.ijse.CinnaCraft.dao.custom.PackagingDetailsDAO;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonOrderDAOImpl;
 import lk.ijse.CinnaCraft.dao.custom.impl.CinnamonOrderDetailDAOImpl;
 import lk.ijse.CinnaCraft.dao.custom.impl.PackagingDAOImpl;
@@ -27,7 +28,7 @@ public class CinnamonOrderBoImpl implements CinnamonOrderBo {
 
     CinnamonOrderDetailDAO cinnamonOrderDetailDAO = (CinnamonOrderDetailDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CINNAMON_ORDER_DETAIL);
 
-
+    PackagingDetailsDAO packagingDetailsDAO = (PackagingDetailsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PACKAGING_DETAILS);
     @Override
     public String generateNextOrderId() throws SQLException {
         return cinnamonOrderDAO.generateNextOrderId();

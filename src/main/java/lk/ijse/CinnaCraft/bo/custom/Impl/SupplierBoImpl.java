@@ -57,8 +57,8 @@ public class SupplierBoImpl implements SupplierBO {
     }
 
     @Override
-    public SupplierDto searchSupplier(String supId) throws SQLException {
-        Supplier supplier = supplierDAO.search(supId);
+    public SupplierDto searchSupplier(String SupID) throws SQLException {
+        Supplier supplier = supplierDAO.search(SupID);
         if (supplier != null) {
             return  new SupplierDto(
                     supplier.getSupID(),
@@ -87,7 +87,7 @@ public class SupplierBoImpl implements SupplierBO {
     }
 
     @Override
-    public String getSupplierName(String supId) throws SQLException {
-        return supplierDAO.getSupplierName(supId);
+    public String getSupplierName(String SupID) throws SQLException {
+        return supplierDAO.getSupplierName(SupID);
     }
 }

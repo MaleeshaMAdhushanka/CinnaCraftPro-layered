@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.UserDto;
-import lk.ijse.CinnaCraft.Model.UserModel;
 import lk.ijse.CinnaCraft.Util.EmailService;
 import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.UserBO;

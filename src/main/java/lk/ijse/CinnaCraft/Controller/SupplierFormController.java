@@ -102,10 +102,10 @@ public class SupplierFormController {
 
     public void initialize() throws SQLException {
         setCellValueFavctory();
-        loadSupplierDetails();
         System.out.println("3");
         generateNextSupplierId();
         setListener();
+//        loadSupplierDetails();
 
 
 
@@ -168,11 +168,10 @@ public class SupplierFormController {
       tblSupplier.setItems(obList);
 
 
-
     }
 
     private void setCellValueFavctory() {
-        colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supId"));
+        colSupplierId.setCellValueFactory(new PropertyValueFactory<>("SupID"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
