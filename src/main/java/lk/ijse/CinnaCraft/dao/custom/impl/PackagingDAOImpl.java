@@ -148,7 +148,7 @@ public class PackagingDAOImpl implements PackagingDAO {
             resultSet.getString("packId"),
             resultSet.getString("typeId"),
             resultSet.getString("description"),
-            resultSet.getInt("packagingCount"),
+            resultSet.getInt("packageCount"),
             resultSet.getDouble("price")
             );
 

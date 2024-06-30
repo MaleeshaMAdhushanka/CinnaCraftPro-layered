@@ -18,10 +18,7 @@ import lk.ijse.CinnaCraft.Dto.PlaceCinnamonOrderDto;
 import lk.ijse.CinnaCraft.Model.*;
 import lk.ijse.CinnaCraft.Tm.SalesCartTm;
 import lk.ijse.CinnaCraft.bo.BOFactory;
-import lk.ijse.CinnaCraft.bo.custom.CinnamonOrderBo;
-import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;
-import lk.ijse.CinnaCraft.bo.custom.CustomerBO;
-import lk.ijse.CinnaCraft.bo.custom.PackagingBO;
+import lk.ijse.CinnaCraft.bo.custom.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -108,7 +105,7 @@ public class SalesFormController {
     private final CinnamonTypeBO cinnamonTypeBO = (CinnamonTypeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.CINNAMON_TYPE);
 
     private final PackagingBO packagingBO = (PackagingBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.PACKAGING);
-
+ PackagingDetailsBO packagingDetailsBO = (PackagingDetailsBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.PACKAGING_DETAILS);
 
 
     //for report Generation
@@ -594,6 +591,8 @@ public class SalesFormController {
         cmbPackSize.getSelectionModel().clearSelection();
         txtCount.setText("-");
         txtPrice.setText("-");
+
+        System.out.println("baby");
 
         String cinnamonType = cmbCinnamonType.getSelectionModel().getSelectedItem();
         loadPackSizes(cinnamonType);

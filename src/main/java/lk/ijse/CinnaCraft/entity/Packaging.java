@@ -15,7 +15,7 @@ public class Packaging {
     private String typeId;
     private String description;
 
-    private int PackageCount;
+    private int packageCount;
 
     private double price;
 
