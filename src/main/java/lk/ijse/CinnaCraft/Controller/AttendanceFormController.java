@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import lk.ijse.CinnaCraft.Dto.AttendanceDto;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.Tm.AttendanceTm;
+import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.AttendanceBO;
 import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
 import lk.ijse.CinnaCraft.dao.DAOFactory;
@@ -88,9 +89,9 @@ public class AttendanceFormController {
     private Text txtTime;
 
 
-    private final EmployeeBO employeeBO = (EmployeeBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.EMPLOYEE);
 
-    AttendanceBO attendanceBO = (AttendanceBO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.ATTENDANCE);
 
 
     public void  initialize(){

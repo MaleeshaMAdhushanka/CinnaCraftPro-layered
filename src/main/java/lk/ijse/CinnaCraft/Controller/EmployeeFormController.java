@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.EmployeeDto;
 import lk.ijse.CinnaCraft.Tm.EmployeeTm;
 import lk.ijse.CinnaCraft.bo.BOFactory;
+import lk.ijse.CinnaCraft.bo.custom.AttendanceBO;
 import lk.ijse.CinnaCraft.bo.custom.EmployeeBO;
 import lk.ijse.CinnaCraft.dao.DAOFactory;
 
@@ -94,6 +95,8 @@ public class EmployeeFormController {
 
 
     EmployeeBO  employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.EMPLOYEE);
+
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.ATTENDANCE);
 
     public void initialize()throws SQLException {
         setcellValueFactory();
