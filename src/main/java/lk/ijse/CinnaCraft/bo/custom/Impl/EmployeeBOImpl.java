@@ -76,7 +76,7 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public boolean deleteEmployee(String empId) throws SQLException {
-        return employeeDAO.delete(empId);
+    public boolean deleteEmployee(String empID) throws SQLException {
+        return employeeDAO.delete(empID);
     }
 }

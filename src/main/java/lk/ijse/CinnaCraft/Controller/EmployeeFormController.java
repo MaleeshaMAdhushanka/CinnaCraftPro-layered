@@ -178,14 +178,14 @@ public class EmployeeFormController {
         }
 
 
-        String empId = txtEmployeeId.getText();
+        String empID = txtEmployeeId.getText();
         String fistName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String address = txtAddress.getText();
         String sex = cmbSex.getText();
         String mobileNo = txtMobileNo.getText();
 
-        EmployeeDto dto = new EmployeeDto(empId, fistName, lastName, address, sex, mobileNo);
+        EmployeeDto dto = new EmployeeDto(empID, fistName, lastName, address, sex, mobileNo);
 
         try {
             boolean isSaved = employeeBO.saveEmployee(dto);
@@ -316,7 +316,7 @@ public class EmployeeFormController {
 
     @FXML
     void btnUpdatemployeeOnAction(ActionEvent event) {
-        String empId = txtEmployeeId.getText();
+        String empID = txtEmployeeId.getText();
         String firstName =  txtFirstName.getText();
         String lastName= txtLastName.getText();
         String address =   txtAddress.getText();
@@ -324,7 +324,7 @@ public class EmployeeFormController {
         String mobileNo =  txtMobileNo.getText();
 
         try {
-           boolean isUpdated = employeeBO.updateEmployee(new EmployeeDto(empId, firstName, lastName, address, sex, mobileNo));
+           boolean isUpdated = employeeBO.updateEmployee(new EmployeeDto(empID, firstName, lastName, address, sex, mobileNo));
 
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "EmployeeDAO Updated").show();

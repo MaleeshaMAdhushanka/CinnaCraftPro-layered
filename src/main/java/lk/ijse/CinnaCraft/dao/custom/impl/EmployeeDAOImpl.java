@@ -26,7 +26,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         while (resultSet.next()) {
             Employee dto = new Employee(
-                    resultSet.getString("empId"),
+                    resultSet.getString("empID"),
                     resultSet.getString("firstName"),
                     resultSet.getString("lastName"),
                     resultSet.getString("Address"),
@@ -51,7 +51,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public boolean update(Employee dto) throws  SQLException{
 
 
-         return  SQLUtil.crudUtil("UPDATE employee SET firstName = ? , lastName = ? , address = ?, sex = ?, dob = ? , mobileNo = ? WHERE empID = ?", dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(), dto.getMobileNo(), dto.getEmpID());
+         return  SQLUtil.crudUtil("UPDATE employee SET firstName = ? , lastName = ? , address = ?, sex = ?,  mobileNo = ? WHERE empID = ?", dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getSex(), dto.getMobileNo(), dto.getEmpID());
 
     }
 
