@@ -11,7 +11,10 @@ public class DAOFactory {
 
     public static DAOFactory getInstance(){
         //check kara if instance eka null da kiyala- if so create a new instance  or return kara exisiting instance
-       return(daoFactory == null) ? new DAOFactory() : daoFactory;
+        if (daoFactory == null) {
+            daoFactory = new DAOFactory();
+        }
+        return daoFactory;
     }
 
 

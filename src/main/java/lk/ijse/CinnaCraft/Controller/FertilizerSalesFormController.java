@@ -145,7 +145,7 @@ public class FertilizerSalesFormController {
         loadFertilizerDetails();
     }
 
-    private void loadFertilizerDetails() {
+    public void loadFertilizerDetails() {
 
         try{
 

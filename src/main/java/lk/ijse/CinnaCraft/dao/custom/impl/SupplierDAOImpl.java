@@ -17,7 +17,7 @@ public class SupplierDAOImpl implements SupplierDAO {
   @Override
     public ArrayList<Supplier> getAll() throws SQLException {
 
-       ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier ");
+       ResultSet resultSet = SQLUtil.crudUtil( "SELECT * FROM Cinnamon_Supplier");
          ArrayList<Supplier> dtoList = new ArrayList<>();
 
         while (resultSet.next()) {

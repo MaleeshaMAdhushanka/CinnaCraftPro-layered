@@ -90,11 +90,15 @@ public class DashBoardFormController {
     @FXML
     void btnFertilizerOnAction(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fertilizerSalesForm.fxml"));
-        Pane registerPane = (Pane) fxmlLoader.load();
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(registerPane);
+        try {
 
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/fertilizerSalesForm.fxml"));
+            Pane registerPane = (Pane) fxmlLoader.load();
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(registerPane);
+        }catch (IOException | RuntimeException e){
+            System.out.println("Error loading fertilizer sales From: " + e.getMessage());
+        }
     }
 
     @FXML

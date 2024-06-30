@@ -105,7 +105,7 @@ public class SupplierFormController {
         System.out.println("3");
         generateNextSupplierId();
         setListener();
-//        loadSupplierDetails();
+        loadSupplierDetails();
 
 
 
@@ -144,9 +144,8 @@ public class SupplierFormController {
 
     }
 
-    public void loadSupplierDetails() throws SQLException {
+    private void loadSupplierDetails() throws SQLException {
         ObservableList<SupplierTm> obList =  FXCollections.observableArrayList();
-        System.out.println("last");
 
 
       List<SupplierDto> dtoList =  supplierBO.getAllSuppliers();
