@@ -1,14 +1,9 @@
 package lk.ijse.CinnaCraft.bo.custom;
 
-import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Dto.SupplierDto;
 import lk.ijse.CinnaCraft.bo.SuperBo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface SupplierBO  extends SuperBo {
@@ -20,9 +15,9 @@ public interface SupplierBO  extends SuperBo {
      String generateNextSupplierId() throws SQLException ;
 
 
-      boolean deleteSupplier(String supplierid) throws SQLException;
+      boolean deleteSupplier(String id) throws SQLException;
 
-     boolean updateSupplier(SupplierDto supplierDto) throws SQLException ;
+     boolean updateSupplier(SupplierDto dto) throws SQLException ;
 
      SupplierDto searchSupplier(String SupID) throws SQLException ;
      String getSupplierName(String SupID) throws SQLException ;

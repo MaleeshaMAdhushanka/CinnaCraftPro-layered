@@ -28,7 +28,7 @@ public class FertilizerDAOImpl implements FertilizerDAO {
                     resultSet.getString("brand"),
                     resultSet.getString("description"),
                     resultSet.getString("size"),
-                    resultSet.getDouble("price"),
+                    resultSet.getDouble("unitPrice"),
                     resultSet.getInt("qty_on_hand"));
             dtoList.add(dto);
         }
@@ -114,7 +114,7 @@ public class FertilizerDAOImpl implements FertilizerDAO {
     public Fertilizer search(String id) throws SQLException {
 
         ResultSet  resultSet = SQLUtil.crudUtil( "SELECT * FROM fertilizer WHERE fertilizerId = ?", id);
-
+         System.out.println("sachini");
         Fertilizer entity = null;
 
         if (resultSet.next()){
@@ -123,7 +123,7 @@ public class FertilizerDAOImpl implements FertilizerDAO {
              resultSet.getString("brand"),
              resultSet.getString("description"),
              resultSet.getString("size"),
-             resultSet.getDouble("price"),
+             resultSet.getDouble("unitPrice"),
               resultSet.getInt("qty_on_hand")
             );
         }

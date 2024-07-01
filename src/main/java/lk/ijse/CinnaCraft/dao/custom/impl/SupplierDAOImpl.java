@@ -4,7 +4,6 @@ package lk.ijse.CinnaCraft.dao.custom.impl;
 import lk.ijse.CinnaCraft.Util.SQLUtil;
 import lk.ijse.CinnaCraft.dao.custom.SupplierDAO;
 import lk.ijse.CinnaCraft.entity.Supplier;
-import net.sf.jasperreports.engine.util.JsonUtil;
 
 
 import java.sql.ResultSet;
@@ -38,27 +37,27 @@ public class SupplierDAOImpl implements SupplierDAO {
     }
 
      @Override
-    public boolean save(Supplier entity) throws SQLException {
+    public boolean save(Supplier dto) throws SQLException {
 
 
        return  SQLUtil.crudUtil("INSERT INTO Cinnamon_Supplier VALUES(?, ?, ?, ?, ?, ?, ?)",
-               entity.getSupID(),
-               entity.getFirstName(),
-               entity.getLastName(),
-               entity.getAddress(),
-               entity.getBank(),
-               entity.getBankNo(),
-               entity.getMobileNo());
+               dto.getSupID(),
+               dto.getFirstName(),
+               dto.getLastName(),
+               dto.getAddress(),
+               dto.getBank(),
+               dto.getBankNo(),
+               dto.getMobileNo());
 
 
     }
     @Override
-    public boolean update(Supplier entity) throws SQLException {
+    public boolean update(Supplier dto) throws SQLException {
 
 
-        return SQLUtil.crudUtil("UPDATE Cinnamon_Supplier SET SupID = ? , firstName = ? , lastName = ?, address = ?, bank = ?, bankNo = ?, mobileNo = ?  WHERE CusID = ?",
+        return SQLUtil.crudUtil("UPDATE Cinnamon_Supplier SET  firstName = ? , lastName = ?, address = ?, bank = ?, bankNo = ?, mobileNo = ?  WHERE SupID = ?",
 
-                entity.getFirstName(), entity.getLastName(), entity.getAddress(), entity.getBank(), entity.getBankNo(), entity.getMobileNo(), entity.getSupID());
+                dto.getFirstName(), dto.getLastName(), dto.getAddress(), dto.getBank(), dto.getBankNo(), dto.getMobileNo(), dto.getSupID());
 
 
 
@@ -78,7 +77,7 @@ public class SupplierDAOImpl implements SupplierDAO {
     @Override
     public String generateId() throws SQLException {
 
-        ResultSet resultSet = SQLUtil.crudUtil("SELECT SupId FROM Cinnamon_Supplier  ORDER BY SupID DESC LIMIT 1");
+        ResultSet resultSet = SQLUtil.crudUtil("SELECT SupID FROM Cinnamon_Supplier  ORDER BY SupID DESC LIMIT 1");
 
         String currentSupplierId = null;
 

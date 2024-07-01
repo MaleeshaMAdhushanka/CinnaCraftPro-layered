@@ -98,6 +98,9 @@ public class SupplierFormController {
     @FXML
     private Text txtSupplierId;
 
+
+    private String SupID;
+
     private final SupplierBO supplierBO = (SupplierBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.SUPPLIER);
 
     public void initialize() throws SQLException {
@@ -345,7 +348,13 @@ public class SupplierFormController {
     @FXML
     void btnUpdateSupplierOnAction(ActionEvent event) {
 
-        String SupID = txtSupplierId.getText();
+
+        boolean isSupplierValidated = validateSupplier();
+        if (!isSupplierValidated) {
+            return;
+        }
+
+        String supID = txtSupplierId.getText();
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String address =  txtAddress.getText();
@@ -354,7 +363,7 @@ public class SupplierFormController {
          String mobileNo =  txtMobileNo.getText();
 
         try {
-         boolean isUpdated =   supplierBO.updateSupplier(new SupplierDto(SupID, firstName, lastName, address, bank, bankNo, mobileNo));
+         boolean isUpdated =  supplierBO.updateSupplier(new SupplierDto(supID, firstName, lastName, address, bank, bankNo, mobileNo));
          if (isUpdated){
              new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated").show();
              loadSupplierDetails();

@@ -4,7 +4,6 @@ import lk.ijse.CinnaCraft.Dto.SupplierDto;
 import lk.ijse.CinnaCraft.bo.custom.SupplierBO;
 import lk.ijse.CinnaCraft.dao.DAOFactory;
 import lk.ijse.CinnaCraft.dao.custom.SupplierDAO;
-import lk.ijse.CinnaCraft.dao.custom.impl.SupplierDAOImpl;
 import lk.ijse.CinnaCraft.entity.Supplier;
 
 import java.sql.SQLException;
@@ -34,8 +33,8 @@ public class SupplierBoImpl implements SupplierBO {
     }
 
     @Override
-    public boolean deleteSupplier(String supplierid) throws SQLException {
-        return supplierDAO.delete(supplierid);
+    public boolean deleteSupplier(String id) throws SQLException {
+        return supplierDAO.delete(id);
     }
 
     @Override
@@ -74,15 +73,15 @@ public class SupplierBoImpl implements SupplierBO {
     }
 
     @Override
-    public boolean updateSupplier(SupplierDto supplierDto) throws SQLException {
+    public boolean updateSupplier(SupplierDto dto) throws SQLException {
         return  supplierDAO.update(new Supplier(
-                supplierDto.getSupID(),
-                supplierDto.getFirstName(),
-                supplierDto.getLastName(),
-                supplierDto.getAddress(),
-                supplierDto.getBank(),
-                supplierDto.getBankNo(),
-                supplierDto.getMobileNo()
+                dto.getSupID(),
+                dto.getFirstName(),
+                dto.getLastName(),
+                dto.getAddress(),
+                dto.getBank(),
+                dto.getBankNo(),
+                dto.getMobileNo()
         ));
     }
 
