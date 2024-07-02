@@ -16,9 +16,6 @@ import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.FertilizerDto;
 import lk.ijse.CinnaCraft.Dto.PlaceFertilizerOrderDto;
 import lk.ijse.CinnaCraft.Dto.SupplierDto;
-import lk.ijse.CinnaCraft.Model.FertilizerModel;
-import lk.ijse.CinnaCraft.Model.FertilizerOrderModel;
-import lk.ijse.CinnaCraft.Model.PlaceFertilizerOrderModel;
 
 import lk.ijse.CinnaCraft.Db.DbConnection;
 import lk.ijse.CinnaCraft.Tm.FertilizeSalesCartTm;
@@ -114,16 +111,15 @@ public class FertilizerSalesFormController {
 
     private final ObservableList<FertilizeSalesCartTm> obList = FXCollections.observableArrayList();
 
-//    SupplierModel supplierModel = new SupplierModel();
+
     private final SupplierBO supplierBO = (SupplierBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.SUPPLIER);
 
-//    FertilizerModel fertilizerModel = new FertilizerModel();
+
     private final FertilizerBO fertilizerBO =(FertilizerBO) BOFactory.getInstance().getBO(BOFactory.BoTypes.FERTILIZER);
 
-//    FertilizerOrderModel fertilizerOrderModel = new FertilizerOrderModel();
     private final FertilizerOrderBo fertilizerOrderBo = (FertilizerOrderBo) BOFactory.getInstance().getBO(BOFactory.BoTypes.FERTILIZER_ORDER);
 
-//    PlaceFertilizerOrderModel placeFertilizerOrderModel = new PlaceFertilizerOrderModel();
+
 
 
 

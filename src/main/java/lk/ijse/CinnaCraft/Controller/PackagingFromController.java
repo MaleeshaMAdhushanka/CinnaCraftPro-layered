@@ -16,8 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.CinnaCraft.Dto.PackagingDto;
-import lk.ijse.CinnaCraft.Model.CinnamonTypeModel;
-import lk.ijse.CinnaCraft.Model.PackagingModel;
 import lk.ijse.CinnaCraft.Tm.PackagingTm;
 import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;

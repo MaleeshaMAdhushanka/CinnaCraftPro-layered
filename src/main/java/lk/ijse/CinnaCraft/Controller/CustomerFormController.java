@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.CustomerDto;
-import lk.ijse.CinnaCraft.Model.CustomerModel;
+
 
 import lk.ijse.CinnaCraft.Tm.CustomerTm;
 import lk.ijse.CinnaCraft.bo.BOFactory;

@@ -13,8 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.CinnaCraft.Dto.CinnamonTypeDto;
-import lk.ijse.CinnaCraft.Model.CinnamonBookModel;
-import lk.ijse.CinnaCraft.Model.CinnamonTypeModel;
 import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonBookBo;
 import lk.ijse.CinnaCraft.bo.custom.CinnamonTypeBO;

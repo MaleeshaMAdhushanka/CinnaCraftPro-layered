@@ -13,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.CinnaCraft.Dto.FertilizerDto;
-import lk.ijse.CinnaCraft.Model.FertilizerModel;
 import lk.ijse.CinnaCraft.Tm.FertilizerTm;
 import lk.ijse.CinnaCraft.bo.BOFactory;
 import lk.ijse.CinnaCraft.bo.custom.FertilizerBO;
